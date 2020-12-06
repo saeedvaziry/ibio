@@ -18,13 +18,17 @@ class ChangePasswordRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'current_password' => 'required',
+        $rules = [
             'password' => [
                 'required',
                 'min:8',
                 'confirmed'
             ]
         ];
+        if ($this->user()->password != 'not_set') {
+            $rules['current_password'] = 'required';
+        }
+
+        return $rules;
     }
 }

@@ -1,28 +1,24 @@
 @extends('layouts.auth')
 
-@section('page-title'){{ __('Verify Email') }}@endsection
+@section('page-title'){{ __('Verify email') }}@endsection
 
 @section('content')
-    <div class="text-gray-300">
-        <a href="{{ route('home') }}">
-            <img class="mx-auto h-16 w-auto" src="{{ asset('images/logo.png') }}" alt="Workflow"/>
-        </a>
-        <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold">
-            {{ __('Verify Email') }}
+    <div class="w-full sm:w-1/2 md:w-2/3 lg:w-2/5 mx-auto">
+        <h2 class="mb-12 text-center text-5xl font-extrabold">
+            {{ __('Verify email') }}
         </h2>
-    </div>
-    <div class="mt-8 bg-white p-5 rounded-md shadow-md">
         @if (session('resent'))
-            <x-alert type="success">
+            <x-alert type="success" class="mb-2">
                 {{ __('A fresh verification link has been sent to your email address.') }}
             </x-alert>
         @endif
-        {{ __('Before proceeding, please check your email for a verification link.') }}
-        {{ __('If you did not receive the email') }},
-        <div class="mt-6 flex justify-end items-center">
-            <form method="POST" action="{{ route('verification.resend') }}">
+        <p class="mb-2">{{ __('Before proceeding, please check your email for a verification link.') }}</p>
+        <p class="mb-2">{{ __('If you did not receive the email') }}</p>
+        <form method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+            <div class="mt-6 flex justify-end items-center">
                 <x-button type="primary">{{ __('click here to request another') }}</x-button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 @stop

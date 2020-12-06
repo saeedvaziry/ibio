@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +13,7 @@ use PragmaRX\Google2FALaravel\Google2FA;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +27,7 @@ class User extends Authenticatable
         'password',
         'avatar',
         'social',
+        'bio',
         'page',
         'active',
         'two_factor_enabled',
@@ -55,9 +58,41 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function featureRequests()
+    {
+        return $this->hasMany('App\Models\FeatureRequest');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function links()
     {
         return $this->hasMany('App\Models\Link');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pageLinks()
+    {
+        return $this->links()->whereNotIn('type', ['social', 'contact']);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function socialLinks()
+    {
+        return $this->links()->where('type', 'social');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contactLinks()
+    {
+        return $this->links()->where('type', 'contact');
     }
 
     /**
@@ -66,6 +101,22 @@ class User extends Authenticatable
     public function stats()
     {
         return $this->morphMany('App\Models\Stat', 'statable');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function clicks()
+    {
+        return $this->hasManyThrough('App\Models\Stat', 'App\Models\Link', 'user_id', 'statable_id')->where('statable_type', 'App\Models\Link');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function recentClicks()
+    {
+        return $this->clicks()->orderBy('id', 'desc');
     }
 
     /**
@@ -126,5 +177,13 @@ class User extends Authenticatable
             'two_factor_enabled' => 0,
             'two_factor_secret' => null,
         ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    public function getAvatarUrlAttribute()
+    {
+        return $this->avatar ? url($this->avatar) : '';
     }
 }

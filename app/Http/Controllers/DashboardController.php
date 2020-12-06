@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClickResource;
+use App\Traits\HasStats;
+
 class DashboardController extends Controller
 {
+    use HasStats;
+
     /**
      * @return \Inertia\Response|\Inertia\ResponseFactory
      */
@@ -12,7 +17,10 @@ class DashboardController extends Controller
         return inertia('Dashboard', [
             'title' => __('Dashboard'),
             'menu' => 'dashboard',
-            'todayVisits' => auth()->user()->stats()->whereDate('created_at', now()->format('Y-m-d'))->count()
+            'hasVisits' => auth()->user()->stats()->first() ? true : false,
+            'visits' => $this->getVisitsStats(auth()->user())->get(),
+            'clicks' => $this->getClicksStats(auth()->user())->get(),
+            'recentClicks' => ClickResource::collection(auth()->user()->recentClicks()->with('statable')->take(10)->get())
         ]);
     }
 }

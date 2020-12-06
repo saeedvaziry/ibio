@@ -3,6 +3,8 @@ import Vue from "vue";
 // layouts
 Vue.component('app', require('./layouts/App').default);
 Vue.component('dashboard', require('./layouts/Dashboard').default);
+Vue.component('page-settings', require('./layouts/PageSettings').default);
+Vue.component('stats', require('./layouts/Stats').default);
 
 // components
 Vue.component('v-container', require('./components/Container').default);
@@ -21,3 +23,5 @@ Vue.component('v-card', require('./components/Card').default);
 Vue.component('v-select', require('./components/Select').default);
 Vue.component('v-modal', require('./components/Modal').default);
 Vue.component('v-toast', require('./components/Toast').default);
+Vue.component('v-button-copy', require('./components/ButtonCopy').default);
+Vue.component('v-textarea', require('./components/Textarea').default);

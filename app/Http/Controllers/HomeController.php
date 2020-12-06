@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\LinkResource;
-use App\Http\Resources\PublicUserResource;
 use App\Models\Link;
 use App\Models\User;
 use App\Traits\HasStats;
@@ -16,7 +15,7 @@ class HomeController extends Controller
     /**
      * @param Request $request
      * @param $username
-     * @return \Inertia\Response|\Inertia\ResponseFactory
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function user(Request $request, $username)
     {
@@ -24,22 +23,25 @@ class HomeController extends Controller
 
         $this->createStat($request, $user);
 
-        return inertia('User', [
+        return view('user')->with([
             'title' => $user->name,
-            'theUser' => new PublicUserResource($user),
-            'links' => LinkResource::collection($user->links()->orderBy('order')->get())
+            'user' => $user,
+            'links' => LinkResource::collection($user->pageLinks()->orderBy('order')->get()),
+            'socialLinks' => LinkResource::collection($user->socialLinks),
+            'contactLinks' => LinkResource::collection($user->contactLinks),
         ]);
     }
 
     /**
      * @param Request $request
-     * @param Link $link
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function go(Request $request, Link $link)
+    public function go(Request $request)
     {
+        $link = Link::query()->findOrFail(decrypt_string(config('links.key'), $request->link));
+
         $this->createStat($request, $link);
 
-        return redirect()->to($link->url);
+        return redirect()->to($link->generate());
     }
 }

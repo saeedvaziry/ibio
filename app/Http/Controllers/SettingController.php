@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangePasswordRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -30,9 +31,11 @@ class SettingController extends Controller
      */
     public function password(ChangePasswordRequest $request)
     {
-        if (!Hash::check($request->current_password, $request->user()->password)) {
-            throw ValidationException::withMessages(['current_password' => __('Current password is invalid')])
-                ->errorBag('changePassword');
+        if ($request->user()->password != 'not_set') {
+            if (!Hash::check($request->current_password, $request->user()->password)) {
+                throw ValidationException::withMessages(['current_password' => __('Current password is invalid')])
+                    ->errorBag('changePassword');
+            }
         }
 
         $request->user()->update([
@@ -132,5 +135,26 @@ class SettingController extends Controller
         return back()->with([
             'success' => __('2FA disabled')
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Inertia\Response|\Inertia\ResponseFactory
+     * @throws \Exception
+     */
+    public function deleteAccount(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $request->user()->delete();
+            DB::commit();
+
+            auth()->logout();
+
+            return $this->index();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }

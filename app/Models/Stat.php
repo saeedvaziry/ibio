@@ -23,6 +23,8 @@ class Stat extends Model
         'is_desktop',
         'is_tablet',
         'user_agent',
+        'referer',
+        'date',
     ];
 
     /**
@@ -32,6 +34,7 @@ class Stat extends Model
         'is_mobile' => 'boolean',
         'is_desktop' => 'boolean',
         'is_tablet' => 'boolean',
+        'date' => 'date:Y-m-d',
     ];
 
     /**

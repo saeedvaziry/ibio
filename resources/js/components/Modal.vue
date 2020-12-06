@@ -60,6 +60,7 @@
             },
             hide() {
                 this.open = false
+                document.body.classList.add('overflow-hidden')
             },
         },
     }

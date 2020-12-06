@@ -15,8 +15,8 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('statable_id');
-            $table->string('statable_type');
+            $table->unsignedBigInteger('statable_id')->index();
+            $table->string('statable_type')->index();
             $table->string('device')->nullable();
             $table->string('os')->nullable();
             $table->ipAddress('ip')->nullable();
@@ -25,6 +25,8 @@ class CreateStatsTable extends Migration
             $table->boolean('is_desktop')->nullable();
             $table->boolean('is_tablet')->nullable();
             $table->longText('user_agent')->nullable();
+            $table->string('referer')->nullable();
+            $table->date('date');
             $table->timestamps();
         });
     }
