@@ -1,5 +1,7 @@
 @extends('layouts.home')
 
+@section('page-title'){{ __('ibio.link') }}@endsection
+
 @section('content')
     <section id="header" class="container px-5 py-10 mx-auto w-full md:w-8/12 text-center">
         <h1 class="text-5xl font-bold mb-10">

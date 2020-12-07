@@ -1,5 +1,7 @@
 @extends('layouts.home')
 
+@section('page-title'){{ __('Cookie Policy') }}@endsection
+
 @section('content')
     <section id="content" class="px-5 py-10 mx-auto w-full content">
         <div class="container mx-auto">
