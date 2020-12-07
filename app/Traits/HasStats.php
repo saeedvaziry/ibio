@@ -23,7 +23,7 @@ trait HasStats
                 'device' => $this->getDevice($userAgent),
                 'os' => $userAgent->platform(),
                 'ip' => $request->ip(),
-                'country' => ip2location_country_code(),
+                'country' => strtolower(ip2location_country_code()),
                 'is_mobile' => $userAgent->isMobile(),
                 'is_desktop' => $userAgent->isDesktop(),
                 'is_tablet' => $userAgent->isTablet(),

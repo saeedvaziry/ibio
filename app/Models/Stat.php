@@ -44,4 +44,13 @@ class Stat extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * @param $value
+     * @return string
+     */
+    public function getCountryAttribute($value)
+    {
+        return strtolower($value);
+    }
 }
