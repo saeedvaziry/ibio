@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Observers\LinkObserver;
 use App\Observers\UserObserver;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.force_https')) {
+            URL::forceScheme('https');
+        }
+
         // disable resource wrapping
         ResourceCollection::withoutWrapping();
 

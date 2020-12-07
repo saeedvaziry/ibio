@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -229,4 +229,5 @@ return [
 
     ],
 
+    'force_https' => env('APP_FORCE_HTTPS', false)
 ];
