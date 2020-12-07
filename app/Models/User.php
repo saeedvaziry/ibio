@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 use PragmaRX\Google2FALaravel\Google2FA;
 
 class User extends Authenticatable
@@ -184,6 +185,6 @@ class User extends Authenticatable
      */
     public function getAvatarUrlAttribute()
     {
-        return $this->avatar ? url($this->avatar) : '';
+        return $this->avatar ? Storage::disk('public')->url($this->avatar) : '';
     }
 }
