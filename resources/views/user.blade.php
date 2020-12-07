@@ -11,8 +11,18 @@
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $user->bio }}">
     <meta property="og:image" content="{{ $user->avatar_url }}">
+    <style>
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        html {
+            height: -webkit-fill-available;
+        }
+    </style>
 </head>
-<body class="flex flex-col justify-between" style="min-height: 100vh; min-height: calc(var(--vh, 1vh) * 100);">
+<body class="flex flex-col justify-between">
     <div style="min-height: calc(100% - 24px)">
         @if(auth()->check() && auth()->user()->id == $user->id)
             <a href="{{ route('page-settings.info') }}" class="bg-purple-100 text-purple-700 py-2 h-16 flex items-center justify-center mb-5 cursor-pointer">
