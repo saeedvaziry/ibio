@@ -57,9 +57,3 @@
         }
     }
 </script>
-
-<style scoped>
-    canvas {
-        height: 300px !important;
-    }
-</style>

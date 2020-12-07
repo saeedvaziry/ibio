@@ -43,3 +43,13 @@ body {
 .content li {
     @apply mb-2;
 }
+
+.pie-chart canvas {
+    height: 300px !important;
+}
+
+.line-chart canvas {
+    border-radius: 0.5rem;
+    height: 100% !important;
+    max-width: 100% !important;
+}

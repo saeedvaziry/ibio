@@ -76,11 +76,3 @@
         }
     }
 </script>
-
-<style scoped>
-    canvas {
-        border-radius: 0.5rem;
-        height: 100% !important;
-        max-width: 100% !important;
-    }
-</style>

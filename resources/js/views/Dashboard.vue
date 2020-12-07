@@ -20,13 +20,13 @@
             </v-card>
             <template v-if="$page.props.hasVisits">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-5">
-                    <v-card class="w-full mb-3 sm:mb-0" padding="0">
+                    <v-card class="line-chart w-full mb-3 sm:mb-0" padding="0">
                         <div class="flex items-center justify-between p-3 md:p-6">
                             <v-title small class="p-0">Visits</v-title>
                         </div>
                         <visits-chart :chart-data="$page.props.visits" class="h-20"></visits-chart>
                     </v-card>
-                    <v-card class="w-full" padding="0">
+                    <v-card class="line-chart w-full" padding="0">
                         <div class="flex items-center justify-between mb-8 md:mb-0 p-3 md:p-6">
                             <v-title small class="p-0">Clicks</v-title>
                         </div>

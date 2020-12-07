@@ -15,7 +15,7 @@
                         </v-button>
                     </div>
                 </div>
-                <div class="flex w-full items-center justify-between" v-if="$page.props.link && $page.props.link.id === link.id">
+                <div class="line-chart flex w-full items-center justify-between" v-if="$page.props.link && $page.props.link.id === link.id">
                     <clicks-chart :chart-data="$page.props.link.stats" border-width="4" class="h-20 md:h-40 mx-auto" :show-detail="true"></clicks-chart>
                 </div>
             </div>

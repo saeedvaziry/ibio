@@ -32,7 +32,7 @@ class OauthController
         $user = User::query()->where('email', $data->getEmail())->first();
         if ($user) {
             if (!$user->email_verified_at) {
-                $this->user->update($user->id, [
+                $user->update($user->id, [
                     'email_verified_at' => Carbon::now()
                 ]);
             }
