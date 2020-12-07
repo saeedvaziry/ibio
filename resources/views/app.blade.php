@@ -18,5 +18,6 @@
     @inertia
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @include('extensions.cookie')
+    @include('extensions.google')
 </body>
 </html>

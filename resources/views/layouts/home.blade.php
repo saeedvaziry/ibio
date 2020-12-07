@@ -39,5 +39,6 @@
         </div>
     </section>
     @include('extensions.cookie')
+    @include('extensions.google')
 </body>
 </html>

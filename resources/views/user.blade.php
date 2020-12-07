@@ -77,5 +77,6 @@
     <a href="/" class="inline-flex text-lg text-gray-400 hover:text-black mx-auto mt-5 mb-5">
         <img src="{{ asset('static/images/logo.png') }}" alt="ibio.link" class="h-6">
     </a>
+    @include('extensions.google')
 </body>
 </html>

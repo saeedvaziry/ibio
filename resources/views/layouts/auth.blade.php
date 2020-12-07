@@ -13,5 +13,6 @@
         @yield('content')
     </div>
     @include('extensions.cookie')
+    @include('extensions.google')
 </body>
 </html>
