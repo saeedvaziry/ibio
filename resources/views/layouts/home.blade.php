@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('page-title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="{{ config('app.name') }}">
+    <meta property="og:description" content="A beautiful, simple, and free bio link with great features">
+    <meta property="og:image" content="{{ asset('images/logo.svg') }}">
     @include('extensions.favicon')
 </head>
 <body class="overflow-x-hidden">
@@ -26,7 +31,7 @@
                             <a href="{{ route('home.terms') }}">Terms of service</a>
                         </li>
                         <li>
-                            <a href="{{ route('home.cookies') }}">Cookie policy</a>
+                            <a href="{{ route('home.cookie') }}">Cookie policy</a>
                         </li>
                     </ul>
                 </div>

@@ -21,7 +21,8 @@
         "laravel/ui": "^3.1",
         "pragmarx/google2fa-laravel": "^1.4",
         "saeedvaziry/ip2location": "^0.0.1",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.0",
+        "aws/aws-sdk-php": "~3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

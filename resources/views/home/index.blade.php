@@ -13,8 +13,8 @@
         </p>
         <form action="{{ route('register') }}" class="flex justify-center mb-10">
             <div class="relative flex items-center mr-2">
-                <span class="text-xl absolute ml-4 text-gray-500 font-extrabold">ibio.link/</span>
-                <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-600 rounded-lg py-4 pr-4 block w-full text-xl" style="padding-left: 5.6rem" autocomplete="off">
+                <span class="text-xl absolute ml-4 text-gray-400 font-extrabold">ibio.link/</span>
+                <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-4 block w-full text-xl" style="padding-left: 5.6rem" autocomplete="off">
             </div>
             <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl font-extrabold text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">Create my link</button>
         </form>

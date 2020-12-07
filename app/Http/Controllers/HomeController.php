@@ -39,9 +39,9 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\View
      */
-    public function cookies()
+    public function cookie()
     {
-        return view('home.cookies');
+        return view('home.cookie');
     }
 
     /**
