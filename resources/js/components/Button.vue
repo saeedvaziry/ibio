@@ -14,7 +14,15 @@
             <v-loader v-if="loading" class="w-8 py-2"></v-loader>
             <slot v-else></slot>
         </button>
-        <button v-else-if="type === 'color'" type="button" :disabled="loading" :class="[`bg-${color}-100 focus:outline-none hover:bg-${color}-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-${color}-500 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
+        <button v-else-if="type === 'color' && color === 'red'" type="button" :disabled="loading" :class="[`bg-red-100 focus:outline-none hover:bg-red-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-red-500 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
+            <v-loader v-if="loading" class="w-8 py-2"></v-loader>
+            <slot v-else></slot>
+        </button>
+        <button v-else-if="type === 'color' && color === 'purple'" type="button" :disabled="loading" :class="[`bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-purple-500 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
+            <v-loader v-if="loading" class="w-8 py-2"></v-loader>
+            <slot v-else></slot>
+        </button>
+        <button v-else-if="type === 'color' && color === 'yellow'" type="button" :disabled="loading" :class="[`bg-yellow-100 focus:outline-none hover:bg-yellow-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-yellow-500 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
             <v-loader v-if="loading" class="w-8 py-2"></v-loader>
             <slot v-else></slot>
         </button>
