@@ -21,9 +21,6 @@
             <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl font-extrabold text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">Create my link</button>
         </form>
         <div class="relative">
-            <span class="select-none text-purple-100 transform rounded-lg rotate-45 w-64 h-64 absolute left-0 mt-32 z-0" style="font-size: 200px; z-index: -1">&#x2B22;</span>
-            <span class="select-none text-purple-50 transform rounded-lg rotate-45 w-64 h-64 absolute left-0 mt-32 ml-32 z-0" style="font-size: 150px; z-index: -1">&#x2B22;</span>
-            <span class="select-none text-purple-50 transform rounded-lg rotate-45 w-64 h-64 absolute right-0 mt-32" style="font-size: 300px; z-index: -1">&#x2B22;</span>
             <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="rounded-lg border-2 border-gray-100 mx-auto w-full" style="max-width: 300px">
         </div>
     </section>
