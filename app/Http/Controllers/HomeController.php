@@ -13,6 +13,38 @@ class HomeController extends Controller
     use HasStats;
 
     /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index()
+    {
+        return view('home.index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function privacy()
+    {
+        return view('home.privacy');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function terms()
+    {
+        return view('home.terms');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function cookies()
+    {
+        return view('home.cookies');
+    }
+
+    /**
      * @param Request $request
      * @param $username
      * @return \Illuminate\Contracts\View\Factory

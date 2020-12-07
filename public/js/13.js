@@ -109,6 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -453,9 +455,23 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "ibio.link/" + _vm._s(_vm.$page.props.user.username)
-                          )
-                        ]
+                            "ibio.link/" +
+                              _vm._s(_vm.$page.props.user.username) +
+                              "\n                        "
+                          ),
+                          _c("fa-icon", {
+                            staticClass: "ml-1 cursor-pointer",
+                            attrs: { icon: ["fas", "pencil-alt"] },
+                            on: {
+                              click: function($event) {
+                                _vm.$inertia.visit(
+                                  _vm.route("page-settings.info")
+                                )
+                              }
+                            }
+                          })
+                        ],
+                        1
                       )
                     ])
                   ],

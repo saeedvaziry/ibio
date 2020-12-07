@@ -671,7 +671,6 @@ var render = function() {
               "v-button",
               {
                 staticClass: "mt-8",
-                attrs: { small: "" },
                 on: {
                   click: function($event) {
                     return _vm.$refs.add.show()

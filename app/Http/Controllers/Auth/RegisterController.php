@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,6 +40,36 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function showRegistrationForm(Request $request)
+    {
+        if ($request->has('username')) {
+            $validator = Validator::make($request->input(), [
+                'username' => [
+                    'required',
+                    'min:5',
+                    'max:50',
+                    'alpha_dash',
+                    'unique:users,username'
+                ],
+            ]);
+            if ($validator->fails()) {
+                return redirect()->route('register')->with([
+                    'error' => $validator->errors()->first()
+                ]);
+            }
+
+            $request->session()->put('username', $request->username);
+        }
+
+        return view('auth.register');
     }
 
     /**

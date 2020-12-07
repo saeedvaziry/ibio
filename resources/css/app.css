@@ -19,3 +19,27 @@ body {
         }
     }
 }
+
+.content h2 {
+    @apply text-3xl mb-5 font-bold;
+}
+
+.content h3 {
+    @apply text-2xl mb-3 font-bold;
+}
+
+.content p {
+    @apply text-lg mb-4;
+}
+
+.content a {
+    @apply text-purple-700;
+}
+
+.content ol {
+    @apply list-disc pl-5;
+}
+
+.content li {
+    @apply mb-2;
+}

@@ -141,7 +141,7 @@ class InfoController extends Controller
                 'required',
                 'min:5',
                 'max:50',
-                'alpha_num',
+                'alpha_dash',
                 Rule::unique('users', 'username')->where(function ($query) use ($request) {
                     return $query->where('id', '!=', $request->user()->id);
                 })

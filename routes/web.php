@@ -67,5 +67,9 @@ Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
     Route::post('/feature-requests/link-type', 'FeatureRequestController@storeLinkType')->name('feature-requests.link-type');
 });
 
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/privacy', 'HomeController@privacy')->name('home.privacy');
+Route::get('/terms', 'HomeController@terms')->name('home.terms');
+Route::get('/cookies', 'HomeController@cookies')->name('home.cookies');
 Route::get('/go', 'HomeController@go')->name('go');
 Route::get('/{username}', 'HomeController@user')->name('user')->middleware('inertia');

@@ -12,6 +12,13 @@ class UserObserver
      */
     public function created(User $user)
     {
+        if (session()->has('username') && !$user->username) {
+            $username = session()->get('username');
+            $userExists = User::query()->where('username', $username)->first();
+            if (!$userExists) {
+                $user->username = $username;
+            }
+        }
         $user->bio = 'Hi there 👋';
         $user->save();
     }

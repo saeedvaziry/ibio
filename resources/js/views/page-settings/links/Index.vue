@@ -25,7 +25,7 @@
                     </v-card>
                 </transition-group>
             </draggable>
-            <v-button class="mt-8" small @click="$refs.add.show()">Add another link</v-button>
+            <v-button class="mt-8" @click="$refs.add.show()">Add another link</v-button>
         </template>
         <v-card class="text-center" v-else>
             <p class="text-lg font-semibold mb-3">You don't have any links yet</p>

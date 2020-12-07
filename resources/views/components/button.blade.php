@@ -3,7 +3,7 @@
         {{ $slot }}
     </button>
 @elseif($type == 'secondary')
-    <button class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg font-bold text-black h-12 py-2 px-6 rounded-lg @if($full) w-full @endif">
+    <button class="bg-white border-2 border-black focus:outline-none hover:bg-black hover:text-white transition-colors text-lg font-bold text-black h-12 py-2 px-6 rounded-lg @if($full) w-full @endif">
         {{ $slot }}
     </button>
 @endif

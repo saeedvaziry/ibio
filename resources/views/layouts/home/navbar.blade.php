@@ -1,17 +1,13 @@
-<nav class="h-16 top-0 flex items-center">
-    <div class="container flex justify-between px-3 md:px-0">
+<nav class="flex items-center justify-center">
+    <div class="container flex justify-between items-center px-5 py-7 md:px-0">
         <div class="flex items-center">
             <a href="{{ route('home') }}" class="mr-3">
-                <img src="{{ mix('images/logo.png') }}" class="h-10">
+                <img src="{{ asset('images/logo.svg') }}" class="h-7 md:h-10" alt="{{ config('app.name') }}">
             </a>
         </div>
         <div class="flex items-center">
-            <ul class="flex mr-2">
-                <li class="mx-3">
-                    <a href="#pricing" class="text-lg text-gray-700 hover:text-primary-500">{{ __('Pricing') }}</a>
-                </li>
-            </ul>
-            <a href="{{ route('login') }}" class="shadow bg-primary-500 hover:bg-primary-700 focus:outline-none text-white py-2 px-4 rounded transition-all font-light capitalize">sign in</a>
+            <a href="{{ route('login') }}" class="bg-white border-2 border-black focus:outline-none hover:bg-black hover:text-white transition-colors font-bold text-black py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('Log In') }}</a>
+            <a href="{{ route('register') }}" class="ml-3 border-2 border-black bg-black focus:outline-none font-bold text-white py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('Sign Up') }}</a>
         </div>
     </div>
 </nav>

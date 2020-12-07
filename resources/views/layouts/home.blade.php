@@ -7,8 +7,31 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @include('extensions.favicon')
 </head>
-<body class="text-gray-800 overflow-x-hidden">
-@include('layouts.home.navbar')
-@yield('content')
+<body class="overflow-x-hidden">
+    @include('layouts.home.navbar')
+    @yield('content')
+    <section id="footer" class="bg-white px-5 py-10 mx-auto w-full text-gray-600">
+        <div class="container mx-auto">
+            <div class="w-full md:w-8/12 mx-auto flex flex-col md:flex-row items-center">
+                <div class="w-full sm:w-4/12 text-left mb-5 md:mb-0">Copyright © ibio.link</div>
+                <div class="w-full sm:w-8/12 md:flex items-center justify-end">
+                    <ul class="md:flex">
+                        <li class="mr-3">
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="mr-3">
+                            <a href="{{ route('home.privacy') }}">Privacy policy</a>
+                        </li>
+                        <li class="mr-3">
+                            <a href="{{ route('home.terms') }}">Terms of service</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('home.cookies') }}">Cookie policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
