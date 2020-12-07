@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PageSettings;
 
 use App\Http\Controllers\Controller;
+use App\Rules\Username;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -144,7 +145,8 @@ class InfoController extends Controller
                 'alpha_dash',
                 Rule::unique('users', 'username')->where(function ($query) use ($request) {
                     return $query->where('id', '!=', $request->user()->id);
-                })
+                }),
+                new Username()
             ],
         ]);
     }

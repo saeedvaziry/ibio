@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\Username;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -57,7 +58,8 @@ class RegisterController extends Controller
                     'min:5',
                     'max:50',
                     'alpha_dash',
-                    'unique:users,username'
+                    'unique:users,username',
+                    new Username()
                 ],
             ]);
             if ($validator->fails()) {
