@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="{{ config('app.name') }}">
+    <meta property="og:description" content="A beautiful, simple, and free bio link with great features">
+    <meta property="og:image" content="{{ asset('static/favicon/android-chrome-192x192.png') }}">
     @include('extensions.favicon')
     <title>@yield('page-title')</title>
     <script>

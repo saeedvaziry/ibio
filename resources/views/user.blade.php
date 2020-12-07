@@ -10,7 +10,7 @@
     <meta property="og:url" content="{{ url('/' . $user->username) }}">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $user->bio }}">
-    <meta property="og:image" content="{{ $user->avatar_url }}">
+    <meta property="og:image" content="{{ $user->avatar ? $user->avatar_url : asset('static/favicon/android-chrome-192x192.png') }}">
     <style>
         body {
             min-height: 100vh;
