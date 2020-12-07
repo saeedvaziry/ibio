@@ -12,5 +12,6 @@
     <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
         @yield('content')
     </div>
+    @include('extensions.cookie')
 </body>
 </html>

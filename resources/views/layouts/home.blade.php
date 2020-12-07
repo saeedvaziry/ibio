@@ -38,5 +38,6 @@
             </div>
         </div>
     </section>
+    @include('extensions.cookie')
 </body>
 </html>

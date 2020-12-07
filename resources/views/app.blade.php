@@ -17,5 +17,6 @@
 <body class="dark:bg-gray-900">
     @inertia
     <script src="{{ mix('/js/app.js') }}" defer></script>
+    @include('extensions.cookie')
 </body>
 </html>
