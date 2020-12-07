@@ -14,7 +14,7 @@
             <v-loader v-if="loading" class="w-8 py-2"></v-loader>
             <slot v-else></slot>
         </button>
-        <button v-else-if="type === 'color'" type="button" :disabled="loading" :class="[`bg-${color}-100 focus:outline-none hover:bg-${color}-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-${color}-600 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
+        <button v-else-if="type === 'color'" type="button" :disabled="loading" :class="[`bg-${color}-100 focus:outline-none hover:bg-${color}-200 transition-colors inline-flex items-center justify-center ${small ? 'text-sm md:text-md' : 'text-md md:text-xl'} font-semibold text-${color}-500 ${small ? 'py-2 px-4' : 'h-12 py-2 px-6'} rounded-lg`, {'w-full': full, 'cursor-not-allowed': loading}]" @click="clicked">
             <v-loader v-if="loading" class="w-8 py-2"></v-loader>
             <slot v-else></slot>
         </button>

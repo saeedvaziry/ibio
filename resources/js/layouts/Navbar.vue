@@ -2,7 +2,7 @@
     <nav class="py-2 h-16 border-b flex items-center justify-center mb-5">
         <v-container class="flex items-center justify-between">
             <a href="/">
-                <img :src="require('../../img/logo.svg')" alt="iBio.link" class="h-6">
+                <img :src="require('../../img/logo.png')" alt="iBio.link" class="h-6">
             </a>
             <div class="flex items-center">
                 <v-button type="secondary" class="mr-2" small @click="showMyPage">My Page</v-button>

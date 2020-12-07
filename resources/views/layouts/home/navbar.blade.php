@@ -2,7 +2,7 @@
     <div class="container flex justify-between items-center px-5 py-7 md:px-0">
         <div class="flex items-center">
             <a href="{{ route('home') }}" class="mr-3">
-                <img src="{{ asset('images/logo.svg') }}" class="h-7 md:h-10" alt="{{ config('app.name') }}">
+                <img src="{{ asset('static/images/logo.png') }}" class="h-7 md:h-10" alt="{{ config('app.name') }}">
             </a>
         </div>
         <div class="flex items-center">

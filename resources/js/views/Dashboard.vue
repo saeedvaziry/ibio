@@ -5,7 +5,7 @@
                 <div class="flex flex-col md:flex-row items-center mb-3 md:mb-0">
                     <v-avatar :user="$page.props.user" size="w-10 h-10 md:w-20 md:h-20" font="text-md md:text-2xl" class="mb-2 md:mb-0 md:mr-5" upload></v-avatar>
                     <div class="flex flex-col justify-center">
-                        <div class="text-sm sm:text-md md:text-lg font-bold mb-1">{{ $page.props.user.name }}</div>
+                        <div class="text-sm sm:text-md md:text-lg font-bold mb-1 text-center">{{ $page.props.user.name }}</div>
                         <div class="text-xs sm:text-sm md:text-md font-bold text-gray-500">ibio.link/{{ $page.props.user.username }}
                             <fa-icon :icon="['fas', 'pencil-alt']" class="ml-1 cursor-pointer" @click="$inertia.visit(route('page-settings.info'))"></fa-icon>
                         </div>

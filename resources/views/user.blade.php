@@ -65,7 +65,7 @@
         </div>
     </div>
     <a href="/" class="inline-flex text-lg text-gray-400 mt-10 hover:text-black mx-auto mb-6">
-        <img src="{{ asset('images/logo.svg') }}" alt="iBio.link" class="h-6">
+        <img src="{{ asset('static/images/logo.png') }}" alt="ibio.link" class="h-6">
     </a>
 </body>
 </html>

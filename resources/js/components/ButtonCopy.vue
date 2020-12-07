@@ -29,6 +29,7 @@
                 copyElement.select();
                 copyElement.setSelectionRange(0, 99999);
                 document.execCommand("copy");
+                copyElement.blur();
                 this.copied = true;
                 setTimeout(function () {
                     this.copied = false;

@@ -9,7 +9,7 @@
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="{{ config('app.name') }}">
     <meta property="og:description" content="A beautiful, simple, and free bio link with great features">
-    <meta property="og:image" content="{{ asset('images/logo.svg') }}">
+    <meta property="og:image" content="{{ asset('images/logo.png') }}">
     @include('extensions.favicon')
 </head>
 <body class="overflow-x-hidden">
