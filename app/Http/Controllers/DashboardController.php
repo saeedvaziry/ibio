@@ -11,6 +11,7 @@ class DashboardController extends Controller
 
     /**
      * @return \Inertia\Response|\Inertia\ResponseFactory
+     * @throws \Exception
      */
     public function index()
     {
@@ -18,8 +19,8 @@ class DashboardController extends Controller
             'title' => __('Dashboard'),
             'menu' => 'dashboard',
             'hasVisits' => auth()->user()->stats()->first() ? true : false,
-            'visits' => $this->getVisitsStats(auth()->user())->get(),
-            'clicks' => $this->getClicksStats(auth()->user())->get(),
+            'visits' => $this->getVisitsStats(auth()->user()),
+            'clicks' => $this->getClicksStats(auth()->user()),
             'recentClicks' => ClickResource::collection(auth()->user()->recentClicks()->with('statable')->take(10)->get())
         ]);
     }

@@ -56,13 +56,21 @@ trait HasStats
     /**
      * @param User $user
      * @param int $days
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return array
+     * @throws \Exception
      */
     protected function getVisitsStats(User $user, $days = 7)
     {
-        return $this->getVisits($user, $days)
-            ->select('date', DB::raw('count(*) as visits'))
-            ->groupBy('date');
+        $stats = [];
+        $dates = create_date_range(now()->subDays($days)->format('Y-m-d'), now()->format('Y-m-d'));
+        foreach ($dates as $date) {
+            array_push($stats, [
+                'date' => $date,
+                'visits' => $user->stats()->where('date', $date)->count()
+            ]);
+        }
+
+        return $stats;
     }
 
     /**
@@ -91,13 +99,21 @@ trait HasStats
     /**
      * @param User $user
      * @param int $days
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return array
+     * @throws \Exception
      */
     protected function getClicksStats(User $user, $days = 7)
     {
-        return $this->getClicks($user, $days)
-            ->select('date', DB::raw('count(*) as clicks'))
-            ->groupBy('date', 'links.user_id');
+        $stats = [];
+        $dates = create_date_range(now()->subDays($days)->format('Y-m-d'), now()->format('Y-m-d'));
+        foreach ($dates as $date) {
+            array_push($stats, [
+                'date' => $date,
+                'clicks' => $user->clicks()->where('date', $date)->count()
+            ]);
+        }
+
+        return $stats;
     }
 
     /**
