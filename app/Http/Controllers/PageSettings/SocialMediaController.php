@@ -54,7 +54,7 @@ class SocialMediaController extends Controller
             }
         } else {
             $request->validateWithBag('add', [
-                'url' => 'required'
+                'url' => 'required|max:250'
             ]);
             $request->user()->socialLinks()->create([
                 'type' => 'social',

@@ -54,7 +54,7 @@ class ContactController extends Controller
             }
         } else {
             $request->validateWithBag('add', [
-                'url' => 'required'
+                'url' => 'required|max:250'
             ]);
             $request->user()->contactLinks()->create([
                 'type' => 'contact',

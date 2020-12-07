@@ -12,8 +12,8 @@
     <meta property="og:description" content="{{ $user->bio }}">
     <meta property="og:image" content="{{ $user->avatar_url }}">
 </head>
-<body class="min-h-screen flex flex-col justify-between">
-    <div class="h-full">
+<body class="flex flex-col justify-between" style="min-height: 100vh; min-height: calc(var(--vh, 1vh) * 100);">
+    <div style="min-height: calc(100% - 24px)">
         @if(auth()->check() && auth()->user()->id == $user->id)
             <a href="{{ route('page-settings.info') }}" class="bg-purple-100 text-purple-700 py-2 h-16 flex items-center justify-center mb-5 cursor-pointer">
                 {{ __('Edit this page') }}
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    <a href="/" class="inline-flex text-lg text-gray-400 mt-10 hover:text-black mx-auto mb-6">
+    <a href="/" class="inline-flex text-lg text-gray-400 hover:text-black mx-auto mt-5 mb-5">
         <img src="{{ asset('static/images/logo.png') }}" alt="ibio.link" class="h-6">
     </a>
 </body>

@@ -33,7 +33,8 @@ class InfoController extends Controller
     public function store(Request $request)
     {
         $request->validateWithBag('info', [
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'bio' => 'max:1000'
         ]);
 
         $request->user()->update([

@@ -21,7 +21,7 @@ class LinkStoreRequest extends FormRequest
         return [
             'type' => 'required|in:text',
             'title' => 'required|max:255',
-            'url' => 'required|url'
+            'url' => 'required|url|max:1000'
         ];
     }
 }

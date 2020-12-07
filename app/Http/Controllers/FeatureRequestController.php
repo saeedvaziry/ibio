@@ -13,7 +13,7 @@ class FeatureRequestController extends Controller
     public function storeLinkType(Request $request)
     {
         $request->validateWithBag('requestLinkType', [
-            'description' => 'required'
+            'description' => 'required|max:1000'
         ]);
 
         $request->user()->featureRequests()->create([
