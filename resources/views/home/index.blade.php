@@ -22,7 +22,7 @@
             <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl font-extrabold text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">Create my link</button>
         </form>
         <div class="flex flex-col md:flex-row items-center justify-center mx-auto">
-            <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="mb-3 md:mb-0 mr-0 md:mr-4 rounded-lg border-2 border-gray-100 w-full" style="max-width: 300px">
+            <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="mb-3 md:mb-0 mr-0 md:mr-4 rounded-lg border-2 border-gray-100 w-full hidden md:block" style="max-width: 300px">
             <img src="{{ asset('static/images/sample-mobile-2.png') }}" alt="ibio.link" class="rounded-lg border-2 border-gray-100 w-full" style="max-width: 300px">
         </div>
     </section>
