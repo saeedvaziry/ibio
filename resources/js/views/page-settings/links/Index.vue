@@ -1,18 +1,23 @@
 <template>
     <page-settings>
-        <template v-if="$page.props.links.length > 0">
-            <draggable v-model="$page.props.links" @end="sorted" handle=".move" ghost-class="bg-gray-50">
-                <transition-group type="transition" name="flip-list">
-                    <v-card v-for="link in $page.props.links" :key="link.id" class="mb-3 flex items-center justify-between" padding="p-5">
+        <add-link ref="add"></add-link>
+        <draggable v-model="$page.props.links" @end="sorted" handle=".move" ghost-class="bg-gray-50">
+            <transition-group type="transition" name="flip-list">
+                <div v-for="link in $page.props.links" :key="link.id">
+                    <edit-link :link="link" v-if="$page.props.link && $page.props.link.id === link.id"></edit-link>
+                    <v-card v-else class="mb-3 flex items-center justify-between" padding="p-5">
                         <div class="flex flex-col justify-center">
-                            <div class="text-lg font-semibold">{{ link.title }}</div>
+                            <div class="text-lg font-semibold flex items-center">
+                                <img :src="require('../../../../img/' + link.type + '.svg')" width="20" class="mr-2" alt="">
+                                <div>{{ link.title }}</div>
+                            </div>
                             <div class="text-xs text-gray-500 break-all" style="max-width: 300px">{{ link.url }}</div>
                         </div>
                         <div class="flex items-center hidden md:flex">
                             <v-button class="mr-3" small type="secondary" color="yellow" @click="$inertia.visit(route('links.destroy', {link: link.id}), {method: 'delete'})">
                                 Delete
                             </v-button>
-                            <v-button class="mr-3" small type="secondary" color="purple" @click="$refs.edit.show(link)">
+                            <v-button class="mr-3" small type="secondary" color="purple" @click="$inertia.visit(route('page-settings.links.show', {link: link.id}), {preserveScroll: true, preserveState: false, only: ['link']})">
                                 Edit
                             </v-button>
                             <fa-icon :icon="['fas', 'arrows-alt-v']" class="text-2xl move text-gray-400 cursor-move"></fa-icon>
@@ -23,17 +28,9 @@
                             <fa-icon :icon="['fas', 'arrows-alt-v']" class=" move text-gray-400 cursor-move ml-3"></fa-icon>
                         </div>
                     </v-card>
-                </transition-group>
-            </draggable>
-            <v-button class="mt-8" @click="$refs.add.show()">Add another link</v-button>
-        </template>
-        <v-card class="text-center" v-else>
-            <p class="text-lg font-semibold mb-3">You don't have any links yet</p>
-            <p class="text-gray-500 mb-3">Add your first link here 🎉</p>
-            <v-button type="secondary" small @click="$refs.add.show()">Add a Link</v-button>
-        </v-card>
-        <add-link ref="add"></add-link>
-        <edit-link ref="edit"></edit-link>
+                </div>
+            </transition-group>
+        </draggable>
     </page-settings>
 </template>
 

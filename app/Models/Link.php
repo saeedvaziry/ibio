@@ -82,6 +82,34 @@ class Link extends Model
     }
 
     /**
+     * @return string|string[]|null
+     */
+    public function getYoutubeEmbedLinkAttribute()
+    {
+        return preg_replace(
+            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+            "//www.youtube.com/embed/$2",
+            $this->real_url
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public function getSoundcloudEmbedLinkAttribute()
+    {
+        return 'https://w.soundcloud.com/player/?url=' . $this->real_url . '&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true';
+    }
+
+    /**
+     * @return mixed|string|string[]
+     */
+    public function getSpotifyEmbedLinkAttribute()
+    {
+        return str_replace('track', 'embed/track', $this->real_url);
+    }
+
+    /**
      * @return mixed|string|string[]|null
      */
     public function generate()

@@ -49,7 +49,22 @@
                 @if(count($links))
                     <div class="mt-8">
                         @foreach($links as $link)
-                            <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="mb-3 bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg font-bold text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">{{ $link->title }}</a>
+                            <div class="mb-3">
+                                @switch($link->type)
+                                    @case('text')
+                                    <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg font-bold text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">{{ $link->title }}</a>
+                                    @break
+                                    @case('youtube')
+                                    <iframe width="100%" height="200" src="{{ $link->youtube_embed_link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    @break
+                                    @case('soundcloud')
+                                    <iframe width="100%" height="200" scrolling="no" frameborder="no" allow="autoplay" src="{{ $link->soundcloud_embed_link }}"></iframe>
+                                    @break
+                                    @case('spotify')
+                                    <iframe src="{{ $link->spotify_embed_link }}" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                                    @break
+                                @endswitch
+                            </div>
                         @endforeach
                     </div>
                 @endif
@@ -64,8 +79,8 @@
                 @endif
                 @if(count($socialLinks))
                     <div class="mt-8 flex items-center justify-center">
-                        @foreach($socialLinks as $link)
-                            <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="cursor-pointer mr-3">
+                        @foreach($socialLinks as $key => $link)
+                            <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="cursor-pointer @if($key != count($socialLinks) - 1) mr-3 @endif">
                                 <img src="{{ asset('images/' . $link->title . '.svg') }}" alt="{{ $link->title }}" width="20">
                             </a>
                         @endforeach

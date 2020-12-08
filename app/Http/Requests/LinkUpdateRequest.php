@@ -7,12 +7,12 @@ use App\Rules\SpotifyUrl;
 use App\Rules\YoutubeUrl;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LinkStoreRequest extends FormRequest
+class LinkUpdateRequest extends FormRequest
 {
     /**
      * @var string
      */
-    protected $errorBag = 'create';
+    protected $errorBag = 'update';
 
     /**
      * Get the validation rules that apply to the request.

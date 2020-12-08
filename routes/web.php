@@ -34,7 +34,8 @@ Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
             Route::get('/', 'PageSettings\LinkController@index')->name('page-settings.links');
             Route::post('/', 'PageSettings\LinkController@store');
             Route::post('/sort', 'PageSettings\LinkController@sort')->name('page-settings.links.sort');
-            Route::post('/{link}', 'PageSettings\LinkController@update')->name('page-settings.links.edit');
+            Route::get('/{link}', 'PageSettings\LinkController@show')->name('page-settings.links.show');
+            Route::post('/{link}', 'PageSettings\LinkController@update');
             Route::delete('/{link}', 'PageSettings\LinkController@destroy')->name('links.destroy');
         });
         // social media

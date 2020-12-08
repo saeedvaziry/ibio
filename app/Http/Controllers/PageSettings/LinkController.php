@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PageSettings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LinkStoreRequest;
+use App\Http\Requests\LinkUpdateRequest;
 use App\Http\Resources\LinkResource;
 use App\Models\Link;
 use App\Traits\UploadImage;
@@ -75,6 +76,24 @@ class LinkController extends Controller
     }
 
     /**
+     * @param Link $link
+     * @return \Inertia\Response|\Inertia\ResponseFactory
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(Link $link)
+    {
+        $this->authorize('view', $link);
+
+        return inertia('page-settings/links/Index', [
+            'title' => __('Links'),
+            'menu' => 'page-settings',
+            'subMenu' => 'links',
+            'link' => new LinkResource($link),
+            'links' => LinkResource::collection(auth()->user()->pageLinks()->orderBy('order')->get())
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param LinkStoreRequest $request
@@ -82,13 +101,13 @@ class LinkController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(LinkStoreRequest $request, Link $link)
+    public function update(LinkUpdateRequest $request, Link $link)
     {
         $this->authorize('update', $link);
 
         $link->update($request->validated());
 
-        return redirect()->route('page-settings.links')->with([
+        return back()->with([
             'success' => __('Link updated')
         ]);
     }
