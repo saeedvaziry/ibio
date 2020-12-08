@@ -8,7 +8,8 @@
             You need only one
             <span class="text-purple-600">link</span>
         </h1>
-        <h2 class="text-2xl text-gray-700 mb-7">A beautiful, simple, and free bio link with great features</h2>
+        <h2 class="text-2xl text-gray-700 mb-3">A beautiful, simple, and free bio link</h2>
+        <h2 class="text-2xl text-gray-700 mb-7">with social media embed for Youtube, Spotify and Soundcloud</h2>
         <p class="text-2xl text-gray-700 mb-12">
             Get your link now.
             <span class="font-extrabold">It's FREE! 🎉</span>
@@ -20,8 +21,9 @@
             </div>
             <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl font-extrabold text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">Create my link</button>
         </form>
-        <div class="relative">
-            <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="rounded-lg border-2 border-gray-100 mx-auto w-full" style="max-width: 300px">
+        <div class="flex flex-col md:flex-row items-center justify-center mx-auto">
+            <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="mb-3 md:mb-0 mr-0 md:mr-4 rounded-lg border-2 border-gray-100 w-full" style="max-width: 300px">
+            <img src="{{ asset('static/images/sample-mobile-2.png') }}" alt="ibio.link" class="rounded-lg border-2 border-gray-100 w-full" style="max-width: 300px">
         </div>
     </section>
     <h2 class="text-center text-2xl my-10">Powerful features are here</h2>
