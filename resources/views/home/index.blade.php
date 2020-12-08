@@ -9,7 +9,7 @@
             <span class="text-purple-600">link</span>
         </h1>
         <h2 class="text-2xl text-gray-700 mb-3">A beautiful, simple, and free bio link</h2>
-        <h2 class="text-2xl text-gray-700 mb-7">with social media embed for Youtube, Spotify and Soundcloud</h2>
+        <h2 class="text-2xl text-gray-700 mb-7">with social media embedding option for Youtube, Spotify, and Soundcloud</h2>
         <p class="text-2xl text-gray-700 mb-12">
             Get your link now.
             <span class="font-extrabold">It's FREE! 🎉</span>
