@@ -24,7 +24,7 @@ The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue) a
 
 ## Credits
 
-**Chats** 
+**Charts** 
 
 [Chart.js](https://www.chartjs.org/) with [Vue Charts](https://vue-chartjs.org/)
 
