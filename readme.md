@@ -40,6 +40,8 @@ Front-End routes by [tighten](https://github.com/tighten/ziggy)
 
 IP to location package by myself :) [saeedvaziry](https://github.com/saeedvaziry/ip2location)
 
+User-Agent by [jenssegers](https://github.com/jenssegers/agent)
+
 ## Security
 
 In case you see any security issues please send it to me directly at (sa.vaziry@gmail.com) or create an issue
