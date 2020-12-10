@@ -9,13 +9,14 @@
                 <v-dropdown>
                     <button slot="link" class="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true">
                         <v-avatar :user="$page.props.user"></v-avatar>
+                        <fa-icon :icon="['fas', 'bars']" class="text-2xl ml-2 text-gray-500"></fa-icon>
                     </button>
                     <template slot="items">
                         <div class="md:hidden">
                             <v-dropdown-item @click="$inertia.visit(route('dashboard'))">Dashboard</v-dropdown-item>
                             <v-dropdown-item @click="$inertia.visit(route('page-settings.info'))">Page Settings</v-dropdown-item>
                             <v-dropdown-item @click="$inertia.visit(route('settings'))">Settings</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('stats'))">Stats</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('stats.clicks'))">Stats</v-dropdown-item>
                         </div>
                         <v-dropdown-item @click="logout" :last="true">Sign out</v-dropdown-item>
                     </template>

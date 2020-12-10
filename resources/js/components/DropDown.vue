@@ -42,7 +42,9 @@
         methods: {
             hideDropDown() {
                 if (this.open) {
-                    this.open = false;
+                    setTimeout(function () {
+                        this.open = false;
+                    }.bind(this), 50)
                 }
             }
         }
