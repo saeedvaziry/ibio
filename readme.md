@@ -20,7 +20,7 @@ Database is Mysql or Mariadb
 
 ### Front-End
 
-The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue) and [Inertia.js](https://github.com/inertiajs/inertia)
+The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue), [Inertia.js](https://github.com/inertiajs/inertia), and [Tailwindcss 2](https://tailwindcss.com/)
 
 ## Credits
 
