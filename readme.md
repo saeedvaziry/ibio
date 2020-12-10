@@ -6,6 +6,8 @@ You can register and get your link and share it on your social media.
 
 The master branch is available on https://ibio.link
 
+Sample link: https://ibio.link/saeedvaziry
+
 ## What technologies used?
 
 ### Back-End
