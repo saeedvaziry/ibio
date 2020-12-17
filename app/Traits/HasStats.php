@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Models\Link;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +64,7 @@ trait HasStats
         $dates = create_date_range(now()->subDays($days)->format('Y-m-d'), now()->format('Y-m-d'));
         foreach ($dates as $date) {
             array_push($stats, [
-                'date' => $date,
+                'date' => jdate($date)->format('Y-m-d'),
                 'visits' => $user->stats()->where('date', $date)->count()
             ]);
         }
@@ -108,7 +107,7 @@ trait HasStats
         $dates = create_date_range(now()->subDays($days)->format('Y-m-d'), now()->format('Y-m-d'));
         foreach ($dates as $date) {
             array_push($stats, [
-                'date' => $date,
+                'date' => jdate($date)->format('Y-m-d'),
                 'clicks' => $user->clicks()->where('date', $date)->count()
             ]);
         }
@@ -129,7 +128,7 @@ trait HasStats
 
     /**
      * @param Request $request
-     * @return array|false|int|mixed|string|\Symfony\Component\HttpFoundation\string|null
+     * @return string|null
      */
     protected function getReferer(Request $request)
     {

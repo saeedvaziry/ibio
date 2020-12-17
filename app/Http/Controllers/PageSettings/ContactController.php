@@ -26,7 +26,7 @@ class ContactController extends Controller
             }
         }
         return inertia('page-settings/contact/Index', [
-            'title' => __('Page settings - Contact'),
+            'title' => __('تنظیمات صفحه - اطلاعات تماس'),
             'menu' => 'page-settings',
             'subMenu' => 'contact',
             'contacts' => array_merge($havingItems, $notHavingItems)
@@ -64,7 +64,7 @@ class ContactController extends Controller
         }
 
         return back()->with([
-            'success' => __('Link added')
+            'success' => __('لینک اضافه شد')
         ]);
     }
 }

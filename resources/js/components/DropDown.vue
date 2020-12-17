@@ -26,7 +26,7 @@
             itemsClass: String,
             openDirection: {
                 type: String,
-                default: 'right'
+                default: 'left'
             }
         },
         data() {

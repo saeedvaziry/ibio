@@ -18,6 +18,17 @@ Route::group(['prefix' => 'oauth'], function () {
 
 Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    // donation
+    Route::group(['prefix' => 'donation'], function () {
+        // settings
+        Route::get('/settings', 'Donation\SettingsController@settings')->name('donation.settings');
+        Route::post('/settings/status/{status}', 'Donation\SettingsController@status')->name('donation.settings.status');
+        Route::post('/settings/amounts', 'Donation\SettingsController@amounts')->name('donation.settings.amounts');
+        Route::post('/settings/thank-you-message', 'Donation\SettingsController@thankYouMessage')->name('donation.settings.thank-you-message');
+        Route::post('/settings/payir-api', 'Donation\SettingsController@payApi')->name('donation.settings.payir-api');
+        // supports
+        Route::get('/supports/{payment?}', 'Donation\SupportController@index')->name('donation.supports');
+    });
     // page settings
     Route::group(['prefix' => 'page-settings'], function () {
         // info
@@ -68,9 +79,14 @@ Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
     Route::post('/feature-requests/link-type', 'FeatureRequestController@storeLinkType')->name('feature-requests.link-type');
 });
 
+// home
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/privacy', 'HomeController@privacy')->name('home.privacy');
 Route::get('/terms', 'HomeController@terms')->name('home.terms');
-Route::get('/cookie', 'HomeController@cookie')->name('home.cookie');
-Route::get('/go', 'HomeController@go')->name('go');
-Route::get('/{username}', 'HomeController@user')->name('user')->middleware('inertia');
+
+// user
+Route::get('/go', 'User\UserController@go')->name('go');
+Route::get('/{username}', 'User\UserController@index')->name('user');
+Route::get('/{username}/donate', 'User\DonateController@index')->name('user.donate');
+Route::post('/{username}/donate', 'User\DonateController@donate');
+Route::get('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');

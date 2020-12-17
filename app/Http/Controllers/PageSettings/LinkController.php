@@ -25,7 +25,7 @@ class LinkController extends Controller
         $this->authorize('viewAny', Link::class);
 
         return inertia('page-settings/links/Index', [
-            'title' => __('Links'),
+            'title' => __('تنظیمات صفحه - لینک ها'),
             'menu' => 'page-settings',
             'subMenu' => 'links',
             'links' => LinkResource::collection(auth()->user()->pageLinks()->orderBy('order')->get())
@@ -51,7 +51,7 @@ class LinkController extends Controller
             ]));
 
             return redirect()->route('page-settings.links')->with([
-                'success' => __('Link created')
+                'success' => __('لینک اضافه شد')
             ]);
         } catch (\Exception $e) {
             throw $e;
@@ -85,7 +85,7 @@ class LinkController extends Controller
         $this->authorize('view', $link);
 
         return inertia('page-settings/links/Index', [
-            'title' => __('Links'),
+            'title' => __('تنظیمات صفحه - لینک ها'),
             'menu' => 'page-settings',
             'subMenu' => 'links',
             'link' => new LinkResource($link),
@@ -96,7 +96,7 @@ class LinkController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param LinkStoreRequest $request
+     * @param LinkUpdateRequest $request
      * @param \App\Models\Link $link
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
@@ -108,7 +108,7 @@ class LinkController extends Controller
         $link->update($request->validated());
 
         return back()->with([
-            'success' => __('Link updated')
+            'success' => __('تغییرات ذخیره شد')
         ]);
     }
 
@@ -127,7 +127,7 @@ class LinkController extends Controller
         $link->delete();
 
         return redirect()->route('page-settings.links')->with([
-            'success' => __('Link deleted')
+            'success' => __('لینک حذف شد')
         ]);
     }
 }

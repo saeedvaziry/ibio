@@ -8,10 +8,10 @@ import {
     faAddressCard, faArrowsAltV,
     faBars, faCamera, faChartBar, faChartPie,
     faChevronDown,
-    faCog, faDesktop,
+    faCog, faDesktop, faDonate,
     faEye,
     faLink, faMobile, faMobileAlt, faMoon, faPencilAlt, faTablet, faTabletAlt,
-    faTachometerAlt, faTrash
+    faTachometerAlt, faTimes, faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faInstagram,
@@ -38,5 +38,7 @@ library.add(
     faTablet,
     faDesktop,
     faMobileAlt,
-    faTabletAlt
+    faTabletAlt,
+    faDonate,
+    faTimes
 );

@@ -2,12 +2,12 @@
     <v-modal ref="modal">
         <form @submit.prevent="submit">
             <div class="p-4">
-                <v-title small class="mb-5">Let us know</v-title>
-                <v-textarea name="description" v-model="form.description" :error="$page.props.errors.requestLinkType && $page.props.errors.requestLinkType.description" label="Please let us know what we're missing 🧐"></v-textarea>
+                <v-title small class="mb-5">ما رو در جریان بذارید</v-title>
+                <v-textarea name="description" v-model="form.description" :error="$page.props.errors.requestLinkType && $page.props.errors.requestLinkType.description" label="لطفا بهمون بگین که کدوم مورد رو فراموش کردیم اضافه کنیم 🧐"></v-textarea>
             </div>
             <div class="px-4 py-3 flex justify-end">
-                <v-button type="secondary" @click="$refs.modal.hide()">Cancel</v-button>
-                <v-button class="ml-2" @click="submit" :loading="submitting">Submit</v-button>
+                <v-button type="secondary" @click="$refs.modal.hide()">انصراف</v-button>
+                <v-button class="mr-2" @click="submit" :loading="submitting">ثبت</v-button>
             </div>
         </form>
     </v-modal>

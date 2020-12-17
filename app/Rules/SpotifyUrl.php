@@ -30,6 +30,6 @@ class SpotifyUrl implements Rule
      */
     public function message()
     {
-        return 'The URL is not a valid Spotify URL';
+        return 'آدرس وارد شده اشتباهه';
     }
 }

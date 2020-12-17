@@ -1,14 +1,14 @@
 <template>
     <v-card>
-        <v-title class="mb-5" small>Edit Username</v-title>
+        <v-title class="mb-5" small>نام کاربری</v-title>
         <form>
-            <v-input name="username" label="Username" v-model="searchQuery" class="mb-2" @keyup="keyUp = true" @input="isTyping = true"></v-input>
+            <v-input input-class="ltr" name="username" label="این فیلد همان آدرس صفحه شماست که به صورت ibio.link/yourname خواهد بود" v-model="searchQuery" class="mb-2" @keyup="keyUp = true" @input="isTyping = true"></v-input>
             <div class="text-sm mb-5">
-                <span class="text-gray-500" v-if="isLoading">Checking...</span>
+                <span class="text-gray-500" v-if="isLoading">درحال بررسی...</span>
                 <span class="text-red-500" v-else-if="$page.props.errors.username">{{ $page.props.errors.username.username }}</span>
-                <span class="text-green-500" v-else>This username is available</span>
+                <span class="text-green-500" v-else>تبریک! نام کاربری مورد نظر موجوده</span>
             </div>
-            <v-button :loading="saving" :disabled="saving || isLoading" @click="save">Save</v-button>
+            <v-button :loading="saving" :disabled="saving || isLoading" @click="save">ذخیره</v-button>
         </form>
     </v-card>
 </template>

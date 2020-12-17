@@ -21,7 +21,7 @@ class FeatureRequestController extends Controller
         ]);
 
         return back()->with([
-            'success' => __("Thank you, We're on it 🚀")
+            'success' => __("خیلی ممنون. در سریعترین زمان ممکن اضافه میشه 🚀")
         ]);
     }
 }

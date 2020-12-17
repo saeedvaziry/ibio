@@ -10,7 +10,7 @@
                 labels: this.getLabels(),
                 datasets: [
                     {
-                        label: 'Visits',
+                        label: 'بازدید ها',
                         backgroundColor: '#fad9da',
                         data: this.getData(),
                         borderWidth: 5,
@@ -22,7 +22,7 @@
                 legend: {
                     display: false
                 },
-                title: 'Visits stats',
+                title: 'آمار بازدید ها',
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {

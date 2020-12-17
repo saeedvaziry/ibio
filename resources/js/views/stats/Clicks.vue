@@ -5,13 +5,14 @@
                 <div class="flex w-full items-center justify-between">
                     <div class="flex items-center">
                         <img v-if="['social', 'contact'].includes(link.type) && link.title" :src="require(`../../../img/${link.title}.svg`)" width="20" class="mr-1" alt="">
-                        <a :href="link.real_url" rel="noreferrer" target="_blank" class="text-gray-700 w-28 md:w-62 truncate" :class="{'capitalize': ['social', 'contact'].includes(link.type) }">{{ link.title }}</a>
-                        <span class="text-sm ml-1 text-gray-400">({{ link.clicks }} Clicks)</span>
+                        <img v-else :src="require(`../../../img/${link.type}.svg`)" width="20" class="mr-1" alt="">
+                        <a :href="link.real_url" rel="noreferrer" target="_blank" class="text-gray-700 w-28 md:w-62 truncate" :class="{'capitalize': ['social', 'contact'].includes(link.type) }">{{ link.display_title }}</a>
+                        <span class="text-sm mr-1 text-gray-400">({{ link.clicks }} کلیک)</span>
                     </div>
                     <div class="flex items-center">
                         <v-button type="secondary" small @click="$inertia.visit(route('stats.clicks.show', {link: link.id}))">
-                            <fa-icon :icon="['fas', 'chart-bar']" class="mr-2"></fa-icon>
-                            <span class="hidden md:block">View Stats</span>
+                            <fa-icon :icon="['fas', 'chart-bar']" class="ml-0 md:ml-2"></fa-icon>
+                            <span class="hidden md:block">مشاهده آمار</span>
                         </v-button>
                     </div>
                 </div>
@@ -21,9 +22,9 @@
             </div>
         </v-card>
         <v-card class="text-center" v-else>
-            <p class="text-lg font-semibold mb-3">You don't have any links yet</p>
-            <p class="text-gray-500 mb-3">Add your first link here 🎉</p>
-            <v-button type="secondary" small @click="$inertia.visit(route('page-settings.links'))">Add a Link</v-button>
+            <p class="text-lg mb-3">هنوز هیچ لینکی نداری</p>
+            <p class="text-gray-500 mb-3">اولین لینکتو اضافه کن 🎉</p>
+            <v-button type="secondary" small @click="$inertia.visit(route('page-settings.links'))">افزودن لینک</v-button>
         </v-card>
     </stats>
 </template>

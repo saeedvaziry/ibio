@@ -1,23 +1,26 @@
 @extends('layouts.home')
 
-@section('page-title'){{ __('Privacy Policy') }}@endsection
+@section('page-title'){{ __('حریم خصوصی') }}@endsection
 
 @section('content')
     <section id="content" class="px-5 py-10 mx-auto w-full content">
         <div class="container mx-auto">
             <div class="w-full md:w-8/12 mx-auto">
-                <h2>Privacy Policy</h2>
-                <p>Your privacy is important to us. It is ibio.link's policy to respect your privacy regarding any information we may collect from you across our website,
-                    <a href="{{ url('/') }}">ibio.link</a>
-                    , and other sites we own and operate.
-                </p>
-                <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
-                <p>We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.</p>
-                <p>We don’t share any personally identifying information publicly or with third-parties, except when required to by law.</p>
-                <p>Our website may link to external sites that are not operated by us. Please be aware that we have no control over the content and practices of these sites, and cannot accept responsibility or liability for their respective privacy policies.</p>
-                <p>You are free to refuse our request for your personal information, with the understanding that we may be unable to provide you with some of your desired services.</p>
-                <p>Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.</p>
-                <p>This policy is effective as of 6 December 2020.</p>
+                <div class="col-12">
+                    <h1 class="mb-10 text-4xl">حریم خصوصی</h1>
+                    <article class="mb-10">
+                        <h2 class="mb-3">چه اطلاعاتی از کاربران نگهداری می شود</h2>
+                        <p>اطلاعاتی که کاربران نگهداری میشود شامل آدرس ایمیل و تمامی داده هایی که بعد از ثبت نام در حساب کاربری وارد کرده اند شامل تصویر پروفایل، نام و لینکها و ... می باشد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">اطلاعات تراکنش ها</h2>
+                        <p>تمامی اطلاعات دریافتی از سرویس دهنده پرداخت مانند شماره کارت پرداخت کننده و آدرس آی پی بعد از انجام تراکنش در ibio.link ذخیره میشود.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">اطلاعات بازدید ها و کلیک ها</h2>
+                        <p>به ازای هر بازدید و کلیک بر روی لینک های کاربران، آدرس آی پی و اطلاعات مرورگر (user-agent) بازدید کننده دریافت و ذخیره میشود.</p>
+                    </article>
+                </div>
             </div>
         </div>
     </section>

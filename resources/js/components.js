@@ -4,6 +4,7 @@ import Vue from "vue";
 Vue.component('app', require('./layouts/App').default);
 Vue.component('dashboard', require('./layouts/Dashboard').default);
 Vue.component('page-settings', require('./layouts/PageSettings').default);
+Vue.component('donation', require('./layouts/Donation').default);
 Vue.component('stats', require('./layouts/Stats').default);
 
 // components
@@ -25,3 +26,4 @@ Vue.component('v-modal', require('./components/Modal').default);
 Vue.component('v-toast', require('./components/Toast').default);
 Vue.component('v-button-copy', require('./components/ButtonCopy').default);
 Vue.component('v-textarea', require('./components/Textarea').default);
+Vue.component('v-links', require('./components/Links').default);

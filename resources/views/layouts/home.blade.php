@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="A beautiful, simple, and free bio link with social media embed for Youtube, Spotify and Soundcloud">
-    <meta name="keywords" content="bio link,bio,instagram link,youtube link,free bio link,free link,social media link">
+    <meta name="description" content="با لینک شخصیت پول هم دریافت کن">
+    <meta name="keywords" content="لینک بیو,لینک حمایت مالی,لینک شخصی,بیو لینک اینستاگرام,دونیت,donate">
     <title>@yield('page-title')</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:title" content="{{ config('app.name') }}">
-    <meta property="og:description" content="A beautiful, simple, and free bio link with social media embed for Youtube, Spotify and Soundcloud">
+    <meta property="og:description" content="با لینک شخصیت پول هم دریافت کن">
     <meta property="og:image" content="{{ asset('static/favicon/android-chrome-192x192.png') }}">
     @include('extensions.favicon')
 </head>
@@ -21,20 +21,17 @@
     <section id="footer" class="bg-white px-5 py-10 mx-auto w-full text-gray-600">
         <div class="container mx-auto">
             <div class="w-full md:w-8/12 mx-auto flex flex-col md:flex-row items-center">
-                <div class="w-full sm:w-4/12 text-left mb-5 md:mb-0">Copyright © ibio.link</div>
+                <div class="w-full sm:w-4/12 text-right mb-5 md:mb-0">تمامی حقوق برای ibio.link محفوظ است</div>
                 <div class="w-full sm:w-8/12 md:flex items-center justify-end">
                     <ul class="md:flex">
-                        <li class="mr-3">
-                            <a href="{{ route('home') }}">Home</a>
+                        <li class="ml-3">
+                            <a href="{{ route('home') }}">صفحه اصلی</a>
                         </li>
-                        <li class="mr-3">
-                            <a href="{{ route('home.privacy') }}">Privacy policy</a>
+                        <li class="ml-3">
+                            <a href="{{ route('home.privacy') }}">حریم خصوصی</a>
                         </li>
-                        <li class="mr-3">
-                            <a href="{{ route('home.terms') }}">Terms of service</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('home.cookie') }}">Cookie policy</a>
+                        <li class="ml-3">
+                            <a href="{{ route('home.terms') }}">قوانین و شرایط استفاده</a>
                         </li>
                     </ul>
                 </div>

@@ -1,43 +1,62 @@
 @extends('layouts.home')
 
-@section('page-title'){{ __('Terms of Service') }}@endsection
+@section('page-title'){{ __('قوانین و شرایت استفاده') }}@endsection
 
 @section('content')
     <section id="content" class="px-5 py-10 mx-auto w-full content">
         <div class="container mx-auto">
             <div class="w-full md:w-8/12 mx-auto">
-                <h2>Terms of Service</h2>
-                <h3>1. Terms</h3>
-                <p>By accessing the website at
-                    <a href="{{ url('/') }}">ibio.link</a>
-                    , you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
-                </p>
-                <h3>2. Use License</h3>
-                <ol type="a">
-                    <li>Permission is granted to temporarily download one copy of the materials (information or software) on ibio.link's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
-                        <ol type="i">
-                            <li>modify or copy the materials;</li>
-                            <li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
-                            <li>attempt to decompile or reverse engineer any software contained on ibio.link's website;</li>
-                            <li>remove any copyright or other proprietary notations from the materials; or</li>
-                            <li>transfer the materials to another person or "mirror" the materials on any other server.</li>
-                        </ol>
-                    </li>
-                    <li>This license shall automatically terminate if you violate any of these restrictions and may be terminated by ibio.link at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</li>
-                </ol>
-                <h3>3. Disclaimer</h3>
-                <ol type="a">
-                    <li>The materials on ibio.link's website are provided on an 'as is' basis. ibio.link makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</li>
-                    <li>Further, ibio.link does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.</li>
-                </ol>
-                <h3>4. Limitations</h3>
-                <p>In no event shall ibio.link or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on ibio.link's website, even if ibio.link or a ibio.link authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
-                <h3>5. Accuracy of materials</h3>
-                <p>The materials appearing on ibio.link's website could include technical, typographical, or photographic errors. ibio.link does not warrant that any of the materials on its website are accurate, complete or current. ibio.link may make changes to the materials contained on its website at any time without notice. However ibio.link does not make any commitment to update the materials.</p>
-                <h3>6. Links</h3>
-                <p>ibio.link has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by ibio.link of the site. Use of any such linked website is at the user's own risk.</p>
-                <h3>7. Modifications</h3>
-                <p>ibio.link may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+                <div class="col-12">
+                    <h1 class="mb-10 text-4xl">قوانین و شرایت استفاده</h1>
+                    <article class="mb-10">
+                        <h2 class="mb-3">پلتفرم</h2>
+                        <p>منظور از پلتفرم، وب سایت
+                            <a href="{{ url('/') }}">ibio.link</a> و تمامی خدمات قابل دسترس در این دامین می باشد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">لینک شخصی</h2>
+                        <p>تمامی آدرس های ibio.link/username که در آن username نامهای دلخواه کاربران می باشد یک لینک شخصی تلقی میشود.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">کاربر</h2>
+                        <p>هرکسی که در پلتفرم ibio.link ثبت نام کرده و دارای لینک شخصی می باشد، کاربر تلقی می شود و دارای حساب کاربری می باشد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">محتوا</h2>
+                        <p>منظور از محتوا تمامی داده های قابل ورود به پلفرم توسط کاربر مانند تصویر پروفایل، لینک ها، متن ها و ... می باشد</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">قوانین محتوا</h2>
+                        <p>مسئولیت محتوای تولید شده به عهده استفاده کننده از خدمات می باشد و همچنین ibio.link مجاز است که در صورت مشاهده محتوای مغایر با قوانین جاری جمهوری اسلامی ایران، محتوای مورد نظر را حذف و یا حتی حساب کاربری متخلف را مسدود کرده و اجازه استفاده از خدمات را از کاربر متخلف سلب کند.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-3">حقوقی</h2>
+                        <p>در صورت انجام هرگونه پرداخت غیر مجاز از نظر قوانین جاری جمهوری اسلامی ایران، مسئولیت آن به عهده دارنده حساب کاربری می باشد و در صورت درخواست مراجع قضایی کشور برای دریافت اطلاعات تراکنش ها، ibio.link کاملا همکاری لازم را با مراجع قضایی انجام خواهد داد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-4">درگاه پرداخت</h2>
+                        <p>تنها پلتفرم پرداخت مورد پشتیبانی
+                            <a href="https://pay.ir" target="_blank">pay.ir</a>
+                            می باشد. بنابراین کاربر برای استفاده از حمایت مالی می بایست اقدام به دریافت درگاه به آدرس http://ibio.link از شبکه پرداخت پِی کند.
+                        </p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-4">ثبت نام</h2>
+                        <p>ثبت نام در پلتفرم به معنای قبول تمامی قوانین در داخل این صفحه می باشد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-4">حذف اطلاعات</h2>
+                        <p>اطلاعات حذف شده توسط کاربر از قبیل لینک و یا حساب کاربری به هیچ عنوان قابل بازگردانی نمی باشند.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-4">پشتیبانی</h2>
+                        <p>پشتیبانی به صورت آفلاین بوده و پاسخگویی به مشکلات و سوالات نیاز به حداقل یک روز کاری می باشد.</p>
+                    </article>
+                    <article class="mb-10">
+                        <h2 class="mb-4">بروزرسانی قوانین</h2>
+                        <p>ibio.link مجاز است هر زمانی به صلاح دید خود قوانین موجود در پلتفرم را تغییر دهد.</p>
+                    </article>
+                </div>
             </div>
         </div>
     </section>

@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 body {
-    font-family: Nunito, serif;
+    font-family: Vazir, serif;
+    direction: rtl;
 }
 
 @layer utilities {
@@ -21,11 +22,11 @@ body {
 }
 
 .content h2 {
-    @apply text-3xl mb-5 font-bold;
+    @apply text-2xl mb-5;
 }
 
 .content h3 {
-    @apply text-2xl mb-3 font-bold;
+    @apply text-xl mb-3;
 }
 
 .content p {
@@ -52,4 +53,61 @@ body {
     border-radius: 0.5rem;
     height: 100% !important;
     max-width: 100% !important;
+}
+
+input[type="email"], input[type="password"], input[type="tel"], input[type="number"] {
+    text-align: left;
+}
+
+.ltr {
+    direction: ltr;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    @apply bg-gray-200;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    @apply bg-purple-600;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }

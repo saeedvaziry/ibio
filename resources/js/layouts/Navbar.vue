@@ -5,20 +5,21 @@
                 <img :src="require('../../img/logo.png')" alt="iBio.link" class="h-6">
             </a>
             <div class="flex items-center">
-                <v-button type="secondary" class="mr-2" small @click="showMyPage">My Page</v-button>
+                <v-button type="secondary" class="ml-2" small @click="showMyPage">صفحه من</v-button>
                 <v-dropdown>
                     <button slot="link" class="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true">
                         <v-avatar :user="$page.props.user"></v-avatar>
-                        <fa-icon :icon="['fas', 'bars']" class="text-2xl ml-2 text-gray-500"></fa-icon>
+                        <fa-icon :icon="['fas', 'bars']" class="block md:hidden text-2xl mr-2 text-gray-500"></fa-icon>
                     </button>
                     <template slot="items">
                         <div class="md:hidden">
-                            <v-dropdown-item @click="$inertia.visit(route('dashboard'))">Dashboard</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('page-settings.info'))">Page Settings</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('settings'))">Settings</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('stats.clicks'))">Stats</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('dashboard'))">داشبورد</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('donation.settings'))">حمایت مالی</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('page-settings.info'))">تنظیمات صفحه</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('settings'))">تنظیمات</v-dropdown-item>
+                            <v-dropdown-item @click="$inertia.visit(route('stats.clicks'))">آمار</v-dropdown-item>
                         </div>
-                        <v-dropdown-item @click="logout" :last="true">Sign out</v-dropdown-item>
+                        <v-dropdown-item @click="logout" :last="true">خروج از حساب</v-dropdown-item>
                     </template>
                 </v-dropdown>
                 <form id="logout-form" action="/logout" method="POST" class="hidden">
@@ -41,7 +42,7 @@
                 if (this.$page.props.user.username) {
                     window.location.href = `/${this.$page.props.user.username}`
                 } else {
-                    this.$refs.toast.showToast('error', "You haven't set your username yet!");
+                    this.$refs.toast.showToast('error', "شما هنوز نام کاربریتون رو انتخاب نکردید");
                 }
             }
         }

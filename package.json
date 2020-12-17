@@ -32,6 +32,7 @@
         "postcss": "^7",
         "resolve-url-loader": "^3.1.0",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+        "vazir-font": "^27.1.0",
         "vue": "^2.5.17",
         "vue-chartjs": "^3.5.1",
         "vue-click-outside": "^1.1.0",

@@ -10,7 +10,7 @@
                 labels: this.getLabels(),
                 datasets: [
                     {
-                        label: 'Clicks',
+                        label: 'کلیک ها',
                         backgroundColor: '#e9d3f6',
                         data: this.getData(),
                         borderWidth: this.borderWidth,
@@ -22,7 +22,7 @@
                 legend: {
                     display: this.showDetail
                 },
-                title: 'Views stats',
+                title: 'آمار کلیک ها',
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {

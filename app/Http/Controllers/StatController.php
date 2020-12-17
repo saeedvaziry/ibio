@@ -17,7 +17,7 @@ class StatController extends Controller
     public function visits()
     {
         return inertia('stats/Visits', [
-            'title' => __('Stats - Visits'),
+            'title' => __('آمار - بازدید ها'),
             'menu' => 'stats',
             'subMenu' => 'visits',
             'visitsByDevice' => $this->getVisitsGroupByDevice(auth()->user())->get()
@@ -30,7 +30,7 @@ class StatController extends Controller
     public function clicks()
     {
         return inertia('stats/Clicks', [
-            'title' => __('Stats - Clicks'),
+            'title' => __('آمار - کلیک ها'),
             'menu' => 'stats',
             'subMenu' => 'clicks',
             'links' => LinkStatResource::collection(auth()->user()->links)

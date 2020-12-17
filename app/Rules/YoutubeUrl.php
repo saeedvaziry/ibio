@@ -30,6 +30,6 @@ class YoutubeUrl implements Rule
      */
     public function message()
     {
-        return 'The URL is not a valid Youtube URL';
+        return 'آدرس وارد شده اشتباهه';
     }
 }

@@ -7,10 +7,10 @@
         props: ['chartData'],
         mounted() {
             this.renderChart({
-                labels: ['Mobile', 'Tablet', 'Desktop', 'Unknown'],
+                labels: ['موبایل', 'تبلت', 'دسکتاپ', 'ناشناس'],
                 datasets: [
                     {
-                        label: 'Visits by device',
+                        label: 'بازدید ها به تفکیک دستگاه',
                         backgroundColor: ['#a1dde1', '#a3cdf8', '#deb2f4', '#f7addb'],
                         data: this.getData()
                     },

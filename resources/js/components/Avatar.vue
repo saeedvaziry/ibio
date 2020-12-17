@@ -1,8 +1,8 @@
 <template>
     <div class="relative" :class="{'cursor-pointer': upload}" @mouseenter="hover = true" @mouseleave="hover = false" @click="selectFile">
         <img v-if="user.avatar" :class="`${size}`" class="rounded-full border-4 border-purple-100" :src="user.avatar" alt="" />
-        <div v-else :class="`${size} ${font}`" class="rounded-full inline-flex items-center font-semibold justify-center bg-purple-200 text-purple-600 border-4 border-purple-100 capitalize">
-            <span :class="{'opacity-0': upload && hover}">{{ user.name.charAt(0) }}{{ user.name.charAt(1) }}</span>
+        <div v-else :class="`${size} ${font}`" class="rounded-full inline-flex items-center justify-center bg-purple-200 text-purple-600 border-4 border-purple-100 capitalize">
+            <span :class="{'opacity-0': upload && hover}">{{ user.name.charAt(0) }}</span>
         </div>
         <div class="absolute flex items-center justify-center top-0 lef-0 rounded-full" :class="size" style="background-color: rgba(79,78,78,0.29)" v-if="hover && upload">
             <fa-icon :icon="['fas', 'camera']" class="text-black text-2xl"></fa-icon>

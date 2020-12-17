@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         return inertia('Dashboard', [
-            'title' => __('Dashboard'),
+            'title' => __('داشبورد'),
             'menu' => 'dashboard',
             'hasVisits' => auth()->user()->stats()->first() ? true : false,
             'visits' => $this->getVisitsStats(auth()->user()),

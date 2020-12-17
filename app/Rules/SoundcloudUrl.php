@@ -30,6 +30,6 @@ class SoundcloudUrl implements Rule
      */
     public function message()
     {
-        return 'The URL is not a valid Soundcloud URL';
+        return 'آدرس وارد شده اشتباهه';
     }
 }

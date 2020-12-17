@@ -19,7 +19,7 @@ class SettingController extends Controller
     public function index()
     {
         return inertia('settings/Index', [
-            'title' => __('Settings'),
+            'title' => __('تنظیمات حساب کاربری'),
             'menu' => 'settings'
         ]);
     }

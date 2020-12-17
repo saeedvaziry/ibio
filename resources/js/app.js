@@ -1,6 +1,8 @@
 require('./bootstrap');
 require('./configs/index');
 require('./filters/dateformat');
+require('./filters/xmoney');
+require('./directives/xmoney');
 require('./components');
 
 import Vue from 'vue';

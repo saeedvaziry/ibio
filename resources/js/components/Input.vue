@@ -49,6 +49,10 @@
                 type: String,
                 default: ''
             },
+            money: {
+                type: Boolean,
+                default: false
+            },
             error: ''
         },
         mounted() {

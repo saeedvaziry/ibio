@@ -7,20 +7,20 @@
                     type="button" @click="openDropdown" aria-haspopup="listbox" aria-expanded="true"
                     aria-labelledby="listbox-label"
                     :class="{'border-red-500': error}"
-                    class="cursor-pointer relative w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:bg-white bg-gray-100 pl-4 pr-10 py-3 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                    class="cursor-pointer relative w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:bg-white bg-gray-100 pr-4 pl-10 py-3 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                 >
                     <div class="flex items-center space-x-3 h-6">
                         <template v-if="selected">
                             <div
                                 v-if="selected.img"
-                                class="flex-shrink-0 h-6 w-6 bg-contain bg-no-repeat bg-center"
+                                class="flex-shrink-0 h-6 w-6 bg-contain bg-no-repeat bg-center ml-2"
                                 :style="'background-image: url(' + selected.img + ');'"
                             ></div>
                             <span class="block truncate"> {{ selected.title }}</span>
                         </template>
                     </div>
                     <span
-                        class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
+                        class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none"
                     >
                         <svg
                             class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none"
@@ -48,24 +48,24 @@
                         <li
                             tabindex="0" @click="select(d)" id="listbox-item-0" role="option"
                             v-for="(d, index) in data" v-bind:key="index"
-                            class="text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9  cursor-pointer hover:text-gray-800 hover:bg-gray-200 focus:outline-none focus:text-gray-800 focus:bg-gray-200"
+                            class="text-gray-900 cursor-default select-none relative py-2 pr-3 pl-9  cursor-pointer hover:text-gray-800 hover:bg-gray-200 focus:outline-none focus:text-gray-800 focus:bg-gray-200"
                             :class="{'bg-gray-100': isSelected(d)}"
                         >
                             <div class="flex items-center space-x-3">
                                 <div
                                     v-if="d.img"
-                                    class="flex-shrink-0 h-6 w-6 bg-contain bg-no-repeat bg-center"
+                                    class="flex-shrink-0 h-6 w-6 bg-contain bg-no-repeat bg-center ml-2"
                                     :style="'background-image: url(' + d.img + ');'"
                                 ></div>
                                 <span
                                     class="block truncate"
-                                    v-bind:class="{'font-normal': !isSelected(d), 'font-semibold': isSelected(d), 'text-gray-500': d.disabled}"
+                                    v-bind:class="{'font-normal': !isSelected(d), '': isSelected(d), 'text-gray-500': d.disabled}"
                                 > {{ d.title }}
                                 </span>
                             </div>
                             <span
                                 v-show="isSelected(d)"
-                                class="absolute inset-y-0 right-0 flex items-center pr-4"
+                                class="absolute inset-y-0 left-0 flex items-center pl-4"
                             >
                                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> <path
                                     fill-rule="evenodd"

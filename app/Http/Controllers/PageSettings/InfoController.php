@@ -20,7 +20,7 @@ class InfoController extends Controller
     public function index()
     {
         return inertia('page-settings/info/Index', [
-            'title' => __('Page settings - Info'),
+            'title' => __('تنظیمات صفحه - اطلاعات اصلی'),
             'menu' => 'page-settings',
             'subMenu' => 'info'
         ]);
@@ -43,7 +43,7 @@ class InfoController extends Controller
         ]);
 
         return back()->with([
-            'success' => __('Public info updated')
+            'success' => __('اطلاعات عمومی بروزرسانی شد')
         ]);
     }
 
@@ -56,7 +56,7 @@ class InfoController extends Controller
         $this->validateUsername($request);
 
         return back()->with([
-            'username' => __('This username is available')
+            'username' => __('تبریک! نام کاربری مورد نظر موجوده')
         ]);
     }
 
@@ -73,7 +73,7 @@ class InfoController extends Controller
         ]);
 
         return back()->with([
-            'success' => __('The username has been changed')
+            'success' => __('نام کاربری تغییر داده شد')
         ]);
     }
 
@@ -103,7 +103,7 @@ class InfoController extends Controller
             ]);
 
             return back()->with([
-                'success' => __('The avatar has been changed')
+                'success' => __('تصویر پروفایتون عوض شد')
             ]);
         } catch (\Exception $e) {
             $this->rollbackUpload();
@@ -118,7 +118,7 @@ class InfoController extends Controller
     {
         if (!auth()->user()->avatar) {
             return back()->with([
-                'error' => __("You don't have avatar to delete")
+                'error' => __("تصویر پروفایلی واسه حذف نداری")
             ]);
         }
 
@@ -129,7 +129,7 @@ class InfoController extends Controller
         ]);
 
         return back()->with([
-            'success' => __('The avatar has been deleted')
+            'success' => __('تصویر پروفایلت حذف شد')
         ]);
     }
 

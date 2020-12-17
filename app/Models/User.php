@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Casts\Donation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
@@ -31,6 +31,7 @@ class User extends Authenticatable
         'bio',
         'page',
         'active',
+        'donation',
         'two_factor_enabled',
         'two_factor_secret',
     ];
@@ -54,6 +55,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'active' => 'boolean',
         'two_factor_enabled' => 'boolean',
+        'donation' => Donation::class,
     ];
 
     /**
@@ -186,5 +188,21 @@ class User extends Authenticatable
     public function getAvatarUrlAttribute()
     {
         return $this->avatar ? Storage::disk('public')->url($this->avatar) : '';
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function successPayments()
+    {
+        return $this->payments()->whereNotNull('verified_at');
     }
 }

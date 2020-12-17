@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\AparatUrl;
 use App\Rules\SoundcloudUrl;
 use App\Rules\SpotifyUrl;
 use App\Rules\YoutubeUrl;
@@ -22,7 +23,7 @@ class LinkUpdateRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'type' => 'required|in:text,youtube,spotify,soundcloud',
+            'type' => 'required|in:text,youtube,spotify,soundcloud,aparat',
             'title' => 'required|max:255',
             'url' => [
                 'required',
@@ -40,6 +41,9 @@ class LinkUpdateRequest extends FormRequest
                 break;
             case 'soundcloud':
                 array_push($rules['url'], new SoundcloudUrl());
+                break;
+            case 'aparat':
+                array_push($rules['url'], new AparatUrl());
                 break;
         }
 

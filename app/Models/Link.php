@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\DB;
 
 class Link extends Model
 {
@@ -37,7 +36,8 @@ class Link extends Model
      */
     protected $appends = [
         'token',
-        'real_url'
+        'real_url',
+        'display_title',
     ];
 
     /**
@@ -110,6 +110,16 @@ class Link extends Model
     }
 
     /**
+     * @return mixed|string|string[]
+     */
+    public function getAparatEmbedLinkAttribute()
+    {
+        $videoId = str_replace('https://www.aparat.com/v/', '', $this->real_url);
+
+        return 'https://www.aparat.com/video/video/embed/videohash/' . $videoId . '/vt/frame';
+    }
+
+    /**
      * @return mixed|string|string[]|null
      */
     public function generate()
@@ -122,6 +132,26 @@ class Link extends Model
             default:
                 return $this->url;
         }
+    }
+
+    public function getDisplayTitleAttribute()
+    {
+        if ($this->type == 'social') {
+            foreach (config('links.social_medias') as $link) {
+                if ($this->title == $link['value']) {
+                    return $link['title'];
+                }
+            }
+        }
+        if ($this->type == 'contact') {
+            foreach (config('links.contacts') as $link) {
+                if ($this->title == $link['value']) {
+                    return $link['title'];
+                }
+            }
+        }
+
+        return $this->title;
     }
 
     /**

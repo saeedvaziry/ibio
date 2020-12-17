@@ -6,8 +6,8 @@
             </a>
         </div>
         <div class="flex items-center">
-            <a href="{{ route('login') }}" class="bg-white border-2 border-black focus:outline-none hover:bg-black hover:text-white transition-colors font-bold text-black py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('Log In') }}</a>
-            <a href="{{ route('register') }}" class="ml-3 border-2 border-black bg-black focus:outline-none font-bold text-white py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('Sign Up') }}</a>
+            <a href="{{ route('login') }}" class="bg-white border-2 border-black focus:outline-none hover:bg-black hover:text-white transition-colors text-black py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('ورود') }}</a>
+            <a href="{{ route('register') }}" class="mr-3 border-2 border-black bg-black focus:outline-none text-white py-2 px-3 md:px-6 rounded-lg md:flex items-center justify-center text-md md:text-xl">{{ __('ثبت نام') }}</a>
         </div>
     </div>
 </nav>

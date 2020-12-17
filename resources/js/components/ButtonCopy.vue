@@ -1,6 +1,6 @@
 <template>
     <v-button :type="type" :small="small" @click="copy">
-        <span v-if="copied">Copied!</span>
+        <span v-if="copied">کپی شد!</span>
         <slot v-else></slot>
     </v-button>
 </template>

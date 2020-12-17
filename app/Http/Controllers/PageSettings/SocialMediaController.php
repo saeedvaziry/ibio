@@ -26,7 +26,7 @@ class SocialMediaController extends Controller
             }
         }
         return inertia('page-settings/social-media/Index', [
-            'title' => __('Page settings - Social media'),
+            'title' => __('تنظیمات صفحه - شبکه های اجتماعی'),
             'menu' => 'page-settings',
             'subMenu' => 'social-media',
             'socialMedias' => array_merge($havingItems, $notHavingItems)
@@ -64,7 +64,7 @@ class SocialMediaController extends Controller
         }
 
         return back()->with([
-            'success' => __('Link added')
+            'success' => __('لینک اضافه شد')
         ]);
     }
 }

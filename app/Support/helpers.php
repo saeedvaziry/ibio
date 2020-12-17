@@ -51,3 +51,27 @@ function create_date_range($strDateFrom, $strDateTo)
 
     return $aryRange;
 }
+
+
+/**
+ * @param $money
+ * @return string
+ */
+function custom_money_format($money)
+{
+    return number_format($money, 0, '', ',');
+}
+
+/**
+ * @param $string
+ * @return string|string[]
+ */
+function latin_number_to_persian($string)
+{
+    $latin = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    $convertedLatinNums = str_replace($latin, $persian, $string);
+
+    return str_replace(' ', '', $convertedLatinNums);
+}
+
