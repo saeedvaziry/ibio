@@ -19,7 +19,7 @@ class UserObserver
                 $user->username = $username;
             }
         }
-        $user->bio = 'Hi there 👋';
+        $user->bio = 'سلام 👋';
         $user->save();
     }
 
