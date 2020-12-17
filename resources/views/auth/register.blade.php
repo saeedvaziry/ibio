@@ -16,6 +16,11 @@
             <x-input type="password" name="password" label="کلمه عبور" class="mb-3"></x-input>
             <x-input type="password" name="password_confirmation" label="تایید کلمه عبور" class="mb-3"></x-input>
             <div class="mt-6">
+                <p class="mb-3">
+                    {{ __('ثبت نام به معنای قبول') }}
+                    <a class="text-purple-600" href="{{ route('home.terms') }}" target="_blank">قوانین</a>
+                    {{ __('می باشد') }}
+                </p>
                 <x-button type="primary" full>{{ __('ثبت نام') }}</x-button>
             </div>
             <div class="text-center mt-3">
