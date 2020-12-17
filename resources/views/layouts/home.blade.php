@@ -40,5 +40,6 @@
     </section>
     @include('extensions.cookie')
     @include('extensions.google')
+    @include('extensions.support')
 </body>
 </html>

@@ -24,5 +24,6 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @include('extensions.cookie')
     @include('extensions.google')
+    @include('extensions.support')
 </body>
 </html>
