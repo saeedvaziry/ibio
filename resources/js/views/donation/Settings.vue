@@ -1,5 +1,8 @@
 <template>
     <donation>
+        <div class="bg-yellow-50 border-r-4 border-yellow-500 text-yellow-700 p-4 rounded-sm mb-5">
+            <p class="leading-loose">تمامی پرداخت ها از طریق pay.ir انجام میشه و مبالغ واریزی به کیف پول شما در pay.ir واریز خواهد شد. بنابراین برای انتقال حمایت های دریافتی به حساب بانکیتون باید از طریق پنل کاربری pay.ir اقدام کنید.</p>
+        </div>
         <v-card class="mb-5">
             <v-title small class="mb-5">تنظیمات درگاه پرداخت</v-title>
             <div class="bg-blue-50 border-r-4 border-blue-500 text-blue-700 p-4 rounded-sm mb-5">
