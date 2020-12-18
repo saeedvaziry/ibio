@@ -114,9 +114,7 @@ class Payment extends Model
         } catch (\Exception $e) {
             DB::rollBack();
 
-            if (app()->environment() == 'local') {
-                throw $e;
-            }
+            throw $e;
 
             throw new PaymentException($payment, __('خطای غیر منتظره ای پیش آمده. در صورت کسر وجه از حسابتون، مبلغ نهایت تا 72 ساعت به حسابتون بازگردانده میشود.'));
         }
