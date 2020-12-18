@@ -19,12 +19,12 @@
                 <p class="text-2xl text-gray-700 mb-12">
                     همین الان لینکتو ثبت کُن 🎉
                 </p>
-                <form action="{{ route('register') }}" class="flex justify-end mb-10 ltr">
-                    <div class="relative flex items-center mr-2">
-                        <span class="text-xl absolute ml-2 md:ml-4 text-gray-400 ">ibio.link/</span>
-                        <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-2 md:mr-4 block w-full text-xl" style="padding-left: 5.9rem" autocomplete="off">
+                <form action="{{ route('register') }}" class="flex flex-col md:flex-row justify-end mb-10 ltr">
+                    <div class="relative flex items-center mb-3 md:mb-0">
+                        <span class="text-xl absolute ml-4 text-gray-400 ">ibio.link/</span>
+                        <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-2 mr-4 block w-full text-xl" style="padding-left: 5.9rem" autocomplete="off">
                     </div>
-                    <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">ایجاد لینک</button>
+                    <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md text-white py-3 px-6 rounded-lg md:ml-2" style="min-width: 130px;">ایجاد لینک</button>
                 </form>
             </div>
             <div class="mx-auto mr-0 md:mr-5 flex items-center justify-center w-full md:w-auto">
@@ -64,12 +64,12 @@
     </section>
     <section class="relative px-5 mx-auto w-full py-20">
         <h2 class="text-2xl mb-10 text-center">همین الان لینکتو دریافت کُن</h2>
-        <form action="{{ route('register') }}" class="flex justify-center items-center ltr">
-            <div class="relative flex items-center mr-2">
-                <span class="text-xl absolute ml-2 md:ml-4 text-gray-400 ">ibio.link/</span>
-                <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-2 md:mr-4 block w-full text-xl" style="padding-left: 5.9rem" autocomplete="off">
+        <form action="{{ route('register') }}" class="flex flex-col md:flex-row justify-end mb-10 ltr">
+            <div class="relative flex items-center mb-3 md:mb-0">
+                <span class="text-xl absolute ml-4 text-gray-400 ">ibio.link/</span>
+                <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-2 mr-4 block w-full text-xl" style="padding-left: 5.9rem" autocomplete="off">
             </div>
-            <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md xl:text-xl text-white py-3 px-3 xl:px-6 rounded-lg" style="min-width: 130px;">ایجاد لینک</button>
+            <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md text-white py-3 px-6 rounded-lg md:ml-2" style="min-width: 130px;">ایجاد لینک</button>
         </form>
     </section>
 @endsection
