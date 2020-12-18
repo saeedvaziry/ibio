@@ -57,6 +57,7 @@ body {
 
 input[type="email"], input[type="password"], input[type="tel"], input[type="number"] {
     text-align: left;
+    direction: ltr;
 }
 
 .ltr {
