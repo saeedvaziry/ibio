@@ -15,7 +15,7 @@
             <v-button type="secondary" v-if="$page.props.user.two_factor_enabled" @click="$refs.disable2FAModal.show()" class="mt-5">غیر فعال سازی</v-button>
             <v-button v-else :loading="enabling_two_factor" @click="enableTwoFactor" class="mt-5">فعال سازی</v-button>
         </v-card>
-        <v-title class="mb-5">منظقه خطر</v-title>
+        <v-title class="mb-5">منطقه خطر</v-title>
         <v-card class="mb-5" border="border-red-200">
             <v-title class="mb-5" small>حذف حساب کاربری</v-title>
             <div class="flex items-center justify-between">
