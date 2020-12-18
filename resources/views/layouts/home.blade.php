@@ -21,20 +21,7 @@
     <section id="footer" class="bg-white px-5 py-10 mx-auto w-full text-gray-600">
         <div class="container mx-auto">
             <div class="w-full md:w-8/12 mx-auto flex flex-col md:flex-row items-center">
-                <div class="w-full sm:w-4/12 text-right mb-5 md:mb-0">تمامی حقوق برای ibio.link محفوظ است</div>
-                <div class="w-full sm:w-8/12 md:flex items-center justify-end">
-                    <ul class="md:flex">
-                        <li class="ml-3">
-                            <a href="{{ route('home') }}">صفحه اصلی</a>
-                        </li>
-                        <li class="ml-3">
-                            <a href="{{ route('home.privacy') }}">حریم خصوصی</a>
-                        </li>
-                        <li class="ml-3">
-                            <a href="{{ route('home.terms') }}">قوانین و شرایط استفاده</a>
-                        </li>
-                    </ul>
-                </div>
+                @include('layouts.footer')
             </div>
         </div>
     </section>

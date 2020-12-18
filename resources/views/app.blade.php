@@ -21,6 +21,9 @@
 </head>
 <body class="dark:bg-gray-900">
     @inertia
+    <div class="mx-auto flex flex-col md:flex-row items-center justify-between p-5 w-full sm:w-10/12 md:w-8/12 xl:w-7/12">
+        @include('layouts.footer')
+    </div>
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @include('extensions.cookie')
     @include('extensions.google')

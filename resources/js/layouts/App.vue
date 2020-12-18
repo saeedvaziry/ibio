@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="min-height: calc(100vh - 80px)">
         <navbar></navbar>
         <slot></slot>
         <v-toast ref="toast"></v-toast>

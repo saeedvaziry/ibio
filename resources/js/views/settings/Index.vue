@@ -10,7 +10,7 @@
         </v-card>
         <v-card class="mb-8">
             <v-title class="mb-5" small>ورود دو مرحله ای</v-title>
-            <p class="mb-5">با فعال کردن این گزینه، موقع ورود به حساب، باید کد 6 رقی اپلیکیشن Authenticator را نیز وارد کنید</p>
+            <p class="mb-5">با فعال کردن این گزینه، موقع ورود به حساب، باید کد 6 رقمی اپلیکیشن Authenticator را نیز وارد کنید</p>
             <v-alert class="mb-3" :errors="$page.props.errors.enable2FA"></v-alert>
             <v-button type="secondary" v-if="$page.props.user.two_factor_enabled" @click="$refs.disable2FAModal.show()" class="mt-5">غیر فعال سازی</v-button>
             <v-button v-else :loading="enabling_two_factor" @click="enableTwoFactor" class="mt-5">فعال سازی</v-button>
@@ -65,7 +65,7 @@
             </div>
             <div class="px-4 py-3 flex justify-end">
                 <v-button type="secondary" @click="$refs.deleteAccountModal.hide()">انصراف</v-button>
-                <v-button type="color" color="red" class="mr-2" @click="deleteAccount" :loading="deletingAccount">حذف حساب کاربری</v-button>
+                <v-button type="color" color="red" class="mr-2" @click="deleteAccount" :loading="deletingAccount">حذف</v-button>
             </div>
         </v-modal>
     </dashboard>
