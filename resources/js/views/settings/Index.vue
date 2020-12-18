@@ -19,7 +19,7 @@
         <v-card class="mb-5" border="border-red-200">
             <v-title class="mb-5" small>حذف حساب کاربری</v-title>
             <div class="flex items-center justify-between">
-                <p class="mr-3">حساب کاربری شما بصورت کامل حذف و از دسترس عموم خارج خواهد شد و از داشبورد خارج خواهید شد</p>
+                <p class="ml-3">حساب کاربری شما بصورت کامل حذف و از دسترس عموم خارج خواهد شد و از داشبورد خارج خواهید شد</p>
                 <v-button type="color" color="red" @click="$refs.deleteAccountModal.show()">حذف</v-button>
             </div>
         </v-card>
@@ -60,7 +60,7 @@
                 <v-title class="mb-5" small>حذف حساب کاربری</v-title>
                 <div class="mt-2">
                     <v-alert class="mb-3" :errors="$page.props.errors.deleteAccount"></v-alert>
-                    <p class="mb-4">تمامی اطلاعات شما از ibio.link حذف خواهد شد و به وجه قابل بازگردانی نخواهد بود</p>
+                    <p class="mb-4">تمامی اطلاعات شما از ibio.link حذف خواهد شد و بازگردانی آنها غیر ممکن است.</p>
                 </div>
             </div>
             <div class="px-4 py-3 flex justify-end">
