@@ -105,7 +105,7 @@ class Payment extends Model
             if (!$payment->paid_at) {
                 throw new PaymentException($payment, __('این تراکنش پرداخت نشده است'));
             }
-            $verify = Payir::verify($this->payir_token);
+            $verify = Payir::verify($this->payir_token, $payment->user->donation['payir_api']);
             $payment->payment_info = $verify;
             $payment->verified_at = now();
             $payment->save();
@@ -114,7 +114,9 @@ class Payment extends Model
         } catch (\Exception $e) {
             DB::rollBack();
 
-            throw $e;
+            if (app()->environment() == 'local') {
+                throw $e;
+            }
 
             throw new PaymentException($payment, __('خطای غیر منتظره ای پیش آمده. در صورت کسر وجه از حسابتون، مبلغ نهایت تا 72 ساعت به حسابتون بازگردانده میشود.'));
         }
