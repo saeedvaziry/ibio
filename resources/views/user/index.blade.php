@@ -59,8 +59,8 @@
             @if(count($contactLinks))
                 <div class="mt-8">
                     @foreach($contactLinks as $link)
-                        <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="mb-3 bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
-                            <img class="ml-2" src="{{ asset('images/' . $link->title . '.svg') }}" alt="{{ $link->title }}" width="20"> {{ $link->display_title }}
+                        <a href="{{ route('go', ['link' => $link->token]) }}" rel="noreferrer" target="_blank" class="mb-3 bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer font-sans">
+                            <img class="ml-2" src="{{ asset('images/' . $link->title . '.svg') }}" alt="{{ $link->title }}" width="20"> {{ $link->url }}
                         </a>
                     @endforeach
                 </div>
