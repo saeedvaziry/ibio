@@ -6,7 +6,7 @@
             <div class="text-sm mb-5">
                 <span class="text-gray-500" v-if="isLoading">درحال بررسی...</span>
                 <span class="text-red-500" v-else-if="$page.props.errors.username">{{ $page.props.errors.username.username }}</span>
-                <span class="text-green-500" v-else>تبریک! نام کاربری مورد نظر موجوده</span>
+                <span class="text-green-500" v-else-if="checked">تبریک! نام کاربری مورد نظر موجوده</span>
             </div>
             <v-button :loading="saving" :disabled="saving || isLoading" @click="save">ذخیره</v-button>
         </form>
@@ -22,7 +22,8 @@
                 isTyping: false,
                 isLoading: false,
                 keyUp: false,
-                saving: false
+                saving: false,
+                checked: false
             }
         },
         watch: {
@@ -43,6 +44,7 @@
                 });
                 this.keyUp = false;
                 this.isLoading = false;
+                this.checked = true;
             },
             async save() {
                 this.saving = true;
