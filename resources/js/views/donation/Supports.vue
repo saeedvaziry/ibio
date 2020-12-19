@@ -43,7 +43,7 @@
             </div>
         </v-card>
         <v-card class="text-center" v-else>
-            <p class="text-lg mb-3">هنوز کسی هیچ حمایتی دریافت نکردی ☹️</p>
+            <p class="text-lg mb-3">هنوز هیچ حمایتی دریافت نکردی ☹️</p>
             <p class="text-gray-500 mb-3">آدرست رو با دوستات به اشتراک بذار</p>
             <v-button-copy type="secondary" small :copy-text="`ibio.link/${$page.props.user.username}`">
                 <fa-icon :icon="['fas', 'link']" class="ml-1 text-gray-700"></fa-icon>
