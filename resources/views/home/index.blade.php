@@ -4,22 +4,22 @@
 
 @section('content')
     <section id="header" class="container px-5 py-12 mx-auto w-full md:w-10/12 lg:w-10/12 xl:w-8/12 text-right">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="w-full">
-                <h1 class="text-5xl font-bold mb-10 leading-normal">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+            <div class="w-full md:ml-10 text-center lg:text-right">
+                <h1 class="text-4xl font-bold mb-10 leading-normal">
                     با
                     <span class="text-purple-600">لینک</span>
                     شخصیت پول هم دریافت کُن!
                 </h1>
                 <h2 class="text-2xl text-gray-700 mb-3">
-                    <span>یه لینک همه کاره</span>
+                    <span>یک لینک همه کاره</span>
                     <span class="font-extrabold">رایگان</span>
                 </h2>
-                <h2 class="text-2xl text-gray-700 mb-7">که میتونی باهاش خیلی راحت پول دریافت کنی</h2>
+                <h2 class="text-2xl text-gray-700 mb-7">که میتونی باهاش پول هم دریافت کنی!</h2>
                 <p class="text-2xl text-gray-700 mb-12">
-                    همین الان لینکتو ثبت کُن 🎉
+                    حتی میتونی توی اینستاگرام بیشتر از یک لینک داشته باشی 😎
                 </p>
-                <form action="{{ route('register') }}" class="flex flex-col md:flex-row justify-end mb-10 ltr">
+                <form action="{{ route('register') }}" class="flex flex-col md:flex-row justify-center lg:justify-end mb-10 ltr">
                     <div class="relative flex items-center mb-3 md:mb-0">
                         <span class="text-xl absolute ml-4 text-gray-400 ">ibio.link/</span>
                         <input type="text" required name="username" placeholder="yourname" class="bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-800 rounded-lg py-4 pr-2 block w-full text-xl" style="padding-left: 5.9rem" autocomplete="off">
@@ -27,8 +27,9 @@
                     <button type="submit" class="bg-purple-600 hover:bg-purple-400 transition-colors focus:outline-none text-md text-white py-3 px-6 rounded-lg md:ml-2" style="min-width: 130px;">ایجاد لینک</button>
                 </form>
             </div>
-            <div class="mx-auto mr-0 md:mr-5 flex items-center justify-center w-full md:w-auto">
-                <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="rounded-3xl border-8 border-gray-900 w-full shadow-2xl" style="max-width: 340px">
+            <div class="w-full md:w-auto mx-auto lg:mr-5 flex items-center justify-center">
+                <img src="{{ asset('static/images/sample-mobile.png') }}" alt="ibio.link" class="rounded-3xl border-8 border-gray-900 shadow-2xl w-52 ml-5">
+                <img src="{{ asset('static/images/instagram-frame.png') }}" alt="ibio.link" class="rounded-3xl border-8 border-gray-900 shadow-2xl w-52">
             </div>
         </div>
     </section>
@@ -37,7 +38,7 @@
         <div class="container mx-auto">
             <div class="w-full md:w-10/12 lg:w-10/12 xl:w-8/12 mx-auto flex flex-col md:flex-row items-center">
                 <div class="w-full sm:w-1/2 mb-5 md:mb-0">
-                    <h2 class="text-4xl mb-8 leading-loose">{{ __('همه لینکاتو یه جا داشته باش') }}</h2>
+                    <h2 class="text-4xl mb-8 leading-loose">{{ __('همه لینکاتو یِجا داشته باش') }}</h2>
                     <p class="mb-3 text-lg leading-loose">همه لینکاتو جمع کن یجا و توی شبکه های اجتماعی مثل اینستاگرام و توییتر بذارش توی پروفایلت.</p>
                     <p class="text-lg leading-loose">میتونی توی صفحه شخصیت همه لینک های شبکه های اجتماعیت و راه های ارتباطیت رو بذاری</p>
                 </div>

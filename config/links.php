@@ -22,7 +22,7 @@ return [
             'schema' => 'https://tiktok.com/{value}',
         ],
         [
-            'title' => 'سنپ چت',
+            'title' => 'اسنپ چت',
             'value' => 'snapchat',
             'placeholder' => 'username',
             'schema' => 'https://snapchat.com/add/{value}',
