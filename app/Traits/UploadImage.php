@@ -5,7 +5,6 @@ namespace App\Traits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 trait UploadImage
 {
@@ -20,7 +19,7 @@ trait UploadImage
      * @param $storage
      * @return string
      */
-    protected function uploadImage(Request $request, $input, $storage)
+    protected function uploadImage(Request $request, $input = 'image', $storage = 'public')
     {
         if (!$request->hasFile($input)) {
             return null;
