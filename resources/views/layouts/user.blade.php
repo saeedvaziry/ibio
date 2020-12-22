@@ -21,6 +21,7 @@
             height: -webkit-fill-available;
         }
     </style>
+    @include('extensions.favicon')
 </head>
 <body class="flex flex-col justify-between">
     <div style="min-height: calc(100% - 24px)">
