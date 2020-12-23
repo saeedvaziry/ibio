@@ -152,13 +152,13 @@ return [
         [
             'title' => 'واتس اپ',
             'value' => 'whatsapp',
-            'placeholder' => '+1XXXXXXXXXX',
+            'placeholder' => '+98XXXXXXXXXX',
             'schema' => 'https://wa.me/{value}',
         ],
         [
             'title' => 'شماره تلفن',
             'value' => 'phone',
-            'placeholder' => '+1XXXXXXXXXX',
+            'placeholder' => '+98XXXXXXXXXX',
             'schema' => 'tel:{value}',
         ],
         [
@@ -170,7 +170,7 @@ return [
         [
             'title' => 'وایبر',
             'value' => 'viber',
-            'placeholder' => '+1XXXXXXXXXX',
+            'placeholder' => '+98XXXXXXXXXX',
             'schema' => 'viber://{value}'
         ]
     ]

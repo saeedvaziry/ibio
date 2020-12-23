@@ -27,7 +27,6 @@ class LinkUpdateRequest extends FormRequest
             'title' => 'required|max:255',
             'url' => [
                 'required',
-                'url',
                 'max:1000'
             ]
         ];
