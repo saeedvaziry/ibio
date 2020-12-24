@@ -1,7 +1,6 @@
 @if(app()->environment() === 'production')
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-184912914-1">
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXM49N9457"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -11,6 +10,6 @@
 
         gtag('js', new Date());
 
-        gtag('config', 'UA-184912914-1');
+        gtag('config', 'G-NXM49N9457');
     </script>
 @endif
