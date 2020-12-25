@@ -25,7 +25,7 @@
                 <x-alert type="validation" class="mb-3"></x-alert>
                 <x-input type="text" name="amount" label="" placeholder="{{ __('مبلغ (تومان)') }}" value="{{ old('amount') }}" class="mb-2"></x-input>
                 <x-input type="text" name="name" label="" placeholder="{{ __('نام شما (اختیاری)') }}" value="{{ old('name') }}" class="mb-2"></x-input>
-                <textarea name="message" rows="4" placeholder="{{ __('یه چیز خوب بنویسید (اختیاری)') }}"  class="py-3 px-4 w-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-500 rounded-lg">{{ old('message') }}</textarea>
+                <textarea name="message" rows="4" placeholder="{{ __('یه چیز خوب بنویسید (اختیاری)') }}" class="py-3 px-4 w-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-500 rounded-lg">{{ old('message') }}</textarea>
                 <div class="mt-4">
                     <x-button type="purple" full>{{ __('پرداخت') }}</x-button>
                 </div>
@@ -44,7 +44,10 @@
                     </a>
                 </div>
             </div>
-            <div class="mt-8">
+            <div class="mt-8 flex flex-col">
+                @if($user->donation['show_supporters'])
+                    <a href="{{ route('user.donate.supporters', ['username' => $user->username]) }}" class="text-center text-sm text-purple-700 mb-3">{{ __('لیست حامی ها') }}</a>
+                @endif
                 <a href="{{ route('user', ['username' => $user->username]) }}" class="text-center text-sm text-gray-600">{{ __('برگشت به صفحه') }} {{ $user->name }}</a>
             </div>
         </div>

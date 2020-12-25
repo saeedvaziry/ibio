@@ -37,7 +37,25 @@ class SettingsController extends Controller
 
         $request->user()->update([
             'donation' => [
-                'active' => $status
+                'active' => boolval($status)
+            ]
+        ]);
+
+        return back()->with([
+            'success' => __('ذخیره شد')
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $status
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function supportersStatus(Request $request, $status)
+    {
+        $request->user()->update([
+            'donation' => [
+                'show_supporters' => boolval($status)
             ]
         ]);
 

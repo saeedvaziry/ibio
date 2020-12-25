@@ -35,6 +35,7 @@ class Donation implements CastsAttributes
 
         return json_encode([
             'active' => isset($value['active']) ? $value['active'] : $current['active'],
+            'show_supporters' => isset($value['show_supporters']) ? $value['show_supporters'] : $current['show_supporters'],
             'thank_you_message' => isset($value['thank_you_message']) ? $value['thank_you_message'] : $current['thank_you_message'],
             'amounts' => isset($value['amounts']) ? $this->clearAmounts($value['amounts']) : $this->clearAmounts($current['amounts']),
             'payir_api' => isset($value['payir_api']) ? $value['payir_api'] : $current['payir_api'],
@@ -53,6 +54,7 @@ class Donation implements CastsAttributes
 
         return [
             'active' => isset($donation['active']) && $donation['active'],
+            'show_supporters' => isset($donation['show_supporters']) ? $donation['show_supporters'] : true,
             'thank_you_message' => isset($donation['thank_you_message']) ? $donation['thank_you_message'] : __('خیلی ممنون بابت حمایتتون ❤️'),
             'amounts' => isset($donation['amounts']) ? $donation['amounts'] : [
                 10000,

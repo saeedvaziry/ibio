@@ -37,6 +37,26 @@ class DonateController extends Controller
     }
 
     /**
+     * @param $username
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function supporters($username)
+    {
+        $user = User::query()->where('username', $username)->where('active', 1)->firstOrFail();
+
+        if (!$user->donation['active'] || !$user->donation['show_supporters']) {
+            abort(404);
+        }
+
+        return view('user.supporters')->with([
+            'title' => __('لیست حامیان ') . $user->name,
+            'user' => $user,
+            'payments' => $user->successPayments()->orderBy('id', 'desc')->get()
+        ]);
+    }
+
+
+    /**
      * @param Request $request
      * @param $username
      * @return \Illuminate\Http\RedirectResponse

@@ -1,5 +1,30 @@
 <template>
     <donation>
+        <v-card class="mb-5">
+            <v-title small class="mb-5">تنظیمات اصلی</v-title>
+            <div class="flex items-center justify-between mb-5">
+                <div class="ml-10 text-sm md:text-base">فعال سازی و غیر فعال سازی حمایت مالی</div>
+                <div class="flex items-center justify-end">
+                    <span v-if="$page.props.user.donation.active" class="w-16 text-left">فعال</span>
+                    <span v-else class="w-16 text-left">غیر فعال</span>
+                    <label class="switch mr-2">
+                        <input type="checkbox" v-model="$page.props.user.donation.active" @change="updateStatus">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="ml-10 text-sm md:text-base">نمایش لیست حمایت کنندگان در صفحه حمایت مالی</div>
+                <div class="flex items-center justify-end">
+                    <span v-if="$page.props.user.donation.active && $page.props.user.donation.show_supporters" class="w-16 text-left">فعال</span>
+                    <span v-else class="w-16 text-left">غیر فعال</span>
+                    <label class="switch mr-2">
+                        <input type="checkbox" v-model="$page.props.user.donation.active && $page.props.user.donation.show_supporters" @change="updateSupportersStatus">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </v-card>
         <div class="bg-yellow-50 border-r-4 border-yellow-500 text-yellow-700 p-4 rounded-sm mb-5">
             <p class="leading-loose">تمامی پرداخت ها از طریق pay.ir انجام میشه و مبالغ واریزی به کیف پول شما در pay.ir واریز خواهد شد. بنابراین برای انتقال حمایت های دریافتی به حساب بانکیتون باید از طریق پنل کاربری pay.ir اقدام کنید.</p>
         </div>
@@ -103,6 +128,12 @@
                 });
                 this.amount = '';
                 this.savingAmounts = false;
+            },
+            async updateStatus() {
+                await this.$inertia.post(route('donation.settings.status', {status: this.$page.props.user.donation.active ? 1 : 0}));
+            },
+            async updateSupportersStatus() {
+                await this.$inertia.post(route('donation.settings.supporters-status', {status: this.$page.props.user.donation.show_supporters ? 1 : 0}));
             }
         }
     }
