@@ -30,13 +30,13 @@
                     @endforeach
                 @else
                     <div class="text-center mb-3">هنوز هیچ حمایتی انجام نشده ☹️</div>
-                    <a href="{{ route('user', ['username' => $user->username]) }}" class="bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg flex items-center justify-center cursor-pointer">
+                    <a href="{{ route('user.donate', ['username' => $user->username]) }}" class="bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg flex items-center justify-center cursor-pointer">
                         {{ __('اولین نفر باش!') }}
                     </a>
                 @endif
             </div>
             <div class="mt-8 flex flex-col">
-                <a href="{{ route('user', ['username' => $user->username]) }}" class="text-center text-sm text-purple-700 mb-3">
+                <a href="{{ route('user.donate', ['username' => $user->username]) }}" class="text-center text-sm text-purple-700 mb-3">
                     {{ __('حمایت مالی از') }}
                     <span class="font-bold">{{ $user->name }}</span>
                 </a>
