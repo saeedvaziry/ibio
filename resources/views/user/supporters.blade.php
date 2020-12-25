@@ -21,12 +21,19 @@
                 <span class="text-purple-600">{{ $user->name }}</span>
             </h2>
             <div class="mb-5 border-2 rounded-lg p-3 md:p-6 border-gray-100 text-gray-600">
-                @foreach($payments as $key => $payment)
-                    <div class="flex items-center justify-between @if($key < count($payments) - 1) mb-3 @endif">
-                        <div>{{ $payment->sender }}</div>
-                        <div>{{ latin_number_to_persian(custom_money_format($payment->amount)) }} تومان</div>
-                    </div>
-                @endforeach
+                @if(count($payments) > 0)
+                    @foreach($payments as $key => $payment)
+                        <div class="flex items-center justify-between @if($key < count($payments) - 1) mb-3 @endif">
+                            <div>{{ $payment->sender }}</div>
+                            <div>{{ latin_number_to_persian(custom_money_format($payment->amount)) }} تومان</div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="text-center mb-3">هنوز هیچ حمایتی انجام نشده ☹️</div>
+                    <a href="{{ route('user', ['username' => $user->username]) }}" class="bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg flex items-center justify-center cursor-pointer">
+                        {{ __('اولین نفر باش!') }}
+                    </a>
+                @endif
             </div>
             <div class="mt-8 flex flex-col">
                 <a href="{{ route('user', ['username' => $user->username]) }}" class="text-center text-sm text-purple-700 mb-3">
