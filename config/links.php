@@ -156,7 +156,7 @@ return [
             'schema' => 'https://wa.me/{value}',
         ],
         [
-            'title' => 'شماره تلفن',
+            'title' => 'تلفن تماس',
             'value' => 'phone',
             'placeholder' => '+98XXXXXXXXXX',
             'schema' => 'tel:{value}',
