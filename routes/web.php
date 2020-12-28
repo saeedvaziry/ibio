@@ -86,9 +86,11 @@ Route::get('/privacy', 'HomeController@privacy')->name('home.privacy');
 Route::get('/terms', 'HomeController@terms')->name('home.terms');
 
 // user
-Route::get('/go', 'User\UserController@go')->middleware('go')->name('go');
-Route::get('/{username}', 'User\UserController@index')->name('user');
-Route::get('/{username}/donate', 'User\DonateController@index')->name('user.donate');
-Route::get('/{username}/donate/supporters', 'User\DonateController@supporters')->name('user.donate.supporters');
-Route::post('/{username}/donate', 'User\DonateController@donate');
-Route::get('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');
+Route::group(['middleware' => 'block-crawlers'], function () {
+    Route::get('/go', 'User\UserController@go')->middleware('go')->name('go');
+    Route::get('/{username}', 'User\UserController@index')->name('user');
+    Route::get('/{username}/donate', 'User\DonateController@index')->name('user.donate');
+    Route::get('/{username}/donate/supporters', 'User\DonateController@supporters')->name('user.donate.supporters');
+    Route::post('/{username}/donate', 'User\DonateController@donate');
+    Route::get('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');
+});
