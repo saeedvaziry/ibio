@@ -44,6 +44,10 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'go' => [
+            'throttle:go',
+        ],
+
         'inertia' => [
             \App\Http\Middleware\HandleInertiaRequests::class,
         ]

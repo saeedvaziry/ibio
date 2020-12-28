@@ -27,6 +27,12 @@ return [
             'placeholder' => 'username',
             'schema' => 'https://snapchat.com/add/{value}',
         ],
+        // [
+        //     'title' => 'ویرگول',
+        //     'value' => 'virgool',
+        //     'placeholder' => '@username',
+        //     'schema' => 'https://virgool.io/{value}',
+        // ],
         [
             'title' => 'مدیوم',
             'value' => 'medium',
