@@ -9,6 +9,9 @@
         <li class="ml-3">
             <a href="{{ route('home.terms') }}">قوانین و شرایط استفاده</a>
         </li>
+        <li class="ml-3">
+            <a href="https://trello.com/b/IyS95O1u" target="_blank">مسیر راه</a>
+        </li>
     </ul>
 </div>
 <div class="w-full sm:w-4/12 flex items-center justify-center md:justify-end">
