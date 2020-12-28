@@ -20,7 +20,7 @@ class BlockCrawlers
     public function handle(Request $request, Closure $next)
     {
         $crawlerDetect = new CrawlerDetect;
-        if (!$crawlerDetect->isCrawler()) {
+        if (!$crawlerDetect->isCrawler($request->userAgent())) {
             return $next($request);
         }
 
