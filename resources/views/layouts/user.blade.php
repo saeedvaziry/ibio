@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-    <title>{{ $title }}</title>
+    <title>{{ $user->display_name }}</title>
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/' . $user->username) }}">
-    <meta property="og:title" content="{{ $title }}">
-    <meta property="og:description" content="{{ $user->bio }}">
+    <meta property="og:title" content="{{ $user->display_name }}">
+    <meta property="og:description" content="{{ $user->display_bio }}">
     <meta property="og:image" content="{{ $user->avatar ? $user->avatar_url : asset('static/favicon/android-chrome-192x192.png') }}">
     <style>
         body {
