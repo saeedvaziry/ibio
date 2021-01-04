@@ -213,7 +213,7 @@ class User extends Authenticatable
      */
     public function getDisplayNameAttribute()
     {
-        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+        $isEn = session()->has('lang-' . $this->id) && session()->get('lang-' . $this->id) == 'en';
 
         return $isEn ? $this->name_en : $this->name;
     }
@@ -223,7 +223,7 @@ class User extends Authenticatable
      */
     public function getDisplayBioAttribute()
     {
-        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+        $isEn = session()->has('lang-' . $this->id) && session()->get('lang-' . $this->id) == 'en';
 
         return $isEn ? $this->bio_en : $this->bio;
     }

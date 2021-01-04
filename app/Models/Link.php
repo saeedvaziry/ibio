@@ -140,7 +140,7 @@ class Link extends Model
      */
     public function getDisplayTitleAttribute()
     {
-        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+        $isEn = session()->has('lang-' . $this->user_id) && session()->get('lang-' . $this->user_id) == 'en';
 
         if ($this->type == 'social') {
             foreach (config('links.social_medias') as $link) {
