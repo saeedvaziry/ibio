@@ -17,6 +17,7 @@ class Link extends Model
         'user_id',
         'type',
         'title',
+        'title_en',
         'url',
         'meta',
         'order',
@@ -134,24 +135,29 @@ class Link extends Model
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getDisplayTitleAttribute()
     {
+        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+
         if ($this->type == 'social') {
             foreach (config('links.social_medias') as $link) {
                 if ($this->title == $link['value']) {
-                    return $link['title'];
+                    return $isEn ? $link['value'] : $link['title'];
                 }
             }
         }
         if ($this->type == 'contact') {
             foreach (config('links.contacts') as $link) {
                 if ($this->title == $link['value']) {
-                    return $link['title'];
+                    return $isEn ? $link['value'] : $link['title'];
                 }
             }
         }
 
-        return $this->title;
+        return $isEn ? $this->title_en ?? substr($this->url, 0, 10) . '...' : $this->title;
     }
 
     /**

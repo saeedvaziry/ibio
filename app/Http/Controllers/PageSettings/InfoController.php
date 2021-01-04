@@ -34,12 +34,16 @@ class InfoController extends Controller
     {
         $request->validateWithBag('info', [
             'name' => 'required|max:255',
-            'bio' => 'max:1000'
+            'name_en' => 'max:255',
+            'bio' => 'max:1000',
+            'bio_en' => 'max:1000',
         ]);
 
         $request->user()->update([
             'name' => $request->name,
-            'bio' => $request->bio
+            'name_en' => $request->name_en,
+            'bio' => $request->bio,
+            'bio_en' => $request->bio_en,
         ]);
 
         return back()->with([

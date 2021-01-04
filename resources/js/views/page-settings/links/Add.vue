@@ -3,6 +3,7 @@
         <form @submit.prevent="add" enctype="multipart/form-data">
             <v-select label="نوع لینک" :value="form.type" @selected="form.type = $event" :data="types" class="mb-4" :error="$page.props.errors.create && $page.props.errors.create.type"></v-select>
             <v-input name="title" label="عنوان" v-model="form.title" class="mb-4" :error="$page.props.errors.create && $page.props.errors.create.title"></v-input>
+            <v-input name="title_en" label="عنوان انگلیسی (اختیاری)" ltr v-model="form.title_en" class="mb-4" :error="$page.props.errors.create && $page.props.errors.create.title_en"></v-input>
             <template v-if="form.type === 'text'">
                 <v-input input-class="ltr" name="url" label="آدرس لینک" v-model="form.url" placeholder="http://example.com" class="mb-4" :error="$page.props.errors.create && $page.props.errors.create.url"></v-input>
             </template>
@@ -34,6 +35,7 @@
                 form: {
                     type: 'text',
                     title: '',
+                    title_en: '',
                     url: ''
                 },
                 types: [
@@ -72,6 +74,7 @@
                 let formData = new FormData();
                 formData.append('type', this.form.type);
                 formData.append('title', this.form.title);
+                formData.append('title_en', this.form.title_en);
                 formData.append('url', this.form.url);
                 let endpoint = route('page-settings.links');
                 await this.$inertia.post(endpoint, formData, {
@@ -85,6 +88,7 @@
                 this.form = {
                     type: 'text',
                     title: '',
+                    title_en: '',
                     url: ''
                 };
             }

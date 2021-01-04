@@ -24,12 +24,22 @@ class UserController extends Controller
 
         $this->createStat($request, $user);
 
+        $lang = $request->session()->get('lang');
+        if ($request->l && in_array($request->l, ['fa', 'en'])) {
+            $lang = $request->l;
+        }
+        if (!$lang) {
+            $lang = 'fa';
+        }
+        $request->session()->put('lang', $lang);
+
         return view('user.index')->with([
             'title' => $user->name,
             'user' => $user,
             'links' => LinkResource::collection($user->pageLinks()->orderBy('order')->get()),
             'socialLinks' => LinkResource::collection($user->socialLinks),
             'contactLinks' => LinkResource::collection($user->contactLinks),
+            'isEn' => $lang === 'en'
         ]);
     }
 

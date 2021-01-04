@@ -107,6 +107,10 @@ input:checked + .slider {
     @apply bg-purple-600;
 }
 
+.slider.active {
+    @apply bg-purple-600;
+}
+
 input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);

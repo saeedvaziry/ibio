@@ -23,12 +23,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'name_en',
         'email',
         'username',
         'password',
         'avatar',
         'social',
         'bio',
+        'bio_en',
         'page',
         'active',
         'donation',
@@ -204,5 +206,25 @@ class User extends Authenticatable
     public function successPayments()
     {
         return $this->payments()->whereNotNull('verified_at');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDisplayNameAttribute()
+    {
+        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+
+        return $isEn ? $this->name_en : $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDisplayBioAttribute()
+    {
+        $isEn = session()->has('lang') && session()->get('lang') == 'en';
+
+        return $isEn ? $this->bio_en : $this->bio;
     }
 }
