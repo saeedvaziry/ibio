@@ -15,6 +15,12 @@ trait HasStats
      */
     protected function createStat(Request $request, $statable)
     {
+        $country = '-';
+        try {
+            $country = strtolower(ip2location_country_code());
+        } catch (\Exception $e) {
+            //
+        }
         $userAgent = new Agent();
         $userAgent->setUserAgent($request->userAgent());
         if (!$userAgent->isRobot()) {
@@ -22,7 +28,7 @@ trait HasStats
                 'device' => $this->getDevice($userAgent),
                 'os' => $userAgent->platform(),
                 'ip' => $request->ip(),
-                'country' => strtolower(ip2location_country_code()),
+                'country' => $country,
                 'is_mobile' => $userAgent->isMobile(),
                 'is_desktop' => $userAgent->isDesktop(),
                 'is_tablet' => $userAgent->isTablet(),
