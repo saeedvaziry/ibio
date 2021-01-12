@@ -109,7 +109,7 @@ class DonateController extends Controller
 
             return redirect()->to($payment->payirUrl());
         } catch (SendException $e) {
-            throw new PaymentException($e->getMessage());
+            throw new PaymentException($payment, $e->getMessage());
         } catch (\Exception $e) {
             throw $e;
         }
