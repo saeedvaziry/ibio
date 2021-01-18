@@ -24,9 +24,16 @@ Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
         Route::get('/settings', 'Donation\SettingsController@settings')->name('donation.settings');
         Route::post('/settings/status/{status}', 'Donation\SettingsController@status')->name('donation.settings.status');
         Route::post('/settings/supporters-status/{status}', 'Donation\SettingsController@supportersStatus')->name('donation.settings.supporters-status');
-        Route::post('/settings/amounts', 'Donation\SettingsController@amounts')->name('donation.settings.amounts');
         Route::post('/settings/thank-you-message', 'Donation\SettingsController@thankYouMessage')->name('donation.settings.thank-you-message');
-        Route::post('/settings/payir-api', 'Donation\SettingsController@payApi')->name('donation.settings.payir-api');
+        Route::post('/settings/thank-you-message-en', 'Donation\SettingsController@thankYouMessageEn')->name('donation.settings.thank-you-message-en');
+        // rial gateway settings
+        Route::get('/settings/gateway-rial', 'Donation\RialGatewaySettingsController@index')->name('donation.settings.gateway-rial');
+        Route::post('/settings/gateway-rial/amounts', 'Donation\RialGatewaySettingsController@amounts')->name('donation.settings.gateway-rial.amounts');
+        Route::post('/settings/gateway-rial/payir-api', 'Donation\RialGatewaySettingsController@payApi')->name('donation.settings.gateway-rial.payir-api');
+        // crypto gateway settings
+        Route::get('/settings/gateway-crypto', 'Donation\CryptoGatewaySettingsController@index')->name('donation.settings.gateway-crypto');
+        Route::post('/settings/gateway-crypto/amounts', 'Donation\CryptoGatewaySettingsController@amounts')->name('donation.settings.gateway-crypto.amounts');
+        Route::post('/settings/gateway-crypto/jeeb-api', 'Donation\CryptoGatewaySettingsController@jeebApi')->name('donation.settings.gateway-crypto.jeeb-api');
         // supports
         Route::get('/supports/{payment?}', 'Donation\SupportController@index')->name('donation.supports');
     });
@@ -92,5 +99,5 @@ Route::group(['middleware' => 'block-crawlers'], function () {
     Route::get('/{username}/donate', 'User\DonateController@index')->name('user.donate');
     Route::get('/{username}/donate/supporters', 'User\DonateController@supporters')->name('user.donate.supporters');
     Route::post('/{username}/donate', 'User\DonateController@donate');
-    Route::get('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');
+    Route::any('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');
 });

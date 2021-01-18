@@ -89,5 +89,11 @@ return [
         'username' => 'نام کاربری',
         'text' => 'متن',
         'payir_api' => 'API-Key',
+        'irr_amount' => 'مبلغ',
+        'irr_name' => 'نام',
+        'irr_message' => 'پیام',
+        'crypto_amount' => 'مبلغ',
+        'crypto_name' => 'نام',
+        'crypto_message' => 'پیام',
     ],
 ];

@@ -147,6 +147,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'irr_amount' => 'Amount',
+        'irr_name' => 'Name',
+        'irr_message' => 'Message',
+        'crypto_amount' => 'Amount',
+        'crypto_name' => 'Name',
+        'crypto_message' => 'Message',
+    ],
 
 ];

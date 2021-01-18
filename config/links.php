@@ -46,6 +46,12 @@ return [
             'schema' => 'https://youtube.com/channel/{value}',
         ],
         [
+            'title' => 'آپارات',
+            'value' => 'aparat',
+            'placeholder' => 'username',
+            'schema' => 'https://aparat.com/{value}',
+        ],
+        [
             'title' => 'رِدیت',
             'value' => 'reddit',
             'placeholder' => 'username',

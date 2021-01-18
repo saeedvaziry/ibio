@@ -62,6 +62,11 @@ class Input extends Component
     public $model;
 
     /**
+     * @var
+     */
+    public $required;
+
+    /**
      * Create a new component instance.
      *
      * @param $type
@@ -75,8 +80,9 @@ class Input extends Component
      * @param string $placeholder
      * @param string $help
      * @param string $model
+     * @param string $required
      */
-    public function __construct($type, $label, $name, $value = null, $maxLength = false, $ltr = false, $disabled = false, $classList = '', $placeholder = '', $help = '', $model = '')
+    public function __construct($type, $label, $name, $value = null, $maxLength = false, $ltr = false, $disabled = false, $classList = '', $placeholder = '', $help = '', $model = '', $required = false)
     {
         $this->type = $type;
         $this->label = $label;
@@ -89,6 +95,7 @@ class Input extends Component
         $this->placeholder = $placeholder;
         $this->help = $help;
         $this->model = $model;
+        $this->required = $required;
     }
 
     /**

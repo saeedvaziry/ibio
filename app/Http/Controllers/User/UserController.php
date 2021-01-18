@@ -24,14 +24,7 @@ class UserController extends Controller
 
         $this->createStat($request, $user);
 
-        $lang = $request->session()->get('lang-' . $user->id);
-        if ($request->l && in_array($request->l, ['fa', 'en'])) {
-            $lang = $request->l;
-        }
-        if (!$lang) {
-            $lang = 'fa';
-        }
-        $request->session()->put('lang-' . $user->id, $lang);
+        $lang = $this->getLang($user, $request);
 
         return view('user.index')->with([
             'title' => $user->name,

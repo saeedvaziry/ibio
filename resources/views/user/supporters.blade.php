@@ -6,26 +6,22 @@
         </a>
     @endif
     <div class="w-full flex justify-center">
-        <div class="p-5 w-full md:w-6/12 lg:5/12 xl:w-3/12 text-center">
-            <div class="mb-3">
-                @if($user->avatar_url)
-                    <img class="rounded-full border-4 border-purple-100 w-20 h-20 mx-auto" src="{{ $user->avatar_url }}" alt="{{ $user->name }}" />
-                @else
-                    <div class="rounded-full inline-flex items-center justify-center bg-purple-200 text-purple-700 border-4 border-purple-100 capitalize w-20 h-20 text-2xl">
-                        {{ mb_substr($user->name, 0, 1) }}
-                    </div>
-                @endif
-            </div>
+        <div class="p-5 w-full md:w-6/12 lg:5/12 xl:w-3/12 text-center relative">
+            @include('user.partials.top')
             <h2 class="text-black text-2xl mb-8">
-                {{ __('لیست حامیان') }}
-                <span class="text-purple-600">{{ $user->name }}</span>
+                @if($isEn)
+                    <span class="text-purple-600 capitalize">{{ $user->display_name }}'s</span> {{ __('Supporters') }}
+                @else
+                    {{ __('لیست حامیان') }}
+                    <span class="text-purple-600">{{ $user->display_name }}</span>
+                @endif
             </h2>
-            <div class="mb-5 border-2 rounded-lg p-3 md:p-6 border-gray-100 text-gray-600">
+            <div class="mb-5 border-2 rounded-lg p-3 md:p-6 border-gray-100 text-gray-600 @if($isEn) ltr text-left @endif">
                 @if(count($payments) > 0)
                     @foreach($payments as $key => $payment)
                         <div class="flex items-center justify-between @if($key < count($payments) - 1) mb-3 @endif">
                             <div>{{ $payment->sender }}</div>
-                            <div>{{ latin_number_to_persian(custom_money_format($payment->amount)) }} تومان</div>
+                            <div>{{ $isEn ? custom_money_format($payment->amount) : latin_number_to_persian(custom_money_format($payment->amount)) }} {{ $payment->display_currency }}</div>
                         </div>
                     @endforeach
                 @else
@@ -37,10 +33,10 @@
             </div>
             <div class="mt-8 flex flex-col">
                 <a href="{{ route('user.donate', ['username' => $user->username]) }}" class="text-center text-sm text-purple-700 mb-3">
-                    {{ __('حمایت مالی از') }}
-                    <span class="font-bold">{{ $user->name }}</span>
+                    {{ $isEn ? __('Donate to') : __('حمایت مالی از') }}
+                    <span class="font-bold">{{ $user->display_name }}</span>
                 </a>
-                <a href="{{ route('user', ['username' => $user->username]) }}" class="text-center text-sm text-gray-600">{{ __('برگشت به صفحه') }} {{ $user->name }}</a>
+                <a href="{{ route('user', ['username' => $user->username]) }}" class="text-center text-sm text-gray-600">{{ $isEn ? __('Back to') : __('برگشت به صفحه') }} {{ $user->display_name }}</a>
             </div>
         </div>
     </div>

@@ -17,15 +17,22 @@ class Alert extends Component
     public $class;
 
     /**
+     * @var
+     */
+    public $errorBag;
+
+    /**
      * Create a new component instance.
      *
      * @param $type
-     * @param $class
+     * @param string $class
+     * @param string $errorBag
      */
-    public function __construct($type, $class = "")
+    public function __construct($type, $class = "", $errorBag = "")
     {
         $this->type = $type;
         $this->class = $class;
+        $this->errorBag = $errorBag;
     }
 
     /**

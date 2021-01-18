@@ -37,7 +37,8 @@ class PaymentException extends Exception
             'success' => false,
             'payment' => $this->payment,
             'error' => $this->getMessage(),
-            'retry' => $this->retry
+            'retry' => $this->retry,
+            'isEn' => false
         ]);
     }
 }

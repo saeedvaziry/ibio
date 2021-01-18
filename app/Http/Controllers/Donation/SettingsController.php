@@ -31,7 +31,7 @@ class SettingsController extends Controller
     {
         if (!$request->user()->donation['payir_api']) {
             return redirect()->route('donation.settings')->with([
-                'error' => __('برای فعال سازی ابتدا تنظیمات درگاه پرداخت رو تکمیل کنید')
+                'error' => __('برای فعال سازی ابتدا تنظیمات درگاه ریالی یا کریپتو رو تکمیل کنید')
             ]);
         }
 
@@ -68,27 +68,6 @@ class SettingsController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function amounts(Request $request)
-    {
-        $request->validateWithBag('amounts', [
-            'amounts.*' => 'numeric|min:10000|max:50000000'
-        ]);
-
-        $request->user()->update([
-            'donation' => [
-                'amounts' => array_unique($request->amounts)
-            ]
-        ]);
-
-        return back()->with([
-            'success' => __('ذخیره شد')
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function thankYouMessage(Request $request)
     {
         $request->validateWithBag('thankYouMessage', [
@@ -109,25 +88,16 @@ class SettingsController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
-     * @throws ValidationException
      */
-    public function payApi(Request $request)
+    public function thankYouMessageEn(Request $request)
     {
-        if ($request->payir_api == 'test') {
-            throw ValidationException::withMessages(['payir_api' => __('امکان استفاده از درگاه تست شبکه پرداخت پِی وجود ندارد ')])
-                ->errorBag('payApi');
-        }
-
-        $request->validateWithBag('payApi', [
-            'payir_api' => [
-                'required',
-                new MD5()
-            ]
+        $request->validateWithBag('thankYouMessageEn', [
+            'text' => 'required|max:1000'
         ]);
 
         $request->user()->update([
             'donation' => [
-                'payir_api' => $request->payir_api
+                'thank_you_message_en' => $request->text
             ]
         ]);
 

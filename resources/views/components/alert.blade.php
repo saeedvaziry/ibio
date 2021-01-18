@@ -1,9 +1,17 @@
 <div>
-    @if (isset($errors) && count($errors) > 0)
+    @if($errorBag && $errors->{$errorBag}->count())
+        <div class="bg-red-100 border-red-500 text-red-700 border-l-4 p-4 rounded-sm {{ $class }}">
+            <ul>
+                @foreach ($errors->{$errorBag}->all() as $error)
+                    <li class="@if($errors->{$errorBag}->count() > 1) mb-2 @endif">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif(isset($errors) && count($errors) > 0)
         <div class="bg-red-100 border-red-500 text-red-700 border-l-4 p-4 rounded-sm {{ $class }}">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li class="@if($errors->count() > 1) mb-2 @endif">{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
