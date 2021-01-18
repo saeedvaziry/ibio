@@ -60,6 +60,8 @@
                         </div>
                     </div>
                 </div>
+            @endif
+            @if($user->donation['jeeb_api'])
                 <div id="crypto-payment-box" class="@if($user->donation['payir_api'] && $user->donation['jeeb_api'] && !$errors->crypto->count()) hidden @endif">
                     <form id="crypto-payment" class="text-right @if(!$errors->crypto->count()) hidden @endif @if($isEn) ltr font-sans @endif" method="post" action="{{ route('user.donate', ['username' => $user->username]) }}">
                         @csrf

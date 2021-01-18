@@ -49,13 +49,6 @@ class CryptoGatewaySettingsController extends Controller
      */
     public function jeebApi(Request $request)
     {
-
-        $request->validateWithBag('jeebApi', [
-            'jeeb_api' => [
-                'required'
-            ]
-        ]);
-
         $request->user()->update([
             'donation' => [
                 'jeeb_api' => $request->jeeb_api

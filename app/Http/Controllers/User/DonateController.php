@@ -191,7 +191,11 @@ class DonateController extends Controller
             $response = $paymentRequest->json();
 
             if (!$paymentRequest->ok() || !isset($response['result'])) {
-                throw new PaymentException($payment, __('خطا در ایجاد پرداخت'));
+                if ($paymentRequest->status() == 401) {
+                    throw new PaymentException($payment, __('API-KEY جیب اشتباه می باشد'), false);
+                }
+
+                throw new PaymentException($payment, __('خطا در ایجاد پرداخت'), false);
             }
 
             // update payment

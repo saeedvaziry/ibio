@@ -35,13 +35,13 @@ class Donation implements CastsAttributes
 
         return json_encode([
             'active' => isset($value['active']) ? $value['active'] : $current['active'],
-            'show_supporters' => isset($value['show_supporters']) ? $value['show_supporters'] : $current['show_supporters'],
-            'thank_you_message' => isset($value['thank_you_message']) ? $value['thank_you_message'] : $current['thank_you_message'],
+            'show_supporters' => array_key_exists('show_supporters', $value) ? $value['show_supporters'] : $current['show_supporters'],
+            'thank_you_message' => array_key_exists('thank_you_message', $value) ? $value['thank_you_message'] : $current['thank_you_message'],
             'thank_you_message_en' => isset($value['thank_you_message_en']) ? $value['thank_you_message_en'] : $current['thank_you_message_en'],
             'amounts' => isset($value['amounts']) ? $this->clearAmounts($value['amounts']) : $this->clearAmounts($current['amounts']),
             'amounts_usd' => isset($value['amounts_usd']) ? $this->clearAmounts($value['amounts_usd']) : $this->clearAmounts($current['amounts_usd']),
-            'payir_api' => isset($value['payir_api']) ? $value['payir_api'] : $current['payir_api'],
-            'jeeb_api' => isset($value['jeeb_api']) ? $value['jeeb_api'] : $current['jeeb_api'],
+            'payir_api' => array_key_exists('payir_api', $value) ? $value['payir_api'] : $current['payir_api'],
+            'jeeb_api' => array_key_exists('jeeb_api', $value) ? $value['jeeb_api'] : $current['jeeb_api'],
         ]);
     }
 

@@ -57,7 +57,6 @@ class RialGatewaySettingsController extends Controller
 
         $request->validateWithBag('payApi', [
             'payir_api' => [
-                'required',
                 new MD5()
             ]
         ]);
