@@ -10,7 +10,8 @@
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
             <x-alert type="validation" class="mb-3"></x-alert>
-            <x-input type="email" name="email" label="آدرس ایمیل" class="mb-3"></x-input>
+            <input type="hidden" name="email" value="{{ $email }}">
+            <input type="hidden" name="token" value="{{ $token }}">
             <x-input type="password" name="password" label="کلمه عبور" class="mb-3"></x-input>
             <x-input type="password" name="password_confirmation" label="تایید کلمه عبور" class="mb-3"></x-input>
             <div class="mt-6">

@@ -9,6 +9,11 @@
         </h2>
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
+            @if(session()->has('status'))
+                <div class="bg-green-100 border-green-500 text-green-700 border-r-4 p-4 mb-5">
+                    {{ session()->get('status') }}
+                </div>
+            @endif
             <x-alert type="validation" class="mb-3"></x-alert>
             @if(session()->has('status'))
                 <x-alert type="success" class="mb-3">{{ session()->get('status') }}</x-alert>
