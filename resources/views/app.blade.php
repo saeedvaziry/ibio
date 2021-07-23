@@ -20,6 +20,7 @@
     @routes
 </head>
 <body class="dark:bg-gray-900">
+    @include('alerts.alert')
     @inertia
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @include('extensions.cookie')

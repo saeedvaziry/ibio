@@ -16,6 +16,7 @@
     @include('extensions.favicon')
 </head>
 <body class="overflow-x-hidden">
+    @include('alerts.alert')
     @include('layouts.home.navbar')
     @yield('content')
     <section id="footer" class="bg-white px-5 py-10 mx-auto w-full text-gray-600">

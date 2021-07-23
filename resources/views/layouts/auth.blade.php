@@ -16,11 +16,14 @@
     <meta property="og:image" content="{{ asset('static/favicon/android-chrome-192x192.png') }}">
     @include('extensions.favicon')
 </head>
-<body class="text-black py-10 md:py-20 px-10 flex justify-center">
-    <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
-        @yield('content')
+<body>
+    @include('alerts.alert')
+    <div class="text-black py-10 md:py-20 px-10 flex justify-center">
+        <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
+            @yield('content')
+        </div>
+        @include('extensions.cookie')
+        @include('extensions.google')
     </div>
-    @include('extensions.cookie')
-    @include('extensions.google')
 </body>
 </html>
