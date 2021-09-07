@@ -1,1 +1,1 @@
-@include('alerts.internet')
+@include('alerts.github')
