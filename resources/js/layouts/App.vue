@@ -21,13 +21,13 @@
             </div>
             <div class="w-full sm:w-4/12 flex items-center justify-center md:justify-end">
                 <a href="https://t.me/ibiolink" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
-                    <img :src="require('../../img/telegram.svg')" alt="Telegram" width="20">
+                    <img :src="require('../../img/telegram.svg').default" alt="Telegram" width="20">
                 </a>
                 <a href="https://www.instagram.com/ibio.link.official" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
-                    <img :src="require('../../img/instagram.svg')" alt="Instagram" width="20">
+                    <img :src="require('../../img/instagram.svg').default" alt="Instagram" width="20">
                 </a>
                 <a href="https://twitter.com/ibio_link" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
-                    <img :src="require('../../img/twitter.svg')" alt="Twitter" width="20">
+                    <img :src="require('../../img/twitter.svg').default" alt="Twitter" width="20">
                 </a>
             </div>
         </div>

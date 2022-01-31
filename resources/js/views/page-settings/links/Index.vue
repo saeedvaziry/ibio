@@ -8,7 +8,7 @@
                     <v-card v-else class="mb-3 flex items-center justify-between" padding="p-5">
                         <div class="flex flex-col justify-center">
                             <div class="text-lg flex items-center">
-                                <img :src="require('../../../../img/' + link.type + '.svg')" width="20" class="ml-2" alt="">
+                                <img :src="require('../../../../img/' + link.type + '.svg').default" width="20" class="ml-2" alt="">
                                 <div>{{ link.title }}</div>
                             </div>
                             <div class="text-xs text-gray-500 break-all" style="max-width: 300px">{{ link.url }}</div>

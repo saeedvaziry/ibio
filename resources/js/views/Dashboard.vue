@@ -34,7 +34,7 @@
                     </v-card>
                 </div>
                 <v-card padding="0" v-if="$page.props.recentClicks.length > 0">
-                    <div class="flex items-center justify-between border-b-2 border-gray-100 p-3 md:p-6">
+                    <div class="flex items-center justify-between border-b-2 border-gray-100 dark:border-gray-700 p-3 md:p-6">
                         <v-title small class="p-0">کلیک های اخیر</v-title>
                         <v-button type="secondary" small @click="$inertia.visit(route('stats.clicks'))">
                             <fa-icon :icon="['fas', 'chart-bar']" class="ml-2"></fa-icon>
@@ -42,27 +42,29 @@
                         </v-button>
                     </div>
                     <table class="min-w-full divide-y divide-gray-100">
-                        <tbody class="bg-white divide-y divide-gray-100 text-gray-600">
-                        <tr v-for="(stat, i) in $page.props.recentClicks" :key="i" class="hover:bg-gray-50">
+                        <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-100 dark:divide-gray-800 text-gray-600 dark:text-gray-300">
+                        <tr v-for="(stat, i) in $page.props.recentClicks" :key="i" class="hover:bg-gray-50 dark:hover:bg-gray-800">
                             <td class="px-6 py-4 whitespace-nowrap flex items-center">
-                                <img v-if="['social', 'contact'].includes(stat.statable.type) && stat.statable.title" :src="require(`../../img/${stat.statable.title}.svg`)" width="20" class="ml-1" alt="">
-                                <a :href="stat.statable.real_url" rel="noreferrer" target="_blank" class="text-gray-700" :class="{'capitalize': ['social', 'contact'].includes(stat.statable.type) }">{{ stat.statable.display_title }}</a>
+                                <img v-if="['social', 'contact'].includes(stat.statable.type) && stat.statable.title" :src="require(`../../img/${stat.statable.title}.svg`).default" width="20" class="ml-2" alt="">
+                                <a :href="stat.statable.real_url" rel="noreferrer" target="_blank" class="text-gray-700 dark:text-gray-300" :class="{'capitalize': ['social', 'contact'].includes(stat.statable.type) }">{{ stat.statable.display_title }}</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap"></td>
-                            <td class="px-6 py-4 text-right whitespace-nowrap flex items-center justify-end">
-                                <div class="flex items-center ml-2" v-if="stat.country && stat.country !== '-'">
-                                    <img class="h-5" :src="`/static/images/country-flags/${stat.country}.svg`" alt="">
-                                </div>
-                                <div class="flex items-center justify-center w-5">
-                                    <template v-if="stat.is_mobile">
-                                        <fa-icon :icon="['fas', 'mobile-alt']" class="fa-w"></fa-icon>
-                                    </template>
-                                    <template v-if="stat.is_desktop">
-                                        <fa-icon :icon="['fas', 'desktop']" class="fa-w"></fa-icon>
-                                    </template>
-                                    <template v-if="stat.is_tablet">
-                                        <fa-icon :icon="['fas', 'tablet-alt']" class="fa-w"></fa-icon>
-                                    </template>
+                            <td class="px-6 py-4 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end">
+                                    <div class="flex items-center ml-2" v-if="stat.country && stat.country !== '-'">
+                                        <img class="h-5" :src="`/static/images/country-flags/${stat.country}.svg`" alt="">
+                                    </div>
+                                    <div class="flex items-center justify-center w-5">
+                                        <template v-if="stat.is_mobile">
+                                            <fa-icon :icon="['fas', 'mobile-alt']" class="fa-w"></fa-icon>
+                                        </template>
+                                        <template v-if="stat.is_desktop">
+                                            <fa-icon :icon="['fas', 'desktop']" class="fa-w"></fa-icon>
+                                        </template>
+                                        <template v-if="stat.is_tablet">
+                                            <fa-icon :icon="['fas', 'tablet-alt']" class="fa-w"></fa-icon>
+                                        </template>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

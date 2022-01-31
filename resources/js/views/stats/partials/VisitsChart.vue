@@ -6,12 +6,16 @@
         name: "VisitsChart",
         props: ['chartData'],
         mounted() {
+            let bgColor = '#fad9da';
+            if (this.$root.theme === 'dark' || (this.$root.theme === 'system' && this.$root.system_theme === 'dark')) {
+                bgColor = 'rgba(201,45,50,0.45)'
+            }
             this.renderChart({
                 labels: this.getLabels(),
                 datasets: [
                     {
                         label: 'بازدید ها',
-                        backgroundColor: '#fad9da',
+                        backgroundColor: bgColor,
                         data: this.getData(),
                         borderWidth: 5,
                         borderColor: ['#f85752'],

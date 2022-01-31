@@ -51,27 +51,27 @@
                     {
                         title: 'لینک متنی',
                         value: 'text',
-                        img: require('../../../../img/text.svg')
+                        img: require('../../../../img/text.svg').default
                     },
                     {
                         title: 'ویدیو یوتیوب',
                         value: 'youtube',
-                        img: require('../../../../img/youtube.svg')
+                        img: require('../../../../img/youtube.svg').default
                     },
                     {
                         title: 'ویدیو آپارات',
                         value: 'aparat',
-                        img: require('../../../../img/aparat.svg')
+                        img: require('../../../../img/aparat.svg').default
                     },
                     {
                         title: 'ترک اسپاتیفای',
                         value: 'spotify',
-                        img: require('../../../../img/spotify.svg')
+                        img: require('../../../../img/spotify.svg').default
                     },
                     {
                         title: 'ترک ساندکلود',
                         value: 'soundcloud',
-                        img: require('../../../../img/soundcloud.svg')
+                        img: require('../../../../img/soundcloud.svg').default
                     },
                 ],
                 saving: false,

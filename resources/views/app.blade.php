@@ -19,7 +19,7 @@
     </script>
     @routes
 </head>
-<body class="dark:bg-gray-900">
+<body class="dark:bg-gray-900 dark:text-gray-300">
     @include('alerts.alert')
     @inertia
     <script src="{{ mix('/js/app.js') }}" defer></script>

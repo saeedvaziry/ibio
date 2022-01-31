@@ -7,7 +7,7 @@
                     type="button" @click="openDropdown" aria-haspopup="listbox" aria-expanded="true"
                     aria-labelledby="listbox-label"
                     :class="{'border-red-500': error}"
-                    class="cursor-pointer relative w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:bg-white bg-gray-100 pr-4 pl-10 py-3 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                    class="cursor-pointer relative w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-500 focus:bg-white dark:focus:bg-gray-700 bg-gray-100 dark:bg-gray-800 pr-4 pl-10 py-3 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                 >
                     <div class="flex items-center space-x-3 h-6">
                         <template v-if="selected">
@@ -38,7 +38,7 @@
                 leave-class="opacity-100" leave-to-class="opacity-0"
             >
                 <div
-                    v-show="isOpen" class="absolute mt-1 w-full rounded-md bg-white shadow-lg z-10"
+                    v-show="isOpen" class="absolute mt-1 w-full rounded-md bg-white dark:bg-gray-800 shadow-lg z-10"
                 >
                     <ul
                         tabindex="-1" role="listbox" aria-labelledby="listbox-label"
@@ -48,8 +48,8 @@
                         <li
                             tabindex="0" @click="select(d)" id="listbox-item-0" role="option"
                             v-for="(d, index) in data" v-bind:key="index"
-                            class="text-gray-900 cursor-default select-none relative py-2 pr-3 pl-9  cursor-pointer hover:text-gray-800 hover:bg-gray-200 focus:outline-none focus:text-gray-800 focus:bg-gray-200"
-                            :class="{'bg-gray-100': isSelected(d)}"
+                            class="text-gray-900 dark:text-gray-300 cursor-default select-none relative py-2 pr-3 pl-9  cursor-pointer hover:text-gray-800 dark:hover:text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:text-gray-800 dark:focus:text-gray-400 focus:bg-gray-200 dark:focus:bg-gray-700"
+                            :class="{'bg-gray-100 dark:bg-gray-700': isSelected(d)}"
                         >
                             <div class="flex items-center space-x-3">
                                 <div

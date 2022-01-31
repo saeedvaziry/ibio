@@ -16,9 +16,9 @@
     <meta property="og:image" content="{{ asset('static/favicon/android-chrome-192x192.png') }}">
     @include('extensions.favicon')
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-gray-300">
     @include('alerts.alert')
-    <div class="text-black py-10 md:py-20 px-10 flex justify-center">
+    <div class="text-black dark:text-gray-300 py-10 md:py-20 px-10 flex justify-center">
         <div class="w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
             @yield('content')
         </div>

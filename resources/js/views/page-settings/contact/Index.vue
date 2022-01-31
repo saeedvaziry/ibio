@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
             <v-card v-for="(contact, i) in filterResult" :key="i" class="flex flex-col items-center justify-between">
-                <img :src="require(`../../../../img/${contact.value}.svg`)" width="30" class="mb-4" alt="">
+                <img :src="require(`../../../../img/${contact.value}.svg`).default" width="30" class="mb-4" alt="">
                 <div class="text-center">
                     <h2 class="text-sm mb-4">{{ contact.title }}</h2>
                     <v-button :type="contact.link ? 'color' : 'secondary'" color="purple" small @click="showSet(contact)">{{ contact.link ? 'ویرایش' : 'افزودن' }}</v-button>

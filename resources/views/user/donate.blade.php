@@ -1,14 +1,14 @@
 @extends('layouts.user')
 @section('content')
     @if(auth()->check() && auth()->user()->id == $user->id)
-        <a href="{{ route('donation.settings') }}" class="bg-purple-100 text-purple-700 py-2 h-16 flex items-center justify-center mb-5 cursor-pointer">
+        <a href="{{ route('donation.settings') }}" class="bg-purple-100 dark:bg-purple-500 dark:bg-opacity-10 text-purple-700 py-2 h-16 flex items-center justify-center mb-5 cursor-pointer">
             {{ __('تنظیمات حمایت مالی') }}
         </a>
     @endif
     <div class="w-full flex justify-center">
         <div class="p-5 w-full md:w-6/12 lg:5/12 xl:w-3/12 text-center relative">
             @include('user.partials.top')
-            <h2 class="text-black text-2xl mb-8 @if($isEn) ltr font-sans @endif">
+            <h2 class="text-black dark:text-gray-300 text-2xl mb-8 @if($isEn) ltr font-sans @endif">
                 @if($isEn)
                     {{ __('Donate to') }}
                 @else
@@ -18,12 +18,12 @@
             </h2>
             <div id="currency-box" class="@if(!$user->donation['payir_api'] || !$user->donation['jeeb_api']) hidden @endif @if($errors->irr->count() || $errors->crypto->count()) hidden @endif">
                 @if($user->donation['payir_api'])
-                    <a href="javascript:" onclick="showIRRPayment()" class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer mb-3 @if($isEn) ltr font-sans @endif">
+                    <a href="javascript:" onclick="showIRRPayment()" class="bg-gray-100 dark:bg-gray-800 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-lg text-black dark:text-gray-300 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer mb-3 @if($isEn) ltr font-sans @endif">
                         <img src="{{ asset('static/images/shaparak.svg') }}" alt="Iranian Rial" class="h-6 {{ $isEn ? 'mr-2' : 'ml-2' }}"> {{ $isEn ? __('Iranian Rial') : __('پرداخت ریالی') }}
                     </a>
                 @endif
                 @if($user->donation['jeeb_api'])
-                    <a href="javascript:" onclick="showCryptoPayment()" class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer @if($isEn) ltr font-sans @endif">
+                    <a href="javascript:" onclick="showCryptoPayment()" class="bg-gray-100 dark:bg-gray-800 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-lg text-black dark:text-gray-300 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer @if($isEn) ltr font-sans @endif">
                         <img src="{{ asset('static/images/bitcoin.svg') }}" alt="Iranian Rial" class="h-6 {{ $isEn ? 'mr-2' : 'ml-2' }}"> {{ $isEn ? __('Crypto Currency') : __('پرداخت با کریپتو') }}
                     </a>
                 @endif
@@ -40,7 +40,7 @@
                         <input type="hidden" name="type" value="irr">
                         <x-input type="text" name="irr_amount" label="" placeholder="{{ $isEn ? __('Amount (IRT)') : __('مبلغ (تومان)') }}" value="{{ old('irr_amount') }}" class="mb-2" required></x-input>
                         <x-input type="text" name="irr_name" label="" placeholder="{{ $isEn ? __('Your name (optional)') : __('نام شما (اختیاری)') }}" value="{{ old('irr_name') }}" class="mb-2"></x-input>
-                        <textarea name="irr_message" rows="4" placeholder="{{ $isEn ? __('Say something good (optional)') : __('یه چیز خوب بنویسید (اختیاری)') }}" class="py-3 px-4 w-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-500 rounded-lg">{{ old('irr_message') }}</textarea>
+                        <textarea name="irr_message" rows="4" placeholder="{{ $isEn ? __('Say something good (optional)') : __('یه چیز خوب بنویسید (اختیاری)') }}" class="py-3 px-4 w-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-500 focus:bg-white dark:focus:bg-gray-700 placeholder-gray-500 rounded-lg">{{ old('irr_message') }}</textarea>
                         <div class="mt-4">
                             <x-button type="purple" full>{{ $isEn ? __('Pay') : __('پرداخت') }}</x-button>
                         </div>
@@ -48,13 +48,13 @@
                     <div id="irr-amounts" class="@if($errors->irr->count()) hidden @endif">
                         @foreach($user->donation['amounts'] as $amount)
                             <div class="mb-3 @if($isEn) ltr font-sans @endif">
-                                <a href="javascript:" onclick="showIRRPaymentAmount({{ $amount }})" class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
+                                <a href="javascript:" onclick="showIRRPaymentAmount({{ $amount }})" class="bg-gray-100 dark:bg-gray-800 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-lg text-black dark:text-gray-300 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
                                     {{ $isEn ? custom_money_format($amount) : latin_number_to_persian(custom_money_format($amount)) }} {{ $isEn ? __('IRT') : __('تومان') }}
                                 </a>
                             </div>
                         @endforeach
                         <div class="mb-3">
-                            <a href="javascript:" onclick="showIRRPaymentAmount()" class="bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
+                            <a href="javascript:" onclick="showIRRPaymentAmount()" class="bg-purple-100 dark:bg-purple-500 dark:bg-opacity-10 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
                                 {{ $isEn ? __('Custom Amount') : __('مبلغ دلخواه') }}
                             </a>
                         </div>
@@ -73,7 +73,7 @@
                         <input type="hidden" name="type" value="crypto">
                         <x-input type="text" name="crypto_amount" label="" placeholder="{{ $isEn ? __('Amount (USD)') : __('مبلغ (دلار)') }}" value="{{ old('crypto_amount') }}" class="mb-2" required></x-input>
                         <x-input type="text" name="crypto_name" label="" placeholder="{{ $isEn ? __('Your name (optional)') : __('نام شما (اختیاری)') }}" value="{{ old('crypto_name') }}" class="mb-2"></x-input>
-                        <textarea name="crypto_message" rows="4" placeholder="{{ $isEn ? __('Say something good (optional)') : __('یه چیز خوب بنویسید (اختیاری)') }}" class="py-3 px-4 w-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-black focus:bg-white placeholder-gray-500 rounded-lg">{{ old('crypto_message') }}</textarea>
+                        <textarea name="crypto_message" rows="4" placeholder="{{ $isEn ? __('Say something good (optional)') : __('یه چیز خوب بنویسید (اختیاری)') }}" class="py-3 px-4 w-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-gray-500 focus:bg-white dark:focus:bg-gray-700 placeholder-gray-500 rounded-lg">{{ old('crypto_message') }}</textarea>
                         <div class="mt-4">
                             <x-button type="purple" full>{{ $isEn ? __('Pay') : __('پرداخت') }}</x-button>
                         </div>
@@ -81,13 +81,13 @@
                     <div id="crypto-amounts" class="@if($errors->irr->count()) hidden @endif">
                         @foreach($user->donation['amounts_usd'] as $amount)
                             <div class="mb-3 @if($isEn) ltr font-sans @endif">
-                                <a href="javascript:" onclick="showCryptoPaymentAmount({{ $amount }})" class="bg-gray-100 focus:outline-none hover:bg-gray-200 transition-colors text-lg text-black py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
+                                <a href="javascript:" onclick="showCryptoPaymentAmount({{ $amount }})" class="bg-gray-100 dark:bg-gray-800 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-lg text-black dark:text-gray-300 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
                                     {{ $isEn ? '$' . $amount : latin_number_to_persian($amount) . ' دلار' }}
                                 </a>
                             </div>
                         @endforeach
                         <div class="mb-3">
-                            <a href="javascript:" onclick="showCryptoPaymentAmount()" class="bg-purple-100 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
+                            <a href="javascript:" onclick="showCryptoPaymentAmount()" class="bg-purple-100 dark:bg-purple-500 dark:bg-opacity-10 focus:outline-none hover:bg-purple-200 transition-colors text-lg text-purple-600 py-2 px-6 rounded-lg w-full flex items-center justify-center cursor-pointer">
                                 {{ $isEn ? __('Custom Amount') : __('مبلغ دلخواه') }}
                             </a>
                         </div>

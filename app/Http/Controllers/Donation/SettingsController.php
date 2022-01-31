@@ -29,7 +29,7 @@ class SettingsController extends Controller
      */
     public function status(Request $request, $status)
     {
-        if (!$request->user()->donation['payir_api']) {
+        if (!$request->user()->donation['payir_api'] && !$request->user()->donation['jeeb_api']) {
             return redirect()->route('donation.settings')->with([
                 'error' => __('برای فعال سازی ابتدا تنظیمات درگاه ریالی یا کریپتو رو تکمیل کنید')
             ]);

@@ -1,11 +1,11 @@
 <template>
     <stats>
         <v-card padding="0" v-if="$page.props.links.length > 0">
-            <div v-for="(link, i) in $page.props.links" :key="i" class="p-4 border-gray-100" :class="{'border-b-2': i !== $page.props.links.length - 1}">
+            <div v-for="(link, i) in $page.props.links" :key="i" class="p-4 border-gray-100 dark:border-gray-800" :class="{'border-b-2': i !== $page.props.links.length - 1}">
                 <div class="flex w-full items-center justify-between">
                     <div class="flex items-center">
-                        <img v-if="['social', 'contact'].includes(link.type) && link.title" :src="require(`../../../img/${link.title}.svg`)" width="20" class="mr-1" alt="">
-                        <img v-else :src="require(`../../../img/${link.type}.svg`)" width="20" class="mr-1" alt="">
+                        <img v-if="['social', 'contact'].includes(link.type) && link.title" :src="require(`../../../img/${link.title}.svg`).default" width="20" class="mr-1" alt="">
+                        <img v-else :src="require(`../../../img/${link.type}.svg`).default" width="20" class="mr-1" alt="">
                         <a :href="link.real_url" rel="noreferrer" target="_blank" class="text-gray-700 w-28 md:w-62 truncate" :class="{'capitalize': ['social', 'contact'].includes(link.type) }">{{ link.display_title }}</a>
                         <span class="text-sm mr-1 text-gray-400">({{ link.clicks }} کلیک)</span>
                     </div>

@@ -9,30 +9,6 @@ function get_date_path()
 }
 
 /**
- * @param $key
- * @param $string
- * @param string $cipher
- * @return string
- */
-function encrypt_string($key, $string, $cipher = 'AES-256-CBC')
-{
-    $newEncrypter = new \Illuminate\Encryption\Encrypter($key, $cipher);
-    return $newEncrypter->encrypt($string);
-}
-
-/**
- * @param $key
- * @param $string
- * @param string $cipher
- * @return mixed
- */
-function decrypt_string($key, $string, $cipher = 'AES-256-CBC')
-{
-    $newEncrypter = new \Illuminate\Encryption\Encrypter($key, $cipher);
-    return $newEncrypter->decrypt($string);
-}
-
-/**
  * @param $strDateFrom
  * @param $strDateTo
  * @return array

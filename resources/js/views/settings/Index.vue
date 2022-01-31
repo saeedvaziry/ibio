@@ -16,7 +16,7 @@
             <v-button v-else :loading="enabling_two_factor" @click="enableTwoFactor" class="mt-5">فعال سازی</v-button>
         </v-card>
         <v-title class="mb-5">منطقه خطر</v-title>
-        <v-card class="mb-5" border="border-red-200">
+        <v-card class="mb-5" border="border-red-200 dark:border-red-500 dark:border-opacity-20">
             <v-title class="mb-5" small>حذف حساب کاربری</v-title>
             <div class="flex items-center justify-between">
                 <p class="ml-3">حساب کاربری شما بصورت کامل حذف و از دسترس عموم خارج خواهد شد و از داشبورد خارج خواهید شد</p>

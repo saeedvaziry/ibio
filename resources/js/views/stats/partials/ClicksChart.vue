@@ -6,12 +6,16 @@
         name: "ClicksChart",
         props: ['chartData', 'borderWidth', 'showDetail'],
         mounted() {
+            let bgColor = '#e9d3f6';
+            if (this.$root.theme === 'dark' || (this.$root.theme === 'system' && this.$root.system_theme === 'dark')) {
+                bgColor = 'rgba(145,27,213,0.44)'
+            }
             this.renderChart({
                 labels: this.getLabels(),
                 datasets: [
                     {
                         label: 'کلیک ها',
-                        backgroundColor: '#e9d3f6',
+                        backgroundColor: bgColor,
                         data: this.getData(),
                         borderWidth: this.borderWidth,
                         borderColor: ['#cb55ee'],

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Crypt;
 
 class Link extends Model
 {
@@ -71,7 +72,7 @@ class Link extends Model
      */
     public function getTokenAttribute()
     {
-        return encrypt_string(config('links.key'), $this->id);
+        return Crypt::encryptString($this->id);
     }
 
     /**

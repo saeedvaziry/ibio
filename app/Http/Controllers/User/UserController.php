@@ -8,6 +8,7 @@ use App\Models\Link;
 use App\Models\User;
 use App\Traits\HasStats;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -42,7 +43,7 @@ class UserController extends Controller
      */
     public function go(Request $request)
     {
-        $link = Link::query()->findOrFail(decrypt_string(config('links.key'), $request->link));
+        $link = Link::query()->findOrFail(Crypt::decryptString($request->link));
 
         $this->createStat($request, $link);
 

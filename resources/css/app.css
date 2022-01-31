@@ -79,6 +79,7 @@ input[type="email"], input[type="password"], input[type="tel"], input[type="numb
 
 .slider {
     @apply bg-gray-200;
+    @apply dark:bg-gray-800;
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -97,7 +98,8 @@ input[type="email"], input[type="password"], input[type="tel"], input[type="numb
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    @apply bg-white;
+    @apply dark:bg-gray-300;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;

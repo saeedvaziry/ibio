@@ -1,11 +1,11 @@
 <template>
     <donation>
-        <div class="bg-yellow-50 border-r-4 border-yellow-500 text-yellow-700 p-4 rounded-sm mb-5">
+        <div class="bg-yellow-50 dark:bg-yellow-500 dark:bg-opacity-10 border-r-4 border-yellow-500 text-yellow-700 dark:text-gray-300 p-4 rounded-sm mb-5">
             <p class="leading-loose">تمامی پرداخت های کریپتو از طریق jeeb.io انجام میشه و مبالغ واریزی به کیف پول شما در jeeb.io واریز خواهد شد. بنابراین برای انتقال حمایت های دریافتی به حساب بانکیتون باید از طریق پنل کاربری jeeb.io اقدام کنید.</p>
         </div>
         <v-card class="mb-5">
             <v-title small class="mb-5">تنظیمات درگاه پرداخت</v-title>
-            <div class="bg-blue-50 border-r-4 border-blue-500 text-blue-700 p-4 rounded-sm mb-5">
+            <div class="bg-blue-50 dark:bg-blue-500 dark:bg-opacity-10 border-r-4 border-blue-500 text-blue-700 dark:text-gray-300 p-4 rounded-sm mb-5">
                 <p @click="showJeebApiHelp = true" class="cursor-pointer">راهنمای دریافت API-Key جیب</p>
                 <ul class="pr-10 list-disc mt-3" :class="{'hidden': !showJeebApiHelp}">
                     <li class="mb-2">ابتدا وارد وبسایت
@@ -33,7 +33,7 @@
             <v-title small class="mb-5">مبالغ حمایتی</v-title>
             <p class="mb-5">گزینه مبلغ دلخواه بصورت پیشفرض از قبل وجود دارد و در صفحه حمایت نمایش داده میشود</p>
             <div class="mb-5">
-                <div v-for="(amount, i) in $page.props.user.donation.amounts_usd" class="inline-flex p-2 rounded-lg items-center justify-between bg-purple-100 text-purple-600 ml-2 mb-2">
+                <div v-for="(amount, i) in $page.props.user.donation.amounts_usd" class="inline-flex p-2 rounded-lg items-center justify-between bg-purple-100 dark:bg-purple-500 dark:bg-opacity-10 text-purple-600 ml-2 mb-2">
                     <div class="ml-4 font-sans">${{ amount }}</div>
                     <fa-icon :icon="['fas', 'times']" class="cursor-pointer" @click="removeAmount(i)"></fa-icon>
                 </div>

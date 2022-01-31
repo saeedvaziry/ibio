@@ -1,7 +1,7 @@
 <template>
     <div class="relative" :class="{'cursor-pointer': upload}" @mouseenter="hover = true" @mouseleave="hover = false" @click="selectFile">
-        <img v-if="user.avatar" :class="`${size}`" class="rounded-full border-4 border-purple-100" :src="user.avatar" alt="" />
-        <div v-else :class="`${size} ${font}`" class="rounded-full inline-flex items-center justify-center bg-purple-200 text-purple-600 border-4 border-purple-100 capitalize">
+        <img v-if="user.avatar" :class="`${size}`" class="rounded-full border-4 border-purple-100 dark:border-purple-500 dark:border-opacity-10" :src="user.avatar" alt="" />
+        <div v-else :class="`${size} ${font}`" class="rounded-full inline-flex items-center justify-center bg-purple-200 dark:bg-purple-500 dark:bg-opacity-10 text-purple-600 border-4 border-purple-100 dark:border-purple-500 dark:border-opacity-10 capitalize">
             <span :class="{'opacity-0': upload && hover}">{{ user.name.charAt(0) }}</span>
         </div>
         <div class="absolute flex items-center justify-center top-0 lef-0 rounded-full" :class="size" style="background-color: rgba(79,78,78,0.29)" v-if="hover && upload">

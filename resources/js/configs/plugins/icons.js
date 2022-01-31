@@ -17,6 +17,7 @@ import {
     faInstagram,
     faTwitter
 } from '@fortawesome/free-brands-svg-icons';
+import {faSun} from "@fortawesome/free-regular-svg-icons";
 
 library.add(
     faChevronDown,
@@ -40,5 +41,7 @@ library.add(
     faMobileAlt,
     faTabletAlt,
     faDonate,
-    faTimes
+    faTimes,
+    faSun,
+    faMoon
 );

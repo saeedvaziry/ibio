@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -23,12 +23,12 @@
     </style>
     @include('extensions.favicon')
 </head>
-<body>
+<body class="dark:bg-gray-900 dark:text-gray-300">
     <div class="flex flex-col justify-between">
         <div style="min-height: calc(100% - 24px)">
             @yield('content')
         </div>
-        <a href="/" class="inline-flex text-lg text-gray-400 hover:text-black mx-auto mt-5 mb-5">
+        <a href="/" class="inline-flex text-lg mx-auto mt-5 mb-5">
             <img src="{{ asset('static/images/logo.png') }}" alt="ibio.link" class="h-6">
         </a>
     </div>
