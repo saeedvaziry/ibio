@@ -8,6 +8,31 @@ The master branch is available on https://ibio.link
 
 Sample link: https://ibio.link/saeedvaziry
 
+## Installation
+
+1) Install dependencies
+```shell
+# development
+composer install
+
+# production
+composer install --no-dev
+```
+
+2) Create `.env` from `.env.example` and fill it according to your configs
+
+3) Generate key
+
+```shell
+php artisan key:generate
+```
+
+4) Run the migrations
+
+```shell
+php artisan migrate
+```
+
 ## What technologies used?
 
 ### Back-End
