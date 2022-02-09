@@ -41,13 +41,13 @@
                     </button>
                     <template slot="items">
                         <div class="md:hidden">
-                            <v-dropdown-item @click="$inertia.visit(route('dashboard'))">داشبورد</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('donation.settings'))">حمایت مالی</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('page-settings.info'))">تنظیمات صفحه</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('settings'))">تنظیمات</v-dropdown-item>
-                            <v-dropdown-item @click="$inertia.visit(route('stats.clicks'))">آمار</v-dropdown-item>
+                            <v-dropdown-item @click.native="$inertia.visit(route('dashboard'))">داشبورد</v-dropdown-item>
+                            <v-dropdown-item @click.native="$inertia.visit(route('donation.settings'))">حمایت مالی</v-dropdown-item>
+                            <v-dropdown-item @click.native="$inertia.visit(route('page-settings.info'))">تنظیمات صفحه</v-dropdown-item>
+                            <v-dropdown-item @click.native="$inertia.visit(route('settings'))">تنظیمات</v-dropdown-item>
+                            <v-dropdown-item @click.native="$inertia.visit(route('stats.clicks'))">آمار</v-dropdown-item>
                         </div>
-                        <v-dropdown-item @click="logout" :last="true">خروج از حساب</v-dropdown-item>
+                        <v-dropdown-item @click.native="logout" :last="true">خروج از حساب</v-dropdown-item>
                     </template>
                 </v-dropdown>
                 <form id="logout-form" action="/logout" method="POST" class="hidden">
