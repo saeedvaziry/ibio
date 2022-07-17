@@ -21,7 +21,7 @@
     <a href="https://www.instagram.com/ibio.link.official" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
         <img src="{{ asset('images/instagram.svg') }}" alt="Instagram" width="20">
     </a>
-    <a href="https://twitter.com/ibio_link" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
+    <a href="https://twitter.com/TheIbioLink" target="_blank" class="cursor-pointer ml-3 transition duration-200 ease-in-out transform hover:scale-125">
         <img src="{{ asset('images/twitter.svg') }}" alt="Twitter" width="20">
     </a>
 </div>
