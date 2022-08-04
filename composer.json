@@ -26,7 +26,6 @@
         "pragmarx/google2fa-laravel": "^1.4",
         "saeedvaziry/ip2location": "^0.0",
         "saeedvaziry/payir": "dev-master",
-        "sentry/sentry-laravel": "^2.13",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
