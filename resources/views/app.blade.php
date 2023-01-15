@@ -11,5 +11,6 @@
 <body class="h-full">
     @inertia
     @routes
+    @include('extensions.support')
 </body>
 </html>

@@ -35,5 +35,6 @@
         </div>
     </footer>
     @stack('scripts')
+    @include('extensions.support')
 </body>
 </html>
