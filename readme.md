@@ -1,4 +1,6 @@
-# IBio
+# iBio
+
+<img width="962" alt="image" src="https://user-images.githubusercontent.com/61919774/212568139-15fe6c31-cc9e-42f4-a2a7-ea42d12fb105.png">
 
 IBio is a free bio link generator for social media like Instagram, TikTok, etc
 
