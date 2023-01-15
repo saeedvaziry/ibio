@@ -56,6 +56,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'domain' => env('APP_DOMAIN', 'ibio.link'),
+
     'asset_url' => env('ASSET_URL'),
 
     /*
