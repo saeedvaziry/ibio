@@ -45,7 +45,7 @@ return new class extends Migration {
         });
 
         # legacy
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'legacy',
             'bg_type' => ThemeBgType::COLOR,
             'bg' => '#ffffff',
@@ -64,7 +64,7 @@ return new class extends Migration {
         ]);
 
         # blue
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'blue',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#47A1BD,#081C8C',
@@ -86,7 +86,7 @@ return new class extends Migration {
         ]);
 
         # black
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'black',
             'bg_type' => ThemeBgType::COLOR,
             'bg' => '#000000',
@@ -108,7 +108,7 @@ return new class extends Migration {
         ]);
 
         # goldfinch
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'goldfinch',
             'bg_type' => ThemeBgType::COLOR,
             'bg' => '#E3D803',
@@ -130,7 +130,7 @@ return new class extends Migration {
         ]);
 
         # tanger
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'tanger',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#FD5333,#FC7839',
@@ -152,7 +152,7 @@ return new class extends Migration {
         ]);
 
         # flamingo
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'flamingo',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#F1C9D7,#b63b8a',
@@ -174,7 +174,7 @@ return new class extends Migration {
         ]);
 
         # parrot
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'parrot',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#77A90D,#E5AD13',
@@ -196,7 +196,7 @@ return new class extends Migration {
         ]);
 
         # cotinga
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'cotinga',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#8F115F,#282860',
@@ -218,7 +218,7 @@ return new class extends Migration {
         ]);
 
         # cyan
-        Theme::factory()->create([
+        Theme::query()->create([
             'name' => 'cyan',
             'bg_type' => ThemeBgType::GRADIENT,
             'bg' => '#0891b2,#22d3ee',
