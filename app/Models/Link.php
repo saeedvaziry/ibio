@@ -2,178 +2,101 @@
 
 namespace App\Models;
 
+use App\Enums\MetricReferenceType;
+use App\LinkTypes\LinkTypeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
-class Link extends Model
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property string $type
+ * @property array $data
+ * @property int $sort
+ * @property string $thumbnail
+ * @property string $thumbnail_disk
+ * @property string $thumbnail_url
+ * @property bool $thumbnail_set_from_url
+ * @property bool $is_active
+ * @property User $user
+ */
+class Link extends AbstractModel
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-    /**
-     * @var string[]
-     */
     protected $fillable = [
+        'id',
         'user_id',
         'type',
-        'title',
-        'title_en',
-        'url',
-        'meta',
-        'order',
-        'active',
+        'data',
+        'sort',
+        'thumbnail',
+        'thumbnail_disk',
+        'is_active',
     ];
 
-    /**
-     * @var string[]
-     */
     protected $casts = [
+        'id' => 'integer',
         'user_id' => 'integer',
-        'active' => 'boolean',
+        'data' => 'json',
+        'sort' => 'integer',
+        'is_active' => 'boolean',
+        'thumbnail_set_from_url' => 'boolean',
     ];
 
-    /**
-     * @var string[]
-     */
-    protected $appends = [
-        'token',
-        'real_url',
-        'display_title',
-    ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
+    public static function booted()
     {
-        return $this->belongsTo('App\Models\User');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function stats()
-    {
-        return $this->morphMany('App\Models\Stat', 'statable');
-    }
-
-    /**
-     * @param $date
-     * @return int
-     */
-    public function clicks($date)
-    {
-        return $this->stats()->where('date', $date)->count();
-    }
-
-    /**
-     * @return string
-     */
-    public function getTokenAttribute()
-    {
-        return Crypt::encryptString($this->id);
-    }
-
-    /**
-     * @return mixed|string|string[]|null
-     */
-    public function getRealUrlAttribute()
-    {
-        return $this->generate();
-    }
-
-    /**
-     * @return string|string[]|null
-     */
-    public function getYoutubeEmbedLinkAttribute()
-    {
-        return preg_replace(
-            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "//www.youtube.com/embed/$2",
-            $this->real_url
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public function getSoundcloudEmbedLinkAttribute()
-    {
-        return 'https://w.soundcloud.com/player/?url=' . $this->real_url . '&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true';
-    }
-
-    /**
-     * @return mixed|string|string[]
-     */
-    public function getSpotifyEmbedLinkAttribute()
-    {
-        return str_replace('track', 'embed/track', $this->real_url);
-    }
-
-    /**
-     * @return mixed|string|string[]
-     */
-    public function getAparatEmbedLinkAttribute()
-    {
-        $videoId = str_replace('https://www.aparat.com/v/', '', $this->real_url);
-
-        return 'https://www.aparat.com/video/video/embed/videohash/' . $videoId . '/vt/frame';
-    }
-
-    /**
-     * @return mixed|string|string[]|null
-     */
-    public function generate()
-    {
-        switch ($this->type) {
-            case 'social':
-                return str_replace('{value}', $this->url, $this->getSchema($this->title, config('links.social_medias')));
-            case 'contact':
-                return str_replace('{value}', $this->url, $this->getSchema($this->title, config('links.contacts')));
-            default:
-                return $this->url;
-        }
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDisplayTitleAttribute()
-    {
-        $isEn = session()->has('lang-' . $this->user_id) && session()->get('lang-' . $this->user_id) == 'en';
-
-        if ($this->type == 'social') {
-            foreach (config('links.social_medias') as $link) {
-                if ($this->title == $link['value']) {
-                    return $isEn ? $link['value'] : $link['title'];
-                }
+        static::updated(function (Link $link) {
+            if ($link->thumbnail_disk == 'url') {
+                dispatch(function () use ($link) {
+                    $link->updateThumbnailFromUrl();
+                });
             }
-        }
-        if ($this->type == 'contact') {
-            foreach (config('links.contacts') as $link) {
-                if ($this->title == $link['value']) {
-                    return $isEn ? $link['value'] : $link['title'];
-                }
-            }
-        }
-
-        return $isEn ? $this->title_en ?? substr($this->url, 0, 10) . '...' : $this->title;
+        });
+        static::deleted(function (Link $link) {
+            $link->metrics()->delete();
+        });
     }
 
-    /**
-     * @param $value
-     * @param $links
-     * @return null
-     */
-    private function getSchema($value, $links)
+    public function user(): BelongsTo
     {
-        foreach ($links as $link) {
-            if ($link['value'] == $value) {
-                return $link['schema'];
+        return $this->belongsTo(User::class);
+    }
+
+    public function type(): LinkTypeInterface
+    {
+        $link = "App\\LinkTypes\\" . $this->type;
+
+        return new $link($this);
+    }
+
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        if ($this->thumbnail_disk) {
+            if ($this->thumbnail_disk == 'url') {
+                return $this->thumbnail;
             }
+
+            return Storage::disk($this->thumbnail_disk)->url($this->thumbnail);
         }
 
-        return null;
+        return $this->thumbnail;
+    }
+
+    public function metrics(): HasMany
+    {
+        return $this->hasMany(Metric::class, 'reference_id')
+            ->where('reference_type', MetricReferenceType::LINK);
+    }
+
+    public function updateThumbnailFromUrl(string $url = null): void
+    {
+        $this->thumbnail = get_thumbnail_from_url($url ?? $this->data['url']);
+        if ($this->thumbnail) {
+            $this->thumbnail_disk = 'url';
+        }
+        $this->save();
     }
 }

@@ -3,16 +3,14 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 class CrawlerDetectException extends Exception
 {
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function render()
+    public function render(): JsonResponse
     {
         return response()->json([
-            'message' => "Don't do that bro!"
+            'message' => "Not found"
         ], 404);
     }
 }

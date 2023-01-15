@@ -1,4 +1,13 @@
 {
-    "/js/app.js": "/js/app.js?id=39d4d0f8efca48054fea",
-    "/css/app.css": "/css/app.css?id=7c906618b0dbde6c1101"
+    "/js/app.js": "/js/app.js?id=0b9179ef7634e0bd29be980715dd2413",
+    "/js/page.js": "/js/page.js?id=eab512a14d2aebee68aa7289a1e2b60f",
+    "/js/carousel.js": "/js/carousel.js?id=5312f21350f568fbcc2dbcfaa2c3d7a1",
+    "/css/carousel.css": "/css/carousel.css?id=b3361eeca6626613a85cedd8d7f6ace3",
+    "/css/page.css": "/css/page.css?id=7a51d844bfe00a09f3a653ff8a6a9d2a",
+    "/css/app.css": "/css/app.css?id=452fad3a0e16f4cb9926af8ffc9aec2e",
+    "/images/home/user-1.png": "/images/home/user-1.png?id=ae480c95ccd606af5eba166abcd64185",
+    "/images/home/user-2.png": "/images/home/user-2.png?id=0f1d0ccf31d4bc8990f0fcf3f22197a7",
+    "/images/home/user-3.png": "/images/home/user-3.png?id=06632abba96a3b217b75534c283a319e",
+    "/images/home/user-4.png": "/images/home/user-4.png?id=c6bc7992a33563fa2695aee2db187a19",
+    "/images/home/user-5.png": "/images/home/user-5.png?id=b7481a4fac1ce62e57f07d58785b640a"
 }

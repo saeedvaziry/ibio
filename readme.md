@@ -37,7 +37,7 @@ php artisan migrate
 
 ### Back-End
 
-The back-end has been developed with [Laravel framework 8](https://github.com/laravel/laravel)
+The back-end has been developed with [Laravel framework 9](https://github.com/laravel/laravel)
 
 ### Database
 
@@ -49,28 +49,27 @@ The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue), 
 
 ## Credits
 
-**Charts** 
+**Charts**
 
 [Chart.js](https://www.chartjs.org/) with [Vue Charts](https://vue-chartjs.org/)
 
 **Icons**
 
-[Fontawesome](https://fontawesome.com/) and [FlatIcon](https://www.flaticon.com/)
+[Fontawesome](https://fontawesome.com/)
+
+[FlatIcon](https://www.flaticon.com/)
+
+[HeroIcons](https://heroicons.com/)
+
 
 **Other**
 
-Two-factor authentication by [pragmarx](https://packagist.org/packages/pragmarx/google2fa-laravel)
-
 Front-End routes by [tighten](https://github.com/tighten/ziggy)
 
-IP to location package by myself :) [saeedvaziry](https://github.com/saeedvaziry/ip2location)
+IP to location [saeedvaziry](https://github.com/saeedvaziry/ip2location)
 
 User-Agent by [jenssegers](https://github.com/jenssegers/agent)
 
 ## Security
 
 In case you see any security issues please send it to me directly at (sa.vaziry@gmail.com) or create an issue
-
-## License
-
-The source code is licensed under The MIT License (MIT).

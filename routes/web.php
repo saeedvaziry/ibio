@@ -1,103 +1,61 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AppearanceController;
+use App\Http\Controllers\MetricController;
+use App\Http\Controllers\Oauth\GoogleController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SocialLinkController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LinkController;
 
-// auth
-Auth::routes([
-    'verify' => true,
-    'register' => true
-]);
-Route::post('login/verify', 'Auth\VerifyLoginController@verify')->name('login.verify');
-
-// oauth
-Route::group(['prefix' => 'oauth'], function () {
-    Route::get('{provider}', 'OauthController@redirectToProvider')->name('oauth');
-    Route::get('{provider}/callback', 'OauthController@handleProviderCallback');
+Route::prefix('oauth')->group(function () {
+    Route::get('google', [GoogleController::class, 'redirect']);
+    Route::get('google/callback', [GoogleController::class, 'callback']);
 });
 
-Route::group(['middleware' => ['auth', '2fa', 'inertia']], function () {
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-    // donation
-    Route::group(['prefix' => 'donation'], function () {
-        // settings
-        Route::get('/settings', 'Donation\SettingsController@settings')->name('donation.settings');
-        Route::post('/settings/status/{status}', 'Donation\SettingsController@status')->name('donation.settings.status');
-        Route::post('/settings/supporters-status/{status}', 'Donation\SettingsController@supportersStatus')->name('donation.settings.supporters-status');
-        Route::post('/settings/thank-you-message', 'Donation\SettingsController@thankYouMessage')->name('donation.settings.thank-you-message');
-        Route::post('/settings/thank-you-message-en', 'Donation\SettingsController@thankYouMessageEn')->name('donation.settings.thank-you-message-en');
-        // rial gateway settings
-        Route::get('/settings/gateway-rial', 'Donation\RialGatewaySettingsController@index')->name('donation.settings.gateway-rial');
-        Route::post('/settings/gateway-rial/amounts', 'Donation\RialGatewaySettingsController@amounts')->name('donation.settings.gateway-rial.amounts');
-        Route::post('/settings/gateway-rial/payir-api', 'Donation\RialGatewaySettingsController@payApi')->name('donation.settings.gateway-rial.payir-api');
-        // crypto gateway settings
-        Route::get('/settings/gateway-crypto', 'Donation\CryptoGatewaySettingsController@index')->name('donation.settings.gateway-crypto');
-        Route::post('/settings/gateway-crypto/amounts', 'Donation\CryptoGatewaySettingsController@amounts')->name('donation.settings.gateway-crypto.amounts');
-        Route::post('/settings/gateway-crypto/jeeb-api', 'Donation\CryptoGatewaySettingsController@jeebApi')->name('donation.settings.gateway-crypto.jeeb-api');
-        // supports
-        Route::get('/supports/{payment?}', 'Donation\SupportController@index')->name('donation.supports');
-    });
-    // page settings
-    Route::group(['prefix' => 'page-settings'], function () {
-        // info
-        Route::group(['prefix' => 'info'], function () {
-            Route::get('/', 'PageSettings\InfoController@index')->name('page-settings.info');
-            Route::post('/', 'PageSettings\InfoController@store');
-            Route::post('/avatar', 'PageSettings\InfoController@avatar')->name('page-settings.info.avatar');
-            Route::delete('/avatar', 'PageSettings\InfoController@deleteAvatar');
-            Route::post('/check-username', 'PageSettings\InfoController@checkUsername')->name('page-settings.info.check-username');
-            Route::post('/username', 'PageSettings\InfoController@username')->name('page-settings.info.username');
-        });
-        // links
-        Route::group(['prefix' => 'links'], function () {
-            Route::get('/', 'PageSettings\LinkController@index')->name('page-settings.links');
-            Route::post('/', 'PageSettings\LinkController@store');
-            Route::post('/sort', 'PageSettings\LinkController@sort')->name('page-settings.links.sort');
-            Route::get('/{link}', 'PageSettings\LinkController@show')->name('page-settings.links.show');
-            Route::post('/{link}', 'PageSettings\LinkController@update');
-            Route::delete('/{link}', 'PageSettings\LinkController@destroy')->name('links.destroy');
-        });
-        // social media
-        Route::group(['prefix' => 'social-media'], function () {
-            Route::get('/', 'PageSettings\SocialMediaController@index')->name('page-settings.social-media');
-            Route::post('/', 'PageSettings\SocialMediaController@store');
-        });
-        // contact
-        Route::group(['prefix' => 'contact'], function () {
-            Route::get('/', 'PageSettings\ContactController@index')->name('page-settings.contact');
-            Route::post('/', 'PageSettings\ContactController@store');
-        });
-    });
-    // settings
-    Route::group(['prefix' => 'settings'], function () {
-        Route::get('/', 'SettingController@index')->name('settings');
-        Route::post('/', 'SettingController@store');
-        Route::delete('/', 'SettingController@deleteAccount');
-        Route::post('password', 'SettingController@password')->name('settings.password');
-        Route::post('2fa/enable', 'SettingController@enable2FA')->name('settings.2fa.enable');
-        Route::post('2fa/verify', 'SettingController@verify2FA')->name('settings.2fa.verify');
-        Route::post('2fa/disable', 'SettingController@disable2FA')->name('settings.2fa.disable');
-    });
-    // stats
-    Route::group(['prefix' => 'stats'], function () {
-        Route::get('/visits', 'StatController@visits')->name('stats.visits');
-        Route::get('/clicks', 'StatController@clicks')->name('stats.clicks');
-        Route::get('/clicks/{link}', 'StatController@showLink')->name('stats.clicks.show');
-    });
-    Route::post('/feature-requests/link-type', 'FeatureRequestController@storeLinkType')->name('feature-requests.link-type');
+Route::middleware('auth')->group(function () {
+    // links
+    Route::get('/links', [LinkController::class, 'index'])->name('links');
+    Route::post('/links/create', [LinkController::class, 'store'])->name('links.create');
+    Route::post('/links/update-sort', [LinkController::class, 'updateSort'])->name('links.update-sort');
+    Route::post('/links/{link}', [LinkController::class, 'update'])->name('links.update');
+    Route::post('/links/{link}/thumbnail', [LinkController::class, 'updateThumbnail'])->name('links.update-thumbnail');
+    Route::delete('/links/{link}/thumbnail', [LinkController::class, 'deleteThumbnail'])->name('links.delete-thumbnail');
+    Route::post('/links/{link}/{field}', [LinkController::class, 'updateData'])->name('links.update-data');
+    Route::delete('/links/{link}', [LinkController::class, 'delete'])->name('links.delete');
+
+    // appearance
+    Route::get('/appearance', [AppearanceController::class, 'index'])->name('appearance');
+    Route::post('/appearance/themes/{theme}/pick', [AppearanceController::class, 'pickTheme'])->name('appearance.themes.pick');
+
+    // metrics
+    Route::get('/metrics', [MetricController::class, 'index'])->name('metrics');
+
+    // profile
+    Route::get('/user/profile', [UserController::class, 'index'])->name('profile');
+    Route::delete('/user/other-browser-sessions', [UserController::class, 'destroySession'])->name('user.other-browser-sessions.destroy');
+    Route::delete('/user/profile-photo', [UserController::class, 'destroyProfilePhoto'])->name('user.current-user-photo.destroy');
+    Route::post('/user/social-links-position', [UserController::class, 'updateSocialLinksPosition'])->name('user.social-links-position');
+
+    // social-links
+    Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links');
+    Route::post('/social-links', [SocialLinkController::class, 'store']);
+    Route::delete('/social-links/{link}', [SocialLinkController::class, 'delete'])->name('social-links.delete');
 });
 
-// home
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/privacy', 'HomeController@privacy')->name('home.privacy');
-Route::get('/terms', 'HomeController@terms')->name('home.terms');
+Route::view('/', 'index')->name('home');
+Route::view('/terms', 'terms')->name('terms');
+Route::view('/policy', 'policy')->name('policy');
 
-// user
+Route::get('/test', function () {
+    $user = \App\Models\User::where('username', 'Morvaridpay')->first();
+    auth()->login($user);
+    return redirect()->route('links');
+});
+
+
 Route::group(['middleware' => 'block-crawlers'], function () {
-    Route::get('/go', 'User\UserController@go')->middleware('go')->name('go');
-    Route::get('/{username}', 'User\UserController@index')->name('user');
-    Route::get('/{username}/donate', 'User\DonateController@index')->name('user.donate');
-    Route::get('/{username}/donate/supporters', 'User\DonateController@supporters')->name('user.donate.supporters');
-    Route::post('/{username}/donate', 'User\DonateController@donate');
-    Route::any('/{username}/donate/callback/{provider}/{payment}', 'User\DonateController@callback')->name('user.donate.callback');
+    Route::get('/{username}', [PageController::class, 'show'])->name('page.show');
+    Route::post('/{username}/metrics/{link?}', [PageController::class, 'storeMetric'])->name('page.metrics');
 });
