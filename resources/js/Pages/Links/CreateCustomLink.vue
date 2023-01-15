@@ -10,7 +10,7 @@
                     class="rounded-xl border border-gray-200 p-4 text-center transition hover:bg-gray-100 cursor-pointer flex items-center justify-between"
                 >
                     <span>{{ type }}</span>
-                    <img :src="require('../../../img/link-types/' + type + '.svg').default" class="h-5"  alt=""/>
+                    <img :src="require('../../../img/link-types/' + type.toLowerCase() + '.svg').default" class="h-5"  alt=""/>
                 </div>
             </div>
         </template>
