@@ -1,53 +1,24 @@
 <?php
 
-/**
- * @return string
- */
-function get_date_path()
+function get_thumbnail_from_url(string $url): string|null
 {
-    return date('Y') . '/' . date('m') . '/' . date('d');
-}
-
-/**
- * @param $strDateFrom
- * @param $strDateTo
- * @return array
- * @throws Exception
- */
-function create_date_range($strDateFrom, $strDateTo)
-{
-    $aryRange = [];
-    $from = new DateTime($strDateFrom);
-    $to = new DateTime($strDateTo);
-    $to->modify('+1 day');
-    $period = new DatePeriod($from, new DateInterval('P1D'), $to);
-    foreach ($period as $key => $value) {
-        array_push($aryRange, $value->format('Y-m-d'));
+    try {
+        $pageContent = file_get_contents($url);
+        $domObj = new DOMDocument('1.0', 'UTF-8');
+        @$domObj->loadHTML($pageContent);
+        $metaVal = null;
+        foreach ($domObj->getElementsByTagName('meta') as $meta) {
+            if ($meta->getAttribute('property') == 'og:image') {
+                $metaVal = $meta->getAttribute('content');
+            }
+        }
+        return $metaVal;
+    } catch (Throwable) {
+        return "";
     }
-
-    return $aryRange;
 }
 
-
-/**
- * @param $money
- * @return string
- */
-function custom_money_format($money)
+function is_persian_alphabet($input): bool
 {
-    return number_format($money, 0, '', ',');
+    return (bool)preg_match('/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u', $input);
 }
-
-/**
- * @param $string
- * @return string|string[]
- */
-function latin_number_to_persian($string)
-{
-    $latin = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    $convertedLatinNums = str_replace($latin, $persian, $string);
-
-    return str_replace(' ', '', $convertedLatinNums);
-}
-

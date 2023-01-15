@@ -1,5 +1,13 @@
 <template>
-    <div class="p-5 w-full sm:w-10/12 md:w-8/12 xl:w-7/12">
+    <div class="container mx-auto max-w-4xl p-10">
         <slot></slot>
     </div>
 </template>
+
+<script>
+    export default {
+        name: "VContainer",
+    };
+</script>
+
+<style scoped></style>

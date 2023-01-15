@@ -1,7 +1,0 @@
-{
-    "Reset Password Notification": "اطلاع رسانی بازیابی کلمه عبور",
-    "You are receiving this email because we received a password reset request for your account.": "برای بازیابی کلمه عبور بر روی دکمه زیر کلیک کنید",
-    "Reset Password": "بازیابی کلمه عبور",
-    "This password reset link will expire in :count minutes.": "لینک بازیابی کلمه عبور بعد از :count دقیقه منقضی خواهد شد",
-    "If you did not request a password reset, no further action is required.": "در صورتی که شما درخواست بازیابی کلمه عبور را نداده اید این ایمیل را نادیده بگیرید"
-}

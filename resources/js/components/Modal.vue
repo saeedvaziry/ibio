@@ -1,67 +1,116 @@
 <template>
-    <div>
-        <transition leave-active-class="ease-in duration-100" leave-class="opacity-100" leave-to-class="opacity-0">
-            <div v-show="open" class="fixed inset-0 transition-opacity" :class="{'z-10': level === 1, 'z-20': level === 2}" @click="open = false">
-                <div class="absolute inset-0 bg-black opacity-75"></div>
+    <teleport to="body">
+        <transition leave-active-class="duration-200">
+            <div
+                v-show="show"
+                class="fixed inset-0 z-50 overflow-y-auto px-4 py-6 sm:px-0"
+                scroll-region
+            >
+                <transition
+                    enter-active-class="ease-out duration-300"
+                    enter-from-class="opacity-0"
+                    enter-to-class="opacity-100"
+                    leave-active-class="ease-in duration-200"
+                    leave-from-class="opacity-100"
+                    leave-to-class="opacity-0"
+                >
+                    <div
+                        v-show="show"
+                        class="fixed inset-0 transform transition-all"
+                        @click="close"
+                    >
+                        <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                    </div>
+                </transition>
+
+                <transition
+                    enter-active-class="ease-out duration-300"
+                    enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    enter-to-class="opacity-100 translate-y-0 sm:scale-100"
+                    leave-active-class="ease-in duration-200"
+                    leave-from-class="opacity-100 translate-y-0 sm:scale-100"
+                    leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                >
+                    <div
+                        v-show="show"
+                        class="mb-6 transform overflow-hidden rounded-xl   bg-white shadow-xl transition-all sm:mx-auto sm:w-full"
+                        :class="maxWidthClass"
+                    >
+                        <slot v-if="show"></slot>
+                    </div>
+                </transition>
             </div>
         </transition>
-        <transition enter-active-class="transition ease-out duration-100 transform" enter-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-75 transform" leave-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-            <div v-show="open" class="fixed top-0 inset-x-0 inset-1 h-screen sm:flex sm:items-start sm:justify-center p-5 md:p-10" :class="{'z-20': level === 1, 'z-30': level === 2}">
-                <div class="fixed inset-0 transition-opacity" @click="open = false">
-                    <div class="absolute inset-0"></div>
-                </div>
-                <div class="bg-white dark:bg-gray-900 rounded-md shadow-xl transform transition-all sm:w-11/12" :class="{'sm:max-w-lg': size === 'lg','sm:max-w-xl': size === 'xl','sm:max-w-2xl': size === '2xl','sm:max-w-3xl': size === '3xl','sm:max-w-4xl': size === '4xl',}">
-                    <i class="icon-close opacity-50 left-0 top-0 ml-2 mt-4 absolute cursor-pointer" @click="hide()"></i>
-                    <slot></slot>
-                </div>
-            </div>
-        </transition>
-    </div>
+    </teleport>
 </template>
 
 <script>
+    import { onMounted, onUnmounted } from "vue";
+
     export default {
-        name: "Modal",
+        name: "VModal",
+
+        emits: ["close"],
+
         props: {
-            size: {
-                type: String,
-                default: "lg",
+            show: {
+                default: false,
             },
-            level: {
-                type: Number,
-                default: 1
+            maxWidth: {
+                default: "2xl",
             },
-            forceOpen: {
-                type: Boolean,
-                default: false
-            }
+            closeable: {
+                default: true,
+            },
         },
-        mounted() {
-            this.open = this.forceOpen
-        },
-        data() {
-            return {
-                open: false,
-            }
-        },
+
         watch: {
-            open(newVal) {
-                if (newVal) {
-                    document.body.classList.add('overflow-hidden')
-                } else {
-                    document.body.classList.remove('overflow-hidden')
-                    this.$emit("closed")
+            show: {
+                immediate: true,
+                handler: (show) => {
+                    if (show) {
+                        document.body.style.overflow = "hidden";
+                    } else {
+                        document.body.style.overflow = null;
+                    }
+                },
+            },
+        },
+
+        setup(props, { emit }) {
+            const close = () => {
+                if (props.closeable) {
+                    emit("close");
                 }
+            };
+
+            const closeOnEscape = (e) => {
+                if (e.key === "Escape" && props.show) {
+                    close();
+                }
+            };
+
+            onMounted(() => document.addEventListener("keydown", closeOnEscape));
+            onUnmounted(() => {
+                document.removeEventListener("keydown", closeOnEscape);
+                document.body.style.overflow = null;
+            });
+
+            return {
+                close,
+            };
+        },
+
+        computed: {
+            maxWidthClass() {
+                return {
+                    sm: "sm:max-w-sm",
+                    md: "sm:max-w-md",
+                    lg: "sm:max-w-lg",
+                    xl: "sm:max-w-xl",
+                    "2xl": "sm:max-w-2xl",
+                }[this.maxWidth];
             },
         },
-        methods: {
-            show() {
-                this.open = true
-            },
-            hide() {
-                this.open = false
-                document.body.classList.add('overflow-hidden')
-            },
-        },
-    }
+    };
 </script>

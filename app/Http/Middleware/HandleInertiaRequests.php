@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\PageResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -21,10 +21,10 @@ class HandleInertiaRequests extends Middleware
      * Determines the current asset version.
      *
      * @see https://inertiajs.com/asset-versioning
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return string|null
      */
-    public function version(Request $request)
+    public function version(Request $request): ?string
     {
         return parent::version($request);
     }
@@ -33,19 +33,17 @@ class HandleInertiaRequests extends Middleware
      * Defines the props that are shared by default.
      *
      * @see https://inertiajs.com/shared-data
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function share(Request $request)
+    public function share(Request $request): array
     {
-        return array_merge(parent::share($request), [
-            'uuid' => Str::uuid(),
-            'user' => $request->user() ? new UserResource($request->user()) : null,
-            'flash' => [
-                'success' => $request->session()->get('success'),
-                'error' => $request->session()->get('error')
-            ],
-            'data' => $request->session()->get('data') ? $request->session()->get('data') : [],
-        ]);
+        $data = [];
+        if ($request->user()) {
+            $data['user'] = new UserResource($request->user());
+            $data['data'] = $request->session()->get('data') ? $request->session()->get('data') : [];
+        }
+
+        return array_merge(parent::share($request), $data);
     }
 }

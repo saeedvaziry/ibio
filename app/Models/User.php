@@ -2,229 +2,131 @@
 
 namespace App\Models;
 
-use App\Casts\Donation;
+use App\Enums\MetricReferenceType;
+use App\Enums\SocialLinksPosition;
+use App\Traits\HasProfilePhoto;
+use DateTimeImmutable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
-use PragmaRX\Google2FALaravel\Google2FA;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
-class User extends Authenticatable
+/**
+ * @property int $id
+ * @property int $old_id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property DateTimeImmutable $email_verified_at
+ * @property int $theme_id
+ * @property string $username
+ * @property string $bio
+ * @property string $avatar
+ * @property string $cover
+ * @property array $social_links
+ * @property SocialLinksPosition $social_links_position
+ * @property string $url
+ * @property Theme $theme
+ * @property Link[] $links
+ * @property DateTimeImmutable $created_at
+ * @property DateTimeImmutable $updated_at
+ */
+class User extends AbstractModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use Authenticatable, Authorizable, CanResetPassword, HasFactory;
+    use HasProfilePhoto;
+    use TwoFactorAuthenticatable;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
+        'id',
+        'old_id',
         'name',
-        'name_en',
         'email',
-        'username',
         'password',
-        'avatar',
-        'social',
+        'email_verified_at',
+        'theme_id',
+        'username',
         'bio',
-        'bio_en',
-        'page',
-        'active',
-        'donation',
-        'two_factor_enabled',
-        'two_factor_secret',
+        'avatar',
+        'cover',
+        'social_links',
+        'social_links_position',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
+        'id' => 'integer',
+        'old_id' => 'integer',
         'email_verified_at' => 'datetime',
-        'active' => 'boolean',
-        'two_factor_enabled' => 'boolean',
-        'donation' => Donation::class,
+        'social_links' => 'json',
+        'social_links_position' => SocialLinksPosition::class,
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function featureRequests()
+    public static function booted()
     {
-        return $this->hasMany('App\Models\FeatureRequest');
+        static::deleted(function (User $user) {
+            $user->links()->delete();
+            $user->themes()->delete();
+            $user->metrics()->delete();
+        });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function links()
+    public function theme(): BelongsTo
     {
-        return $this->hasMany('App\Models\Link');
+        return $this->belongsTo(Theme::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function pageLinks()
+    public function themes(): hasMany
     {
-        return $this->links()->whereNotIn('type', ['social', 'contact']);
+        return $this->hasMany(Theme::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function socialLinks()
+    public function links(): HasMany
     {
-        return $this->links()->where('type', 'social');
+        return $this->hasMany(Link::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function contactLinks()
+    public function socialLinks(): HasMany
     {
-        return $this->links()->where('type', 'contact');
+        return $this->links()->where('type', 'Social');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function stats()
+    public function url(): string
     {
-        return $this->morphMany('App\Models\Stat', 'statable');
+        return url('/' . $this->username);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function clicks()
+    public function avatarUrl(): string
     {
-        return $this->hasManyThrough('App\Models\Stat', 'App\Models\Link', 'user_id', 'statable_id')->where('statable_type', 'App\Models\Link');
+        return $this->avatar ? Storage::disk($this->profilePhotoDisk())->url($this->avatar) : '';
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function recentClicks()
+    public function metrics(): HasMany
     {
-        return $this->clicks()->orderBy('id', 'desc');
+        return $this->hasMany(Metric::class, 'reference_id')
+            ->where('reference_type', MetricReferenceType::PAGE);
     }
 
-    /**
-     * Enable 2FA
-     *
-     * @param null $secretKey
-     * @return string
-     * @throws \PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException
-     * @throws \PragmaRX\Google2FA\Exceptions\InvalidCharactersException
-     * @throws \PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException
-     */
-    public function enableTwoFactor($secretKey = null)
+    public function linkMetrics(): HasManyThrough
     {
-        $twoFactor = new Google2FA(new Request());
-        if (!$secretKey) {
-            $secretKey = $twoFactor->generateSecretKey();
-        }
-
-        $qrImage = $twoFactor->getQRCodeInline(
-            config('app.name'),
-            $this->email,
-            $secretKey
-        );
-
-        Cache::put('two_factor_' . $this->id, $secretKey, 500);
-
-        return $qrImage;
-    }
-
-    /**
-     * @param $secret
-     * @param $code
-     * @return mixed
-     */
-    public function verifyTwoFactor($secret, $code)
-    {
-        $twoFactor = new Google2FA(new Request());
-        $verify = $twoFactor->verifyGoogle2FA($secret, $code);
-
-        if ($verify) {
-            $this->update([
-                'two_factor_enabled' => 1,
-                'two_factor_secret' => $secret,
-            ]);
-        }
-
-        return $verify;
-    }
-
-    /**
-     * Disable 2FA
-     *
-     * @return void
-     */
-    public function disableTwoFactor()
-    {
-        $this->update([
-            'two_factor_enabled' => 0,
-            'two_factor_secret' => null,
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\UrlGenerator|string
-     */
-    public function getAvatarUrlAttribute()
-    {
-        return $this->avatar ? Storage::disk('public')->url($this->avatar) : '';
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function payments()
-    {
-        return $this->hasMany('App\Models\Payment');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function successPayments()
-    {
-        return $this->payments()->whereNotNull('verified_at');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDisplayNameAttribute()
-    {
-        $isEn = session()->has('lang-' . $this->id) && session()->get('lang-' . $this->id) == 'en';
-
-        return $isEn ? $this->name_en : $this->name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDisplayBioAttribute()
-    {
-        $isEn = session()->has('lang-' . $this->id) && session()->get('lang-' . $this->id) == 'en';
-
-        return $isEn ? $this->bio_en : $this->bio;
+        return $this->hasManyThrough(Metric::class, Link::class, 'reference_id')
+            ->where('reference_type', MetricReferenceType::LINK);
     }
 }

@@ -1,61 +1,30 @@
-require('./bootstrap');
-require('./configs/index');
-require('./filters/dateformat');
-require('./filters/xmoney');
-require('./directives/xmoney');
-require('./components');
+require("./bootstrap");
 
-import Vue from 'vue';
-import {App} from '@inertiajs/inertia-vue';
+// Import modules...
+import { createApp } from "vue";
+import { plugin as InertiaPlugin } from "@inertiajs/inertia-vue3";
+import { InertiaProgress } from "@inertiajs/progress";
 
-Vue.mixin({methods: {route}});
+// import app modules
+import Root from "./root";
+import Filters from "./filters";
 
-window.Event = new Vue();
+// create app
+const app = createApp(Root);
 
-const el = document.getElementById('app')
+// mixins
+app.mixin({ methods: { route } });
 
-export default new Vue({
-    data() {
-        return {
-            csrf_token: window.app.csrf_token,
-            theme: localStorage.getItem('theme'),
-            system_theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        }
-    },
-    watch: {
-        theme: function (newVal) {
-            localStorage.setItem('theme', newVal);
-            this.setTheme();
-            this.$inertia.reload({preserveScroll: true, preserveState: true})
-        }
-    },
-    render: h => h(App, {
-        props: {
-            initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: name => import(`./views/${name}`).then(module => module.default),
-        },
-    }),
-    mounted() {
-        if (!this.theme) {
-            this.theme = 'system';
-            localStorage.setItem('theme', 'system')
-        }
-        this.setTheme();
-        window.addEventListener('popstate', () => {
-            this.$inertia.reload({preserveScroll: true, preserveState: false})
-        });
-    },
-    methods: {
-        setTheme() {
-            if (this.theme === 'system') {
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.className = 'dark';
-                } else {
-                    document.documentElement.className = 'light';
-                }
-            } else {
-                document.documentElement.className = this.theme;
-            }
-        }
-    }
-}).$mount(el);
+// plugins
+app.use(InertiaPlugin);
+
+// filters
+app.config.globalProperties.$filters = Filters;
+
+// mount app
+app.mount("#app");
+
+// initial inertia progress
+InertiaProgress.init({
+    color: "#4179f5",
+});

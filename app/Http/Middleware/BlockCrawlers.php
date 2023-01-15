@@ -10,11 +10,6 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 class BlockCrawlers
 {
     /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
-     * @return mixed
      * @throws CrawlerDetectException
      */
     public function handle(Request $request, Closure $next)
