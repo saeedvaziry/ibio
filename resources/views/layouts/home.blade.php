@@ -15,7 +15,7 @@
     @include('extensions.favicon')
     @stack('styles')
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 overflow-x-hidden">
     <nav class="bg-white w-full h-16 shadow-sm rounded-b-3xl flex items-center justify-center">
         <div class="container flex items-center justify-between px-5">
             <a href="/"><img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}" class="h-10"></a>
