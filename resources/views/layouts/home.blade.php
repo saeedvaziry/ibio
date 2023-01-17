@@ -43,7 +43,6 @@
         </div>
     </footer>
     @stack('scripts')
-    @include('extensions.support')
     @include('extensions.google')
     @include('extensions.cookie')
 </body>
