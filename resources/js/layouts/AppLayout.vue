@@ -280,11 +280,14 @@
                         <!--</header>-->
 
                         <div class="max-h-full overflow-y-scroll pb-20">
+                            <div class="bg-yellow-200 h-12 flex items-center justify-start px-5 text-yellow-700" v-if="!$page.props.user.username">
+                                You haven't set your username yet! You can set it from <a :href="route('profile')" class="ml-1 text-black">here</a>
+                            </div>
                             <slot></slot>
                         </div>
                     </main>
 
-                    <preview v-if="$page.props.preview" />
+                    <preview v-if="$page.props.preview && $page.props.user.username" />
                 </div>
             </div>
         </div>
