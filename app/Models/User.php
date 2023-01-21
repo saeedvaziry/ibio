@@ -63,7 +63,6 @@ class User extends AbstractModel implements AuthenticatableContract, Authorizabl
         'social_links_position',
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 
     protected $hidden = [

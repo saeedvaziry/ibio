@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Filament\Facades\Filament;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         ResourceCollection::withoutWrapping();
+
+        Filament::serving(function () {
+            Filament::registerTheme(
+                mix('css/admin.css'),
+            );
+        });
     }
 }

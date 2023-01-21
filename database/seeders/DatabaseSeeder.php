@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\LinkTypes\Button;
 use App\LinkTypes\Text;
+use App\Models\Admin;
 use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -17,6 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Admin::factory()->create([
+            'email' => 'admin@example.com',
+        ]);
         /* @var User $user */
         $user = User::factory()->create([
             'email' => 'user@example.com',
