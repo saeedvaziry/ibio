@@ -15,6 +15,10 @@ mix.css("resources/css/carousel.css", "public/css");
 
 mix.copy("resources/img/home", "public/images/home");
 
+mix.postCss('resources/css/admin.css', 'public/css', [
+    require('tailwindcss')('tailwind-admin.config.js'),
+])
+
 if (mix.inProduction()) {
     mix.version();
 }

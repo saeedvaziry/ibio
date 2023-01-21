@@ -12,6 +12,7 @@
         "ext-dom": "*",
         "aws/aws-sdk-php": "^3.257",
         "bensampo/laravel-enum": "^5.3",
+        "filament/filament": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.2",
         "jenssegers/agent": "^2.6",
@@ -54,7 +55,8 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan filament:upgrade"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
