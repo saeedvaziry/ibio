@@ -67,6 +67,10 @@ The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue), 
 
 ## Credits
 
+**Admin Dashboard**
+
+[Filamentphp](https://filamentphp.com/)
+
 **Charts**
 
 [Chart.js](https://www.chartjs.org/) with [Vue Charts](https://vue-chartjs.org/)
