@@ -15,7 +15,7 @@ class ViewsChart extends LineChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Registered Users',
+                    'label' => 'Page Views',
                     'data' => [
                         Metric::query()
                             ->where('type', MetricType::VISIT)
