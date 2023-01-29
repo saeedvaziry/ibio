@@ -35,6 +35,22 @@ php artisan key:generate
 php artisan migrate
 ```
 
+## Admin Dashboard
+
+iBio now has an admin dashboard 🎉
+
+![image](https://user-images.githubusercontent.com/61919774/213862084-fbc788c8-c57b-4666-86c3-af508feed0e9.png)
+
+The default path is `/admin`
+
+There is a separate table named `admins` to hold admin accounts.
+
+### Create an Admin
+
+```
+php artisan admin:make "name" "email" "password"
+```
+
 ## What technologies used?
 
 ### Back-End
@@ -50,6 +66,10 @@ Database is Mysql or Mariadb
 The front-end has been developed with [Vue.js 2](https://github.com/vuejs/vue), [Inertia.js](https://github.com/inertiajs/inertia), and [Tailwindcss 2](https://tailwindcss.com/)
 
 ## Credits
+
+**Admin Dashboard**
+
+[Filamentphp](https://filamentphp.com/)
 
 **Charts**
 
