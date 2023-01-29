@@ -5,11 +5,12 @@
         </template>
 
         <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+            Forgot your password? No problem. Just let us know your email address and we will email you a password reset
+            link that will allow you to choose a new one.
         </div>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
+        <div v-if="success" class="mb-4 font-medium text-sm text-green-600">
+            Password reset email sent!
         </div>
 
         <v-validation-errors class="mb-4" />
@@ -53,6 +54,7 @@
 
         data() {
             return {
+                success: false,
                 form: this.$inertia.form({
                     email: ''
                 })
@@ -65,7 +67,12 @@
 
         methods: {
             submit() {
-                this.form.post(this.route('password.email'))
+                this.success = false;
+                this.form.post(this.route('password.email'), {
+                    onSuccess: () => {
+                        this.success = true;
+                    },
+                })
             }
         }
     }
