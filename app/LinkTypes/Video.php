@@ -48,13 +48,17 @@ final class Video extends AbstractLinkType
 
     private function provider(?string $url = null): ?string
     {
-        $host = parse_url($url ?? $this->link->data['url'])['host'];
+        $parsedUrl = parse_url($url ?? $this->link->data['url']);
 
-        if (in_array($host, ['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be'])) {
+        if (!isset($parsedUrl['host'])) {
+            return null;
+        }
+
+        if (in_array($parsedUrl['host'], ['youtube.com', 'www.youtube.com', 'youtu.be', 'www.youtu.be'])) {
             return VideoProvider::YOUTUBE;
         }
 
-        if (in_array($host, ['vimeo.com', 'www.vimeo.com'])) {
+        if (in_array($parsedUrl['host'], ['vimeo.com', 'www.vimeo.com'])) {
             return VideoProvider::VIMEO;
         }
 
