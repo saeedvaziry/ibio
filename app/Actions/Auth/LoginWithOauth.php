@@ -3,6 +3,7 @@
 namespace App\Actions\Auth;
 
 use App\Enums\SocialLinksPosition;
+use App\Models\Theme;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -26,6 +27,9 @@ abstract class LoginWithOauth
         }
         if (!$user->social_links_position) {
             $user->social_links_position = SocialLinksPosition::BOTTOM;
+        }
+        if (!$user->theme_id) {
+            $user->theme_id = Theme::query()->first()->id;
         }
 
         $user->save();

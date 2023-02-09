@@ -3,6 +3,7 @@
 namespace App\Actions\Auth;
 
 use App\Enums\SocialLinksPosition;
+use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,6 +36,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'theme_id' => Theme::query()->first()->id,
             'social_links_position' => SocialLinksPosition::BOTTOM
         ]);
     }
