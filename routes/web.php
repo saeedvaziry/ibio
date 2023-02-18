@@ -48,13 +48,6 @@ Route::view('/', 'index')->name('home');
 Route::view('/terms', 'terms')->name('terms');
 Route::view('/policy', 'policy')->name('policy');
 
-Route::get('/test', function () {
-    $user = \App\Models\User::where('username', 'Morvaridpay')->first();
-    auth()->login($user);
-    return redirect()->route('links');
-});
-
-
 Route::group(['middleware' => 'block-crawlers'], function () {
     Route::get('/{username}', [PageController::class, 'show'])->name('page.show');
     Route::post('/{username}/metrics/{link?}', [PageController::class, 'storeMetric'])->name('page.metrics');
