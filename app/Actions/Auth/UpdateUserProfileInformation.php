@@ -29,7 +29,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'username' => [
                 'required',
                 Rule::unique('users')->ignore($user->id),
-                'alpha_num:ascii'
+                'alpha_num:ascii',
+                'min:5',
             ],
             'bio' => ['nullable'],
         ])->validateWithBag('updateProfileInformation');

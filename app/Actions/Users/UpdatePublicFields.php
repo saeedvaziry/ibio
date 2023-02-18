@@ -30,7 +30,9 @@ class UpdatePublicFields
         return [
             'username' => [
                 'required',
-                Rule::unique('users', 'username')->whereNot('id', $user->id)
+                Rule::unique('users', 'username')->whereNot('id', $user->id),
+                'alpha_num:ascii',
+                'min:5',
             ],
             'name' => [
                 'required',
