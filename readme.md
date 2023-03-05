@@ -10,6 +10,13 @@ The master branch is available on https://ibio.link
 
 Sample link: https://ibio.link/saeedvaziry
 
+## Features
+
+- Links (Video, Music, Button, Text, Email, Phone)
+- Metrics (Charts and Statistics)
+- Themes
+- Social links
+
 ## Installation
 
 1) Install dependencies
