@@ -16,6 +16,7 @@ Sample link: https://ibio.link/saeedvaziry
 - Metrics (Charts and Statistics)
 - Themes
 - Social links
+- Admin dashboard
 
 ## Installation
 
