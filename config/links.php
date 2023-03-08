@@ -9,6 +9,7 @@ return [
         \App\LinkTypes\Text::class,
         \App\LinkTypes\Video::class,
         \App\LinkTypes\Social::class,
+        \App\LinkTypes\ContactForm::class,
     ],
     'types_when_creating' => [
         'Button',
@@ -17,5 +18,6 @@ return [
         'Phone',
         'Text',
         'Video',
+        'ContactForm',
     ],
 ];
