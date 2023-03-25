@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AppearanceController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\MetricController;
 use App\Http\Controllers\Oauth\GoogleController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LinkController;
 
 Route::prefix('oauth')->group(function () {
     Route::get('google', [GoogleController::class, 'redirect']);

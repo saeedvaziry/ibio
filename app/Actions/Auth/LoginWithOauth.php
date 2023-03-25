@@ -14,21 +14,21 @@ abstract class LoginWithOauth
         $data = Socialite::driver($this->driver)->user();
         /** @var User $user */
         $user = User::query()->firstOrNew([
-            'email' => $data->getEmail()
+            'email' => $data->getEmail(),
         ]);
-        if (!$user->name) {
+        if (! $user->name) {
             $user->name = $data->getName();
         }
-        if (!$user->password) {
+        if (! $user->password) {
             $user->password = 'not_set';
         }
-        if (!$user->email_verified_at) {
+        if (! $user->email_verified_at) {
             $user->email_verified_at = now();
         }
-        if (!$user->social_links_position) {
+        if (! $user->social_links_position) {
             $user->social_links_position = SocialLinksPosition::BOTTOM;
         }
-        if (!$user->theme_id) {
+        if (! $user->theme_id) {
             $user->theme_id = Theme::query()->first()->id;
         }
 

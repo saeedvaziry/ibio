@@ -41,7 +41,7 @@ class UpdateThumbnail
             'type' => [
                 'required',
                 'in:upload,icon',
-            ]
+            ],
         ]);
         if (request()->input('type') == 'upload') {
             request()->validate([

@@ -2,12 +2,10 @@
 
 namespace App\Filament\Pages;
 
-use App\Filament\Widgets\UsersChart;
 use App\Filament\Widgets\StatsOverview;
+use App\Filament\Widgets\UsersChart;
 use App\Filament\Widgets\ViewsChart;
-use Filament\Facades\Filament;
 use Filament\Pages\Dashboard as BasePage;
-use Illuminate\Support\Facades\Route;
 
 class Dashboard extends BasePage
 {
@@ -20,11 +18,11 @@ class Dashboard extends BasePage
         return [
             StatsOverview::class,
             UsersChart::class,
-            ViewsChart::class
+            ViewsChart::class,
         ];
     }
 
-    protected function getColumns(): int | array
+    protected function getColumns(): int|array
     {
         return 2;
     }

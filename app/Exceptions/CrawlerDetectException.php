@@ -10,7 +10,7 @@ class CrawlerDetectException extends Exception
     public function render(): JsonResponse
     {
         return response()->json([
-            'message' => "Not found"
+            'message' => 'Not found',
         ], 404);
     }
 }

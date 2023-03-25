@@ -4,9 +4,9 @@ namespace App\Models;
 
 use App\Enums\ThemeBgType;
 use App\Enums\ThemeButtonBgType;
+use App\Enums\ThemeButtonRoundStyle;
 use App\Enums\ThemeButtonShadowStyle;
 use App\Enums\ThemeButtonThumbnailPosition;
-use App\Enums\ThemeButtonRoundStyle;
 use App\Enums\ThemeCoverLayout;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -77,7 +77,7 @@ class Theme extends Model
         'button_shadow_style' => ThemeButtonShadowStyle::class,
         'button_bg_type' => ThemeButtonBgType::class,
         'button_thumbnail_position' => ThemeButtonThumbnailPosition::class,
-        'cover_layout' => ThemeCoverLayout::class
+        'cover_layout' => ThemeCoverLayout::class,
     ];
 
     public function user(): BelongsTo

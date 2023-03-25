@@ -26,7 +26,7 @@ class PageController extends Controller
         );
 
         return view('page', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -42,6 +42,7 @@ class PageController extends Controller
                 $link->id,
                 MetricType::CLICK
             );
+
             return;
         }
 

@@ -20,7 +20,7 @@ class LinkController extends Controller
     public function index(): Response
     {
         return inertia('Links/Index', [
-            'title' => __("Links"),
+            'title' => __('Links'),
             'preview' => true,
             'links' => LinkResource::collection(
                 $this->getUser()
@@ -29,7 +29,7 @@ class LinkController extends Controller
                     ->orderBy('sort')
                     ->get()
             ),
-            'linkTypes' => config('links.types_when_creating')
+            'linkTypes' => config('links.types_when_creating'),
         ]);
     }
 

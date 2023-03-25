@@ -67,13 +67,13 @@ return [
             'driver' => 'mysql',
             'read' => [
                 'host' => [
-                    env('OLD_DB_HOST', '127.0.0.1')
-                ]
+                    env('OLD_DB_HOST', '127.0.0.1'),
+                ],
             ],
             'write' => [
                 'host' => [
-                    '127.0.0.1'
-                ]
+                    '127.0.0.1',
+                ],
             ],
             'port' => env('OLD_DB_PORT', '3306'),
             'database' => env('OLD_DB_DATABASE', 'forge'),

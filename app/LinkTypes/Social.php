@@ -41,9 +41,9 @@ final class Social extends AbstractLinkType
         return [
             'platform' => [
                 'required',
-                Rule::in(self::PLATFORMS)
+                Rule::in(self::PLATFORMS),
             ],
-            'url' => 'required|url|max:1000'
+            'url' => 'required|url|max:1000',
         ];
     }
 

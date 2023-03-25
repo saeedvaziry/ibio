@@ -8,7 +8,7 @@ final class Phone extends AbstractLinkType
     {
         return [
             'title' => 'required|max:250',
-            'number' => 'required|max:50'
+            'number' => 'required|max:50',
         ];
     }
 
@@ -26,7 +26,7 @@ final class Phone extends AbstractLinkType
             'id' => $this->link->id,
             'theme' => $this->link->user->theme,
             'title' => $this->link->data['title'],
-            'url' => 'tel:' . $this->link->data['number'],
+            'url' => 'tel:'.$this->link->data['number'],
             'thumbnailUrl' => $this->link->thumbnail_url,
         ]);
     }

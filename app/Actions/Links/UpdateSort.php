@@ -17,7 +17,7 @@ class UpdateSort
         $validator = Validator::make($input, [
             'links.*.id' => [
                 'required',
-            ]
+            ],
         ]);
         $validator->validate();
 

@@ -16,11 +16,11 @@ final class Music extends AbstractLinkType
                 'url',
                 'max:1000',
                 function ($attribute, $value, $fail) {
-                    if (!$this->provider($value)) {
+                    if (! $this->provider($value)) {
                         $fail(__('This music platform is not supported. Please consider using Button instead'));
                     }
                 },
-            ]
+            ],
         ];
     }
 
@@ -30,7 +30,7 @@ final class Music extends AbstractLinkType
             'title' => '',
             'url' => '',
             'play_type' => 'on_site',
-            'provider' => ''
+            'provider' => '',
         ];
     }
 
@@ -74,12 +74,11 @@ final class Music extends AbstractLinkType
     {
         $url = parse_url($this->link->data['url']);
 
-        return "https://open.spotify.com/embed" . $url['path'] . '?theme=0';
-
+        return 'https://open.spotify.com/embed'.$url['path'].'?theme=0';
     }
 
     private function getSoundcloudEmbedUrl(): string
     {
-        return "https://w.soundcloud.com/player?url=" . $this->link->data['url'] . '&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true';
+        return 'https://w.soundcloud.com/player?url='.$this->link->data['url'].'&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true';
     }
 }

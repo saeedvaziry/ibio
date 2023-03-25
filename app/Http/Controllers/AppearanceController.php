@@ -19,7 +19,7 @@ class AppearanceController extends Controller
                     ->where('user_id', $this->getUser()->id)
                     ->orWhereNull('user_id')
                     ->get()
-            )
+            ),
         ]);
     }
 

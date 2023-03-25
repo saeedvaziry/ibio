@@ -27,8 +27,8 @@ abstract class AbstractLinkType implements LinkTypeInterface
         $this->link->data = $data;
         if (
             $field === 'url' &&
-            !$this->link->thumbnail_set_from_url &&
-            !$this->link->thumbnail &&
+            ! $this->link->thumbnail_set_from_url &&
+            ! $this->link->thumbnail &&
             (
                 $this instanceof Video ||
                 $this instanceof Music
@@ -45,7 +45,8 @@ abstract class AbstractLinkType implements LinkTypeInterface
     public function isDataValid(): bool
     {
         $validator = Validator::make($this->link->data, $this->rules());
-        return !$validator->fails();
+
+        return ! $validator->fails();
     }
 
     /**
@@ -53,7 +54,7 @@ abstract class AbstractLinkType implements LinkTypeInterface
      */
     private function validate(array $input, $field): void
     {
-        if (!isset($this->rules()[$field])) {
+        if (! isset($this->rules()[$field])) {
             throw ValidationException::withMessages([$field => "Doesn't exist!"]);
         }
 

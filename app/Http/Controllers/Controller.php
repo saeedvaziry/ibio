@@ -16,6 +16,7 @@ class Controller extends BaseController
     {
         /** @var User $user */
         $user = auth()->user();
+
         return $user;
     }
 }

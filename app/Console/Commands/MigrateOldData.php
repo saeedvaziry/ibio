@@ -190,7 +190,8 @@ class MigrateOldData extends Command
     public function handle(): void
     {
         if (User::query()->where('old_id', '>', 0)->first()) {
-            $this->error("Already migrated!");
+            $this->error('Already migrated!');
+
             return;
         }
 
@@ -218,15 +219,15 @@ class MigrateOldData extends Command
 
         $this->newLine();
 
-        $this->info("Migration finished!");
+        $this->info('Migration finished!');
     }
 
     private function createUser($user): User
     {
         if ($user->avatar) {
-            $avatar = Str::uuid()->toString() . '.' . str($user->avatar)->after('.');
+            $avatar = Str::uuid()->toString().'.'.str($user->avatar)->after('.');
             try {
-                File::put(Storage::disk('public')->path($avatar), file_get_contents(self::AVATAR_URL . '/' . $user->avatar));
+                File::put(Storage::disk('public')->path($avatar), file_get_contents(self::AVATAR_URL.'/'.$user->avatar));
             } catch (\Throwable) {
                 $avatar = null;
             }
@@ -242,7 +243,7 @@ class MigrateOldData extends Command
             'theme_id' => 1,
             'avatar' => $avatar ?? null,
             'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at
+            'updated_at' => $user->updated_at,
         ]);
         $newUser->save();
 
@@ -260,14 +261,14 @@ class MigrateOldData extends Command
                 foreach ($links as $link) {
                     $newLink = new Link([
                         'user_id' => $user->id,
-                        'is_active' => true
+                        'is_active' => true,
                     ]);
                     if (in_array($link->type, ['text', 'spotify', 'soundcloud'])) {
                         $newLink->type = 'Button';
                         $newLink->sort = $link->order;
                         $newLink->data = [
                             'title' => $link->title,
-                            'url' => $link->url
+                            'url' => $link->url,
                         ];
                         $newLink->save();
                     }
@@ -276,23 +277,23 @@ class MigrateOldData extends Command
                             $newLink->type = 'Email';
                             $newLink->data = [
                                 'title' => $link->title,
-                                'email' => $link->url
+                                'email' => $link->url,
                             ];
                             $newLink->sort = $link->order;
                             $newLink->save();
-                        } else if ($link->title == 'phone') {
+                        } elseif ($link->title == 'phone') {
                             $newLink->type = 'Phone';
                             $newLink->data = [
                                 'title' => $link->title,
-                                'number' => $link->url
+                                'number' => $link->url,
                             ];
                             $newLink->sort = $link->order;
                             $newLink->save();
-                        } else if ($link->title == 'website') {
+                        } elseif ($link->title == 'website') {
                             $newLink->type = 'Button';
                             $newLink->data = [
                                 'title' => $link->title,
-                                'url' => $link->url
+                                'url' => $link->url,
                             ];
                             $newLink->sort = $link->order;
                             $newLink->save();
@@ -304,7 +305,7 @@ class MigrateOldData extends Command
                             $newLink->type = 'Social';
                             $newLink->data = [
                                 'platform' => $link->title,
-                                'url' => str($config['schema'])->replace('{value}', $link->url)
+                                'url' => str($config['schema'])->replace('{value}', $link->url),
                             ];
                             $newLink->sort = $link->order;
                             $newLink->save();
@@ -317,7 +318,7 @@ class MigrateOldData extends Command
                             'title' => $link->title,
                             'url' => $link->url,
                             'play_type' => 'on_site',
-                            'provider' => $link->type
+                            'provider' => $link->type,
                         ];
                         $newLink->save();
                     }
@@ -328,7 +329,7 @@ class MigrateOldData extends Command
                             'title' => $link->title,
                             'url' => $link->url,
                             'play_type' => 'on_site',
-                            'provider' => $link->type
+                            'provider' => $link->type,
                         ];
                         $newLink->save();
                     }

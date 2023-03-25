@@ -2,16 +2,17 @@
 
 use App\Enums\ThemeBgType;
 use App\Enums\ThemeButtonBgType;
-use App\Enums\ThemeCoverLayout;
-use App\Enums\ThemeButtonThumbnailPosition;
-use App\Enums\ThemeButtonShadowStyle;
 use App\Enums\ThemeButtonRoundStyle;
+use App\Enums\ThemeButtonShadowStyle;
+use App\Enums\ThemeButtonThumbnailPosition;
+use App\Enums\ThemeCoverLayout;
 use App\Models\Theme;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -44,7 +45,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        # legacy
+        // legacy
         Theme::query()->create([
             'name' => 'legacy',
             'bg_type' => ThemeBgType::COLOR,
@@ -60,10 +61,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#E9D5FF',
             'avatar_text_color' => '#9333EA',
-            'social_media_color' => '#000000'
+            'social_media_color' => '#000000',
         ]);
 
-        # blue
+        // blue
         Theme::query()->create([
             'name' => 'blue',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -82,10 +83,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#FFFFFF',
             'avatar_text_color' => '#102D92',
-            'social_media_color' => '#FFFFFF'
+            'social_media_color' => '#FFFFFF',
         ]);
 
-        # black
+        // black
         Theme::query()->create([
             'name' => 'black',
             'bg_type' => ThemeBgType::COLOR,
@@ -104,10 +105,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#FFFFFF',
             'avatar_text_color' => '#000000',
-            'social_media_color' => '#FFFFFF'
+            'social_media_color' => '#FFFFFF',
         ]);
 
-        # goldfinch
+        // goldfinch
         Theme::query()->create([
             'name' => 'goldfinch',
             'bg_type' => ThemeBgType::COLOR,
@@ -126,10 +127,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#050B0F',
             'avatar_text_color' => '#E3D803',
-            'social_media_color' => '#050B0F'
+            'social_media_color' => '#050B0F',
         ]);
 
-        # tanger
+        // tanger
         Theme::query()->create([
             'name' => 'tanger',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -148,10 +149,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#312519',
             'avatar_text_color' => '#FD5333',
-            'social_media_color' => '#312519'
+            'social_media_color' => '#312519',
         ]);
 
-        # flamingo
+        // flamingo
         Theme::query()->create([
             'name' => 'flamingo',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -170,10 +171,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#b63b8a',
             'avatar_text_color' => '#ffffff',
-            'social_media_color' => '#ffffff'
+            'social_media_color' => '#ffffff',
         ]);
 
-        # parrot
+        // parrot
         Theme::query()->create([
             'name' => 'parrot',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -192,10 +193,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#654D20',
             'avatar_text_color' => '#ffffff',
-            'social_media_color' => '#ffffff'
+            'social_media_color' => '#ffffff',
         ]);
 
-        # cotinga
+        // cotinga
         Theme::query()->create([
             'name' => 'cotinga',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -214,10 +215,10 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#ffffff',
             'avatar_text_color' => '#8F115F',
-            'social_media_color' => '#ffffff'
+            'social_media_color' => '#ffffff',
         ]);
 
-        # cyan
+        // cyan
         Theme::query()->create([
             'name' => 'cyan',
             'bg_type' => ThemeBgType::GRADIENT,
@@ -236,7 +237,7 @@ return new class extends Migration {
             'font' => 'Vazirmatn',
             'avatar_bg' => '#ffffff',
             'avatar_text_color' => '#0891b2',
-            'social_media_color' => '#ffffff'
+            'social_media_color' => '#ffffff',
         ]);
     }
 

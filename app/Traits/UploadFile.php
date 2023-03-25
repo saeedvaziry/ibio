@@ -15,7 +15,7 @@ trait UploadFile
     {
         $this->disk = $disk;
 
-        $this->filePath = $file->store('', ['disk' => $disk]);;
+        $this->filePath = $file->store('', ['disk' => $disk]);
 
         return $this->filePath;
     }

@@ -12,13 +12,14 @@ function get_thumbnail_from_url(string $url): string|null
                 $metaVal = $meta->getAttribute('content');
             }
         }
+
         return $metaVal;
     } catch (Throwable) {
-        return "";
+        return '';
     }
 }
 
 function is_persian_alphabet($input): bool
 {
-    return (bool)preg_match('/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u', $input);
+    return (bool) preg_match('/^[\x{600}-\x{6FF}\x{200c}\x{064b}\x{064d}\x{064c}\x{064e}\x{064f}\x{0650}\x{0651}\s]+$/u', $input);
 }

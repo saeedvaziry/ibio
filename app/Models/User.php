@@ -109,7 +109,7 @@ class User extends AbstractModel implements AuthenticatableContract, Authorizabl
 
     public function url(): string
     {
-        return url('/' . $this->username);
+        return url('/'.$this->username);
     }
 
     public function avatarUrl(): string

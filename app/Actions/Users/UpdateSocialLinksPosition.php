@@ -18,8 +18,8 @@ class UpdateSocialLinksPosition
         $validator = Validator::make($input, [
             'position' => [
                 'required',
-                Rule::in(SocialLinksPosition::getValues())
-            ]
+                Rule::in(SocialLinksPosition::getValues()),
+            ],
         ]);
         $validator->validate();
 

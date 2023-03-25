@@ -14,7 +14,7 @@ class UpdatePublicFields
      */
     public function update(User $user, $field, array $input): void
     {
-        if (!isset($this->rules($user)[$field])) {
+        if (! isset($this->rules($user)[$field])) {
             throw ValidationException::withMessages([$field => "Doesn't exist!"]);
         }
 
@@ -36,11 +36,11 @@ class UpdatePublicFields
             ],
             'name' => [
                 'required',
-                'max:255'
+                'max:255',
             ],
             'bio' => [
-                'max:1000'
-            ]
+                'max:1000',
+            ],
         ];
     }
 }
