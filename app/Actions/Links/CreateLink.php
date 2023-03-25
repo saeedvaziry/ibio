@@ -33,8 +33,8 @@ class CreateLink
         Validator::validate($input, [
             'type' => [
                 'required',
-                Rule::in(config('links.types_when_creating'))
-            ]
+                Rule::in(config('links.types_when_creating')),
+            ],
         ]);
     }
 }

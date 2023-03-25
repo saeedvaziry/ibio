@@ -16,11 +16,11 @@ final class Video extends AbstractLinkType
                 'url',
                 'max:1000',
                 function ($attribute, $value, $fail) {
-                    if (!$this->provider($value)) {
+                    if (! $this->provider($value)) {
                         $fail(__('This video platform is not supported. Please consider using Button instead'));
                     }
                 },
-            ]
+            ],
         ];
     }
 
@@ -30,7 +30,7 @@ final class Video extends AbstractLinkType
             'title' => '',
             'url' => '',
             'play_type' => 'on_site',
-            'provider' => ''
+            'provider' => '',
         ];
     }
 
@@ -50,7 +50,7 @@ final class Video extends AbstractLinkType
     {
         $parsedUrl = parse_url($url ?? $this->link->data['url']);
 
-        if (!isset($parsedUrl['host'])) {
+        if (! isset($parsedUrl['host'])) {
             return null;
         }
 
@@ -78,7 +78,7 @@ final class Video extends AbstractLinkType
     {
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-            "//www.youtube.com/embed/$2",
+            '//www.youtube.com/embed/$2',
             $this->link->data['url']
         );
     }
@@ -87,6 +87,6 @@ final class Video extends AbstractLinkType
     {
         $url = parse_url($this->link->data['url']);
 
-        return "https://player.vimeo.com/video" . $url['path'];
+        return 'https://player.vimeo.com/video'.$url['path'];
     }
 }

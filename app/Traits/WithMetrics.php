@@ -24,7 +24,7 @@ trait WithMetrics
         }
         $userAgent = new Agent();
         $userAgent->setUserAgent($request->userAgent());
-        if (!$userAgent->isRobot()) {
+        if (! $userAgent->isRobot()) {
             $metric = new Metric();
             $metric->reference_type = MetricReferenceType::fromValue($referenceType);
             $metric->reference_id = $referenceId;
@@ -48,7 +48,7 @@ trait WithMetrics
             }
         }
 
-        if (!$referer) {
+        if (! $referer) {
             $referer = 'direct';
         }
 
@@ -57,14 +57,14 @@ trait WithMetrics
 
     protected function checkMetricExists(Request $request, string $referenceType, mixed $referenceId, string $type): bool
     {
-        return (bool)Metric::query()
+        return (bool) Metric::query()
             ->where('reference_type', $referenceType)
             ->where('reference_id', $referenceId)
             ->where('type', $type)
             ->where('ip', $request->ip())
             ->whereBetween('created_at', [
-                now()->format('Y-m-d') . ' 00:00:00',
-                now()->format('Y-m-d') . ' 23:59:59'
+                now()->format('Y-m-d').' 00:00:00',
+                now()->format('Y-m-d').' 23:59:59',
             ])
             ->first();
     }

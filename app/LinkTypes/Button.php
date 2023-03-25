@@ -8,7 +8,7 @@ final class Button extends AbstractLinkType
     {
         return [
             'title' => 'required|max:250',
-            'url' => 'required|url|max:1000'
+            'url' => 'required|url|max:1000',
         ];
     }
 

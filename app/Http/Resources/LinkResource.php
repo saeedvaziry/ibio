@@ -11,6 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed $is_active
  * @property mixed $sort
  * @property mixed $thumbnail_url
+ *
  * @method type()
  */
 class LinkResource extends JsonResource
@@ -24,7 +25,7 @@ class LinkResource extends JsonResource
             'thumbnail' => $this->thumbnail_url,
             'is_data_valid' => $this->type()->isDataValid(),
             'is_active' => $this->is_active,
-            'sort' => $this->sort
+            'sort' => $this->sort,
         ];
     }
 }

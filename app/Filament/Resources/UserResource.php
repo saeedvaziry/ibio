@@ -21,9 +21,9 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label("Name"),
-                TextInput::make('email')->label("Email"),
-                TextInput::make('username')->label("Username"),
+                TextInput::make('name')->label('Name'),
+                TextInput::make('email')->label('Email'),
+                TextInput::make('username')->label('Username'),
             ]);
     }
 
@@ -39,19 +39,19 @@ class UserResource extends Resource
             ])
             ->filters([
                 Tables\Filters\Filter::make('name')->form([
-                    TextInput::make('name')->label("Name")
+                    TextInput::make('name')->label('Name'),
                 ])->query(function (Builder $query, array $data) {
-                    $query->when($data['name'], fn(Builder $query, $name): Builder => $query->where('name', 'like', "%$name%"));
+                    $query->when($data['name'], fn (Builder $query, $name): Builder => $query->where('name', 'like', "%$name%"));
                 }),
                 Tables\Filters\Filter::make('email')->form([
-                    TextInput::make('email')->label("Email")
+                    TextInput::make('email')->label('Email'),
                 ])->query(function (Builder $query, array $data) {
-                    $query->when($data['email'], fn(Builder $query, $email): Builder => $query->where('email', 'like', "%$email%"));
+                    $query->when($data['email'], fn (Builder $query, $email): Builder => $query->where('email', 'like', "%$email%"));
                 }),
                 Tables\Filters\Filter::make('username')->form([
-                    TextInput::make('username')->label("Username")
+                    TextInput::make('username')->label('Username'),
                 ])->query(function (Builder $query, array $data) {
-                    $query->when($data['username'], fn(Builder $query, $username): Builder => $query->where('username', 'like', "%$username%"));
+                    $query->when($data['username'], fn (Builder $query, $username): Builder => $query->where('username', 'like', "%$username%"));
                 }),
             ])
             ->actions([

@@ -8,7 +8,7 @@ final class Email extends AbstractLinkType
     {
         return [
             'title' => 'required|max:250',
-            'email' => 'required|email|max:100'
+            'email' => 'required|email|max:100',
         ];
     }
 
@@ -26,7 +26,7 @@ final class Email extends AbstractLinkType
             'id' => $this->link->id,
             'theme' => $this->link->user->theme,
             'title' => $this->link->data['title'],
-            'url' => 'mailto:' . $this->link->data['email'],
+            'url' => 'mailto:'.$this->link->data['email'],
             'thumbnailUrl' => $this->link->thumbnail_url,
         ]);
     }

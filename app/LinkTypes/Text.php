@@ -9,7 +9,7 @@ final class Text extends AbstractLinkType
     public function rules(): array
     {
         return [
-            'text' => 'required|max:1000'
+            'text' => 'required|max:1000',
         ];
     }
 
@@ -24,7 +24,7 @@ final class Text extends AbstractLinkType
     {
         return view('page.links.text', [
             'link' => $this->link,
-            'theme' => $this->link->user->theme
+            'theme' => $this->link->user->theme,
         ]);
     }
 }

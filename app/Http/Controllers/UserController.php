@@ -37,7 +37,7 @@ class UserController extends Controller
             ->get()->map(function ($session) use ($request) {
                 $agent = $this->createAgent($session);
 
-                return (object)[
+                return (object) [
                     'agent' => [
                         'is_desktop' => $agent->isDesktop(),
                         'platform' => $agent->platform(),
@@ -66,7 +66,7 @@ class UserController extends Controller
             $guard, $request->user(), $request->password
         );
 
-        if (!$confirmed) {
+        if (! $confirmed) {
             throw ValidationException::withMessages([
                 'password' => __('The password is incorrect.'),
             ]);
@@ -88,7 +88,7 @@ class UserController extends Controller
             $guard, $request->user(), $request->password
         );
 
-        if (!$confirmed) {
+        if (! $confirmed) {
             throw ValidationException::withMessages([
                 'password' => __('The password is incorrect.'),
             ]);

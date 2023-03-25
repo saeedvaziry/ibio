@@ -19,7 +19,7 @@ class SocialLinkController extends Controller
             'links' => LinkResource::collection(
                 $this->getUser()->socialLinks()->where('is_active', 1)->get()
             ),
-            'platforms' => Social::PLATFORMS
+            'platforms' => Social::PLATFORMS,
         ]);
     }
 
@@ -33,7 +33,7 @@ class SocialLinkController extends Controller
         $link->user_id = $this->getUser()->id;
         $link->data = [
             'platform' => request()->input('platform'),
-            'url' => request()->input('url')
+            'url' => request()->input('url'),
         ];
         $link->sort = 0;
         $link->is_active = true;

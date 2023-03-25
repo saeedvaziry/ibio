@@ -42,6 +42,7 @@ trait HasProfilePhoto
     {
         return null;
     }
+
     protected function profilePhotoDisk(): string
     {
         return config('filesystems.default_public');

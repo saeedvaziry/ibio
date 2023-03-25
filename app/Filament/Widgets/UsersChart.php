@@ -33,7 +33,7 @@ class UsersChart extends LineChartWidget
                                 now()->months(1)->startOfMonth()->format('Y-m-d H:i:s'),
                                 now()->months(1)->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
-                            ->count()
+                            ->count(),
                     ],
                     'borderColor' => '#11b911',
                 ],

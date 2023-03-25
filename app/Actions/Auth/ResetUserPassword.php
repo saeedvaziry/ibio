@@ -13,7 +13,8 @@ class ResetUserPassword implements ResetsUserPasswords
     use PasswordValidationRules;
 
     /**
-     * @param User $user
+     * @param  User  $user
+     *
      * @throws ValidationException
      */
     public function reset($user, array $input): void

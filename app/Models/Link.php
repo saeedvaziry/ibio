@@ -67,7 +67,7 @@ class Link extends AbstractModel
 
     public function type(): LinkTypeInterface
     {
-        $link = "App\\LinkTypes\\" . $this->type;
+        $link = 'App\\LinkTypes\\'.$this->type;
 
         return new $link($this);
     }

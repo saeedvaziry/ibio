@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'theme_id' => Theme::query()->first()->id,
-            'social_links_position' => SocialLinksPosition::BOTTOM
+            'social_links_position' => SocialLinksPosition::BOTTOM,
         ]);
     }
 }

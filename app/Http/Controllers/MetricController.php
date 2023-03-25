@@ -15,7 +15,7 @@ class MetricController extends Controller
                 auth()->user(),
                 now()->subWeek()->startOfDay()->format('Y-m-d H:i:s'),
                 now()->endOfDay()->format('Y-m-d H:i:s'),
-            )
+            ),
         ]);
     }
 }

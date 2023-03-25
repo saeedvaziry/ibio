@@ -33,16 +33,16 @@ class DatabaseSeeder extends Seeder
                 'text' => 'My Google Account',
             ],
             'sort' => 1,
-            'is_active' => 1
+            'is_active' => 1,
         ]);
         $user->links()->create([
             'type' => class_basename(Button::class),
             'data' => [
                 'title' => 'Google',
-                'url' => 'https://google.com'
+                'url' => 'https://google.com',
             ],
             'sort' => 2,
-            'is_active' => 1
+            'is_active' => 1,
         ]);
         $user->links()->create([
             'type' => class_basename(Text::class),
@@ -50,16 +50,16 @@ class DatabaseSeeder extends Seeder
                 'text' => 'My Facebook Account',
             ],
             'sort' => 3,
-            'is_active' => 1
+            'is_active' => 1,
         ]);
         $user->links()->create([
             'type' => class_basename(Button::class),
             'data' => [
                 'title' => 'Facebook',
-                'url' => 'https://facebook.com'
+                'url' => 'https://facebook.com',
             ],
             'sort' => 4,
-            'is_active' => 1
+            'is_active' => 1,
         ]);
     }
 }
