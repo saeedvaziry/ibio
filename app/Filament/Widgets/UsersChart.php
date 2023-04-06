@@ -18,8 +18,14 @@ class UsersChart extends LineChartWidget
                     'data' => [
                         User::query()
                             ->whereBetween('created_at', [
-                                now()->subMonth()->startOfMonth()->format('Y-m-d H:i:s'),
-                                now()->subMonth()->endOfMonth()->format('Y-m-d H:i:s'),
+                                now()->subMonths(2)->startOfMonth()->format('Y-m-d H:i:s'),
+                                now()->subMonths(2)->endOfMonth()->format('Y-m-d H:i:s'),
+                            ])
+                            ->count(),
+                        User::query()
+                            ->whereBetween('created_at', [
+                                now()->subMonths()->startOfMonth()->format('Y-m-d H:i:s'),
+                                now()->subMonths()->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
                             ->count(),
                         User::query()
@@ -28,20 +34,14 @@ class UsersChart extends LineChartWidget
                                 now()->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
                             ->count(),
-                        User::query()
-                            ->whereBetween('created_at', [
-                                now()->addMonth()->startOfMonth()->format('Y-m-d H:i:s'),
-                                now()->addMonth()->endOfMonth()->format('Y-m-d H:i:s'),
-                            ])
-                            ->count(),
                     ],
                     'borderColor' => '#11b911',
                 ],
             ],
             'labels' => [
-                now()->subMonth()->monthName,
+                now()->subMonths(2)->monthName,
+                now()->subMonths()->monthName,
                 now()->monthName,
-                now()->addMonth()->monthName,
             ],
         ];
     }
