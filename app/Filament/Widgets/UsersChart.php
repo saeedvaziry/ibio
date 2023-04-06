@@ -18,20 +18,20 @@ class UsersChart extends LineChartWidget
                     'data' => [
                         User::query()
                             ->whereBetween('created_at', [
-                                now()->months(-1)->startOfMonth()->format('Y-m-d H:i:s'),
-                                now()->months(-1)->endOfMonth()->format('Y-m-d H:i:s'),
+                                now()->subMonth()->startOfMonth()->format('Y-m-d H:i:s'),
+                                now()->subMonth()->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
                             ->count(),
                         User::query()
                             ->whereBetween('created_at', [
-                                now()->months(0)->startOfMonth()->format('Y-m-d H:i:s'),
-                                now()->months(0)->endOfMonth()->format('Y-m-d H:i:s'),
+                                now()->startOfMonth()->format('Y-m-d H:i:s'),
+                                now()->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
                             ->count(),
                         User::query()
                             ->whereBetween('created_at', [
-                                now()->months(1)->startOfMonth()->format('Y-m-d H:i:s'),
-                                now()->months(1)->endOfMonth()->format('Y-m-d H:i:s'),
+                                now()->addMonth()->startOfMonth()->format('Y-m-d H:i:s'),
+                                now()->addMonth()->endOfMonth()->format('Y-m-d H:i:s'),
                             ])
                             ->count(),
                     ],
@@ -39,9 +39,9 @@ class UsersChart extends LineChartWidget
                 ],
             ],
             'labels' => [
-                now()->months(-1)->monthName,
-                now()->months(0)->monthName,
-                now()->months(1)->monthName,
+                now()->subMonth()->monthName,
+                now()->monthName,
+                now()->addMonth()->monthName,
             ],
         ];
     }
