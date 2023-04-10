@@ -63,7 +63,6 @@
     <div class="w-full flex flex-col items-center justify-center bg-white py-20 px-5">
         <h2 class="font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-primary-800 to-primary-600">Open Source</h2>
         <p class="mt-10 text-xl">iBio is <b>FREE</b> and <b>open source</b> and will remain like that! You can find the source code on <a href="https://github.com/saeedvaziry/ibio" class="text-primary-600" target="_blank">Github</a>.</p>
-        <p class="mt-2 text-xl">However, If you want to use it in a commercial project, You need to purchase a license</p>
         <p class="mt-2 text-xl">Developers are welcome to fork the repository and propose changes to bring more features to it or bug fixes.</p>
     </div>
 @endsection
