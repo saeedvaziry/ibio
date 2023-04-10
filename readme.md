@@ -103,3 +103,7 @@ User-Agent by [jenssegers](https://github.com/jenssegers/agent)
 ## Security
 
 In case you see any security issues please send it to me directly at (sa.vaziry@gmail.com) or create an issue
+
+## License
+
+This software is licensed under MIT. Check the license [here](https://github.com/saeedvaziry/ibio/blob/master/LICENSE.md)
