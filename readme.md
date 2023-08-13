@@ -59,6 +59,10 @@ There is a separate table named `admins` to hold admin accounts.
 php artisan admin:make "name" "email" "password"
 ```
 
+## Deployment
+
+To deploy the app into production you can use [VitoDeploy](https://vitodeploy.com)
+
 ## What technologies used?
 
 ### Back-End
